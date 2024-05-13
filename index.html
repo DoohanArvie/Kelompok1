@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar pasien Rumah Sakit</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>RS. Kartini</h1>
+      <form>
+        <label>ID Pasien</label><br /><br />
+        <input id="id" type="textfield" /> <br /><br />
+        <label>Nama</label><br /><br />
+        <input id="name" type="textfield" /><br /><br />
+        <label>Alamat</label><br /><br />
+        <input id="alamat" type="textfield" /><br /><br />
+        <label>Penyakit</label><br /><br />
+        <input id="penyakit" type="textfield" /><br /><br />
+        <label>Nomor Ruang</label><br /><br />
+        <input id="noruang" type="number" /><br /><br />
+        <label>BPJS</label><br /><br />
+        <select id="bpjs" name="bpjs">
+          <option value="Tidak Menggunakan Bpjs" selected>
+            Tidak Menggunakan BPJS
+          </option>
+          <option value="Kelas-1">Kelas 1</option>
+          <option value="Kelas-2">Kelas 2</option>
+          <option value="Kelas-3">Kelas 3</option>
+        </select>
+        <br /><br />
+        <label>Tanggal Masuk</label><br /><br />
+        <input id="tglmasuk" type="date" /><br /><br />
+        <label>Tanggal Keluar</label><br /><br />
+        <input id="tglkeluar" type="date" /><br /><br />
+
+        <button id="save" onclick="saveData()">Save</button>
+        <button id="update" onclick="saveData()">Update</button>
+      </form>
+      <table id="crud-table" border="1">
+        <thead class="header">
+          <tr>
+            <th class="mobile">Id Pasien</th>
+            <th class="mobile">Nama</th>
+            <th class="tablet">Alamat</th>
+            <th class="mobile">Penyakit</th>
+            <th class="tablet">Nomor Ruang</th>
+            <th class="dekstop">BPJS</th>
+            <th class="dekstop">Tanggal Masuk</th>
+            <th class="dekstop">Tanggal Keluar</th>
+            <th class="mobile">Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <!-- <table id="crud-table" class="tablet" border="1">
+        <thead class="header">
+          <tr>
+            <th>Id Pasien</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Penyakit</th>
+            <th>Nomor Ruang</th>
+            <th>BPJS</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <table id="crud-table" class="mobile" border="1">
+        <thead class="header">
+          <tr>
+            <th>Id Pasien</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>Penyakit</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> -->
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
