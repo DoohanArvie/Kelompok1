@@ -16,7 +16,7 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="/home">Home</a></li>
+                                        <li><a href="/">Home</a></li>
                                         <li><a href="/job-listing">Find a Jobs </a></li>
                                         <li><a href="/about">About</a></li>
                                         <li><a href="/contact">Contact</a></li>
