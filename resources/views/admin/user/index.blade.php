@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Users')
+@section('title', 'Users Management')
 
 @section('after-style')
     <link rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css    ') }}">
@@ -12,7 +12,7 @@
 @section('content')
 
     <div class="page-heading">
-        <h3>Halaman Category</h3>
+        <h3>Halaman Users Management</h3>
     </div>
 
     {{-- <div class="page-content">
@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row mb-3">
                 <div class="col-md-12 ">
-                    <button class="btn" id="userButton">User</button>
+                    <button class="btn btn-primary" id="userButton">User</button>
                     <button class="btn" id="adminButton">Admin</button>
                 </div>
                 

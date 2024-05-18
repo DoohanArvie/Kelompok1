@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,5 +25,11 @@ Route::get('/admin', function () {
     return view('admin.dashboard');
 });
 
+Route::resource('/company', CompanyController::class);
 Route::resource('category', CategoryController::class);
+Route::resource('/job', JobController::class);
 Route::resource('user', UserController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
