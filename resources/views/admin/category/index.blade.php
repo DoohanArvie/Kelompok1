@@ -12,7 +12,7 @@
 @section('content')
 
     <div class="page-heading">
-        <h3>Halaman Categoryyy</h3>
+        <h3>Halaman Categor</h3>
     </div>
 
     <div class="page-content">
