@@ -50,7 +50,7 @@
     </div> --}}
 
     <div class="container">
-        
+
 
         <div class="container">
             <div class="row mb-3">
@@ -58,7 +58,7 @@
                     <button class="btn btn-primary" id="userButton">User</button>
                     <button class="btn" id="adminButton">Admin</button>
                 </div>
-                
+
             </div>
 
             <div class="row">
@@ -66,8 +66,8 @@
                     <div class="d-flex justify-content-end">
                         <a href="" class="btn btn-primary">Tambah User <i class="fa-solid fa-user-plus"></i></a>
                     </div>
-                    
-                    <table class="table table-striped text-center" id="userTable" >
+
+                    <table class="table table-striped text-center" id="userTable">
                         <thead>
                             <tr>
                                 <th>Nama</th>
@@ -80,13 +80,13 @@
                                 <td>Falih Fauzan</td>
                                 <td>falih@gmail.com</td>
                                 <td>
-                                   
+
                                     <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info" ><i class="fa-solid fa-eye"></i></a>
+                                    <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 </td>
                             </tr>
-                           
+
                         </tbody>
                     </table>
 
@@ -104,11 +104,11 @@
                                 <td>vany@example.com</td>
                                 <td>
                                     <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info" ><i class="fa-solid fa-eye"></i></a>
+                                    <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 </td>
                             </tr>
-                           
+
                         </tbody>
                     </table>
                 </div>
