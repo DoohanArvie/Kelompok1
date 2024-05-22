@@ -11,8 +11,10 @@
 
 @section('content')
 
+
+
     <div class="page-heading">
-        <h3>Halaman Categor</h3>
+        <h3>Halaman Category</h3>
     </div>
 
     <div class="page-content">
@@ -21,10 +23,17 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between ">
                         <h5>Category</h5>
-                        <a href="javascript:;" class="btn btn-primary font-bold ">Add Category <i class="fa-solid fa-circle-plus"></i></a>
-                      </div>
+                        <a href="{{ route('dashboard.category.create') }}" class="btn btn-primary font-bold ">Add Category
+                            <i class="fa-solid fa-circle-plus"></i></a>
+                    </div>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     <table class="table table-striped text-center" id="table1">
                         <thead class="thead-center">
                             <tr>
@@ -34,14 +43,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Web Developer</td>
-                                <td>web-developer</td>
-                                <td>
-                                    <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-                                </td>
-                            </tr>
+                            @forelse ($categories as $category)
+                                <tr>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
+                                    <td>
+                                        <a href="{{ route('dashboard.category.edit', $category->id) }}"
+                                            class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                        <form action="{{ route('dashboard.category.destroy', $category->id) }}"
+                                            class="d-inline" method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3">Data Kosong</td>
+                                </tr>
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>
@@ -54,4 +80,17 @@
 @section('after-script')
     <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="assets/static/js/pages/simple-datatables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const swal = document.getElementById('#swal').data('swal');
+        if (swal) {
+            Swal.fire({
+                'title': 'Success',
+                'text': swal,
+                'icon': 'success',
+                'showConfirmButton': false,
+                'timer': 2000,
+            })
+        }
+    </script>
 @endsection

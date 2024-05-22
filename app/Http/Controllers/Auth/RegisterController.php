@@ -78,7 +78,7 @@ class RegisterController extends Controller
             'role' => 'user',
             'tgl_lahir' => $data['tgl_lahir'],
             'gender' => $data['gender'],
-            'foto' => 'default.jpg',
+            'foto' =>  'default.jpg',
         ]);
     }
 

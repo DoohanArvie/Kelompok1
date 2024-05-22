@@ -28,10 +28,7 @@ Route::get('/', function () {
 
 Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 
-Route::resource('/company', CompanyController::class);
-Route::resource('category', CategoryController::class);
-Route::resource('/job', JobController::class);
-Route::resource('user', UserController::class);
+
 
 Auth::routes();
 
@@ -53,4 +50,14 @@ Route::get('/about', function () {
 
 Route::get('/contact', function () {
     return view('frontend.contact');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::prefix('dashboard')->name('dashboard.')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('admin');
+        Route::resource('company', CompanyController::class);
+        Route::resource('category', CategoryController::class);
+        Route::resource('job', JobController::class);
+        Route::resource('user', UserController::class);
+    });
 });

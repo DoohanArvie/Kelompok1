@@ -45,7 +45,7 @@
                 <li class="sidebar-title">Menu</li>
 
                 <li class="sidebar-item active ">
-                    <a href="{{ url('/admin') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard.admin') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -53,14 +53,14 @@
 
 
                 <li class="sidebar-item ">
-                    <a href="{{ route('company.index') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard.company.index') }}" class='sidebar-link'>
                         <i class="bi bi-buildings"></i>
                         <span>Company</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item  ">
-                    <a href="{{ route('category.index') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard.category.index') }}" class='sidebar-link'>
                         <i class="bi bi-bookmark-dash-fill"></i>
                         <span>Category</span>
                     </a>
@@ -68,14 +68,14 @@
 
 
                 <li class="sidebar-item ">
-                    <a href="{{ route('job.index') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard.job.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-workspace"></i>
                         <span>Jobs</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item ">
-                    <a href="{{ route('user.index') }}" class='sidebar-link'>
+                    <a href="{{ route('dashboard.user.index') }}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>User Management</span>
                     </a>
@@ -88,7 +88,7 @@
                     </form>
                     <a class="sidebar-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fa-solid fa-right-from-bracket"></i> 
+                        <i class="fa-solid fa-right-from-bracket"></i>
                         <span>Logout</span>
                     </a>
                 </li>
