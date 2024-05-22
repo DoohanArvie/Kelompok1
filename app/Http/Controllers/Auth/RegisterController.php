@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -78,5 +80,36 @@ class RegisterController extends Controller
             'gender' => $data['gender'],
             'foto' => 'default.jpg',
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:tbl_users',
+            'no_hp' => 'required|string|max:15',
+            'tgl_lahir' => 'required|date|before:today',
+            'address' => 'required|string|max:255',
+            'gender' => 'required|string',
+            'password' => ['required', 'string', 'min:8', 'confirmed']
+        ]);
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['no_hp'] = $request->no_hp;
+        $data['tgl_lahir'] = $request->tgl_lahir;
+        $data['address'] = $request->address;
+        $data['gender'] = $request->gender;
+        $data['password'] = Hash::make($request->password);
+        $data['role'] = 'user';
+
+        $create = User::create($data);
+
+        if ($create) { // jika berhasil maka loginkan
+            Auth::login($create);
+            return redirect()->route('admin');
+        }
+
+        return redirect()->route('register');
     }
 }
