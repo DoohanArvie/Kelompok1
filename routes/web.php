@@ -26,7 +26,6 @@ Route::get('/', function () {
     return view('frontend.home');
 });
 
-Route::get('/admin', [DashboardController::class, 'index'])->name('admin');
 
 
 
