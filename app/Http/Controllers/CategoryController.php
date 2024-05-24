@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data =  request()->validate([
+        $data = $request->validate([
             'name' => 'required',
         ]);
 
@@ -66,13 +66,14 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  string $id)
     {
-        $data =  request()->validate([
+        $data = $request->validate([
             'name' => 'required',
         ]);
 
         $data['slug'] = Str::slug($data['name']);
+
         tblCategory::findOrFail($id)->update($data);
 
         return redirect()->route('dashboard.category.index')->with('success', 'Category updated successfully');

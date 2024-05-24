@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tblCompany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class CompanyController extends Controller
 {
@@ -10,8 +14,11 @@ class CompanyController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+
     {
-        return view('admin.company.index');
+        return view('admin.company.index', [
+            'companies' => tblCompany::orderBy('created_at', 'desc')->get(),
+        ]);
     }
 
     /**
@@ -19,7 +26,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.company.create');
     }
 
     /**
@@ -27,7 +34,30 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'company' => 'required|string',
+            'cover' => 'required|mimes:png,jpg,jpeg|max:2048|image',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            if ($request->hasFile('cover')) {
+                $coverPath = $request->file('cover')->store('company_covers', 'public');
+                $data['cover'] = $coverPath;
+            }
+
+            tblCompany::create($data);
+            DB::commit();
+
+            return redirect()->route('dashboard.company.index')->with('success', 'Company created successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $error = ValidationException::withMessages([
+                'system_error' => ['System_error!!' . $e->getMessage()],
+            ]);
+
+            throw $error;
+        }
     }
 
     /**
@@ -35,7 +65,10 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $company = tblCompany::findOrFail($id);
+        return view('admin.company.detail', [
+            'company' => $company
+        ]);
     }
 
     /**
@@ -43,7 +76,9 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.company.edit', [
+            'company' => tblCompany::findOrFail($id),
+        ]);
     }
 
     /**
@@ -51,14 +86,46 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-    }
+        $company = tblCompany::findOrFail($id);
+        $data = $request->validate([
+            'company' => 'required|string',
+            'cover' => 'sometimes|mimes:png,jpg,jpeg|max:2048|image',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
+        try {
+            if ($request->hasFile('cover')) {
+                $coverPath = $request->file('cover')->store('company_covers', 'public');
+                if ($company->cover) {
+                    Storage::disk('public')->delete($company->cover);
+                }
+                $data['cover'] = $coverPath;
+            }
+            tblCompany::findOrFail($id)->update($data);
+            DB::commit();
+            return redirect()->route('dashboard.company.index')->with('success', 'Company updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $error = ValidationException::withMessages([
+                'system_error' => ['System_error!!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
+    }
     public function destroy(string $id)
     {
-        //
+        try {
+            $company = tblCompany::findOrFail($id);
+            if ($company->cover) {
+                Storage::disk('public')->delete($company->cover);
+            }
+            $company->delete();
+            return redirect()->route('dashboard.company.index')->with('success', 'Company deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            $error = ValidationException::withMessages([
+                'system_error' => ['System_error!!' . $e->getMessage()],
+            ]);
+            throw $error;
+        }
     }
 }

@@ -28,15 +28,10 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    @if (session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
                     <table class="table table-striped text-center" id="table1">
                         <thead class="thead-center">
                             <tr>
+                                <th>No</th>
                                 <th>Category</th>
                                 <th>slug</th>
                                 <th>Action</th>
@@ -45,6 +40,7 @@
                         <tbody>
                             @forelse ($categories as $category)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
                                     <td>

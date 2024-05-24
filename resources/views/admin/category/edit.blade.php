@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label for="name">Category</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                placeholder="Category" name="name" value="{{ old('name', $category['name']) }}">
+                                placeholder="Category" name="name" value="{{ old('name', $category->name) }}">
                         </div>
                         @error('name')
                             <div class="alert alert-danger ">{{ $message }}</div>

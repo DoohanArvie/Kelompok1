@@ -14,35 +14,39 @@
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css ') }}">
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css ') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('after-style')
 </head>
 <style>
     .thead-center tr th {
-    text-align: center !important;
-}
+        text-align: center !important;
+    }
 </style>
+
 <body>
     <script src="assets/static/js/initTheme.js"></script>
     <div id="app">
-        
+
         <div id="main">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
+
             @yield('content')
 
             @include('admin.components.footer')
         </div>
     </div>
-   
+
     @include('admin.components.script')
 
     @yield('after-script')
-
+    {{-- swet alert --}}
+    @include('sweetalert::alert')
 
     <!-- Need: Apexcharts -->
     {{-- <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>

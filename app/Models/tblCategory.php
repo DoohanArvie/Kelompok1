@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Queue\Jobs\Job;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class tblCategory extends Model
 {
     use HasFactory;
+
 
     protected $fillable = [
         'name',
@@ -16,8 +17,8 @@ class tblCategory extends Model
 
     ];
 
-    public function Jobs()
+    public function Jobs(): HasMany
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(tblJob::class);
     }
 }

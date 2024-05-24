@@ -2,14 +2,10 @@
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
-                <div class="logo">
-                    <a href="index.html"><img src="{{ asset('assets/compiled/svg/logo.svg') }}" alt="Logo"
-                            srcset=""></a>
-                </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20"
-                        height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                        role="img" class="iconify iconify--system-uicons" width="20" height="20"
+                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
                         <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round"
                             stroke-linejoin="round">
                             <path
@@ -44,40 +40,55 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.admin' ? 'active' : '' }} ">
                     <a href="{{ route('dashboard.admin') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
+                <li class="sidebar-item  {{ Route::currentRouteName() === 'dashboard.profile.index' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.profile.index') }}" class='sidebar-link'>
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
 
-                <li class="sidebar-item ">
+
+                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.company.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.company.index') }}" class='sidebar-link'>
                         <i class="bi bi-buildings"></i>
-                        <span>Company</span>
+                        <span>Companaies</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item  ">
+                <li
+                    class="sidebar-item  {{ Route::currentRouteName() === 'dashboard.category.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.category.index') }}" class='sidebar-link'>
                         <i class="bi bi-bookmark-dash-fill"></i>
-                        <span>Category</span>
+                        <span>Categories</span>
                     </a>
                 </li>
 
 
-                <li class="sidebar-item ">
+                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.job.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.job.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-workspace"></i>
                         <span>Jobs</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item ">
+                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.user.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.user.index') }}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
-                        <span>User Management</span>
+                        <span>User Managements</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.contact' ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.contact') }}" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Contacts</span>
                     </a>
                 </li>
 

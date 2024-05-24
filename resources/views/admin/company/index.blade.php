@@ -21,29 +21,48 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between ">
                         <h5>Companies</h5>
-                        <a href="javascript:;" class="btn btn-primary font-bold ">Add Company <i class="fa-solid fa-circle-plus"></i></a>
-                      </div>
+                        <a href="{{ route('dashboard.company.create') }}" class="btn btn-primary font-bold ">Add Company <i
+                                class="fa-solid fa-circle-plus"></i></a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped text-center" id="table1">
                         <thead class="thead-center">
                             <tr>
+                                <th>No</th>
                                 <th>Company</th>
                                 <th>Cover</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>PT TIFICO</td>
-                                <td>gambar.jpg</td>
-                                <td>
-                                    <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info" ><i class="fa-solid fa-eye"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
+                        @forelse ($companies as $company)
+                            <tbody>
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $company->company }}</td>
+                                    <td>
+                                        <img width="150px" height="100px" src="{{ Storage::url($company->cover) }}"
+                                            alt="img {{ $company->company }}">
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('dashboard.company.edit', $company->id) }}"
+                                            class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <form action="{{ route('dashboard.company.destroy', $company->id) }}"
+                                            class="d-inline" method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this Company?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                        <a href="{{ route('dashboard.company.show', $company->id) }}"
+                                            class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
+                                    </td>
+
+                            </tbody>
+                        @empty
+                            <p>Belum ada perusahaan</p>
+                        @endforelse
                     </table>
                 </div>
             </div>
