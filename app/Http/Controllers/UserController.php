@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -50,12 +51,7 @@ class UserController extends Controller
 
         DB::beginTransaction();
         try {
-            if ($request->hasFile('foto')) {
-                $fotoPath = $request->file('foto')->store('user_fotos', 'public');
-                $data['foto'] = $fotoPath;
-            }
-
-            $data['password'] = bcrypt('password');
+            $data['password'] = Hash::make($request->password);
             User::create($data);
             DB::commit();
         } catch (\Exception $e) {
@@ -66,11 +62,6 @@ class UserController extends Controller
 
             throw $error;
         }
-
-
-
-
-
 
         return redirect()->route('dashboard.user.index')->with('success', 'User created successfully');
         //

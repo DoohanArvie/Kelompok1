@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable.css') }}">
     <style>
         .gambar {
-            width: 20rem !important;
-            height: 20rem !important;
+            width: 10rem !important;
+            height: 10rem !important;
         }
     </style>
 @endsection
@@ -49,7 +49,7 @@
                                 <div class="d-flex justify-content-center align-items-center flex-column">
                                     <div class="avatar avatar-xl">
                                         @if (Auth::user()->foto === null)
-                                            <img class="gambar" src="{{ asset('assets/traveloka.jpg') }}" alt="Avatar">
+                                            <img class="gambar" src="{{ asset('assets/no-cover.jpg') }}" alt="Avatar">
                                         @else
                                             <img src="{{ Storage::url(Auth::user()->foto) }}" alt="Avatar">
                                         @endif

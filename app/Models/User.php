@@ -50,4 +50,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function Jobs()
+    {
+        return $this->belongsToMany(tblJob::class, 'tbl_jobseekers', 'tbl_user_id', 'tbl_job_id');
+    }
 }
