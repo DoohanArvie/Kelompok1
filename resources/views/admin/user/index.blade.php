@@ -64,28 +64,43 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="d-flex justify-content-end">
-                        <a href="" class="btn btn-primary">Tambah User <i class="fa-solid fa-user-plus"></i></a>
+                        <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary">Tambah User <i
+                                class="fa-solid fa-user-plus"></i></a>
                     </div>
 
                     <table class="table table-striped text-center" id="userTable">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Falih Fauzan</td>
-                                <td>falih@gmail.com</td>
-                                <td>
+                            @forelse ($users as $user)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
 
-                                    <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
-                                </td>
-                            </tr>
+                                        <form action="{{ route('dashboard.user.destroy', $user->id) }}" class="d-inline"
+                                            method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this User?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="3">Data Kosong</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
@@ -93,21 +108,37 @@
                     <table class="table table-striped text-center" id="adminTable" style="display: none;">
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Vany Sidiyanto</td>
-                                <td>vany@example.com</td>
-                                <td>
-                                    <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
-                                </td>
-                            </tr>
+                            @forelse ($admins as $admin)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td>
+
+
+                                        <form action="{{ route('dashboard.user.destroy', $admin->id) }}" class="d-inline"
+                                            method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this User?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4">Data Kosong</td>
+                                </tr>
+                            @endforelse
 
                         </tbody>
                     </table>
