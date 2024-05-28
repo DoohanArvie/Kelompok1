@@ -66,12 +66,6 @@ class UserController extends Controller
 
             throw $error;
         }
-
-
-
-
-
-
         return redirect()->route('dashboard.user.index')->with('success', 'User created successfully');
         //
     }
