@@ -48,7 +48,7 @@ class JobController extends Controller
             tblJob::create($data);
             DB::commit();
 
-            return redirect()->route("dashboard.job.index")->with('succes', 'Job created successfully');
+            return redirect()->route("dashboard.job.index")->with('success', 'Job created successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             $error = ValidationException::withMessages([
@@ -84,19 +84,19 @@ class JobController extends Controller
         $data = $request->validate([
             'job' => 'required|string',
             'lokasi' => 'required|string',
-            'tbl_category' => 'required',
-            'tbl_company' => 'required',
-            'is_open' => 'requitrd|boolean',
+            'tbl_category_id' => 'required',
+            'tbl_company_id' => 'required',
+            'is_open' => 'required|boolean',
             'description' => 'required|string',
             'requirement' => 'required|string'
         ]);
 
         try {
-            $data['slug'] = Str::slug($data['name']);
+            $data['slug'] = Str::slug($data['job']);
             tblJob::findOrFail($id)->update($data);
             DB::commit();
 
-            return redirect()->route("dashboard.job.index")->with('succes', 'Job created successfully');
+            return redirect()->route("dashboard.job.index")->with('success', 'Job created successfully');
         } catch (\Exception $e) {
             DB::rollBack();
             $error = ValidationException::withMessages([
