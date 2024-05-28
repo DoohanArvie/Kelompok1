@@ -18,19 +18,20 @@
     <div class="page-content">
         <section class="section">
             <div class="card">
-                <div class="card-header">
+                {{-- <div class="card-header">
                     <div class="d-flex justify-content-between ">
                         <h5>Detail Companies</h5>
-
                     </div>
-                </div>
+                </div> --}}
                 <div class="card-body">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-md-6">
-                            <h1>Nama Company : {{ $company->company }}</h1>
+                    <div class="row" style="display: flex; justify-content: space-between; ">
+                        <div class="col-md-6" style="padding: 0 15px;">
+                            <h5>Nama Company: {{ $company->company }} </h5>
                         </div>
-                        <div class="col-md-6">
-                            <img class="w-50" src="{{ Storage::url($company->cover) }}" alt="">
+                        <div class="col-md-6  text-center">
+                            <h5>Cover Perusahaan</h5>
+                            <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"
+                                alt="">
                         </div>
                     </div>
 

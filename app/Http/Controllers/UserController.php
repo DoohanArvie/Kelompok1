@@ -64,7 +64,6 @@ class UserController extends Controller
         }
 
         return redirect()->route('dashboard.user.index')->with('success', 'User created successfully');
-        //
     }
 
     /**

@@ -20,8 +20,9 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between ">
-                      <h5>Jobs</h5>
-                      <a href="javascript:;" class="btn btn-primary font-bold ">Add Job <i class="fa-solid fa-circle-plus"></i></a>
+                        <h5>Jobs</h5>
+                        <a href="{{ route('dashboard.job.create') }}" class="btn btn-primary font-bold ">Add Job <i
+                                class="fa-solid fa-circle-plus"></i></a>
                     </div>
                 </div>
                 <div class="card-body">
@@ -35,16 +36,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
-                                <td>Back-End Developer (internship)</td>
-                                <td>Progammer</td>
-                                <td>PT. TIFICO</td>
-                                <td>
-                                    <a href="" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a href="" class="btn btn-danger" ><i class="fa-solid fa-trash"></i></a>
-                                    <a href="" class="btn btn-info" ><i class="fa-solid fa-eye"></i></a>
-                                </td>
-                            </tr>
+                            @forelse ($jobs as $job)
+                                <tr class="text-center">
+                                    <td>{{ $job->job }}</td>
+                                    <td>{{ $job->category->name }}</td>
+                                    <td>{{ $job->company->company }}</td>
+                                    <td>
+                                        <a href="{{ route('dashboard.job.edit', $job->id) }}" class="btn btn-warning"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                        <form action="{{ route('dashboard.job.destroy', $job->id) }}" class="d-inline"
+                                            method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this Job?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+                                        <a href="{{ route('dashboard.job.show', $job->id) }}" class="btn btn-info"><i
+                                                class="fa-solid fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                            @empty
+                            @endforelse
+
                         </tbody>
                     </table>
                 </div>
