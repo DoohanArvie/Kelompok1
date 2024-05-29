@@ -33,15 +33,26 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
-                    <form action="{{ route('dashboard.category.store') }}" method="POST">
+                    <form action="{{ route('dashboard.category.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="name">Category</label>
+                            <label for="name" class="mb-2">Category</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                 placeholder="Category" name="name" value="{{ old('name') }}">
                         </div>
-                        @error('name')
-                            <div class="alert alert-danger ">{{ $message }}</div>
+                        <div class="form-group">
+                            <label for="name" class="mb-2">Category</label>
+                            <input type="file"
+                                class="form-control custom-file-input @error('cover') is-invalid @enderror" id="cover"
+                                placeholder="Cover" name="cover" value="{{ old('cover') }}" onchange="previewImg()">
+                            <div class="mt-3">
+                                <img src="" class="img-preview img-thumbnail" alt="" width="250px"
+                                    height="150px" hidden>
+                            </div>
+                        </div>
+                        @error('cover')
+                            <div class="alert
+                                alert-danger ">{{ $message }}</div>
                         @enderror
                         <div>
                             <button type="submit" class="btn btn-primary btn-sm">Save</button>
@@ -62,4 +73,24 @@
 @section('after-script')
     <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
     <script src="assets/static/js/pages/simple-datatables.js"></script>
+
+    <script>
+        function previewImg() {
+
+            const sampul = document.querySelector('#cover');
+            const sampulLabel = document.querySelector('.custom-file-input');
+            const imgPreview = document.querySelector('.img-preview');
+
+            //tulisan label
+            sampulLabel.textContent = sampul.files[0].name;
+
+            const fileSampul = new FileReader();
+            fileSampul.readAsDataURL(sampul.files[0]);
+
+            fileSampul.onload = function(e) {
+                imgPreview.src = e.target.result;
+                imgPreview.hidden = false
+            }
+        }
+    </script>
 @endsection

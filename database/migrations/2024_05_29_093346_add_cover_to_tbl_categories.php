@@ -10,11 +10,8 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tbl_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 30);
-            $table->string('slug', 30);
-            $table->timestamps();
+        Schema::table('tbl_categories', function (Blueprint $table) {
+            $table->string('cover')->after('slug');
         });
     }
 
@@ -23,6 +20,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_categories');
+        Schema::table('tbl_categories', function (Blueprint $table) {
+            $table->dropColumn('cover');
+        });
     }
 };

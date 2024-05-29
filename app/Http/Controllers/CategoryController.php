@@ -21,7 +21,6 @@ class CategoryController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-
     {
         return view('admin.category.create');
         //
@@ -34,7 +33,13 @@ class CategoryController extends Controller
     {
         $data = $request->validate([
             'name' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('category_covers', 'public');
+            $data['cover'] = $coverPath;
+        }
 
         $data['slug'] = Str::slug($data['name']);
         tblCategory::create($data);
@@ -66,11 +71,17 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  string $id)
+    public function update(Request $request, string $id)
     {
         $data = $request->validate([
             'name' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('category_covers', 'public');
+            $data['cover'] = $coverPath;
+        }
 
         $data['slug'] = Str::slug($data['name']);
 
