@@ -107,7 +107,7 @@ class RegisterController extends Controller
 
         if ($create) { // jika berhasil maka loginkan
             Auth::login($create);
-            return redirect()->route('admin');
+            return redirect()->route('dashboard');
         }
 
         return redirect()->route('register');
