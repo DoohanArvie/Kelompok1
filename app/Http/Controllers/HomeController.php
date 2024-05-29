@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tblJob;
+use App\Models\tblCompany;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $jobs = tblJob::latest()->limit(6)->get();
+
+        return view('frontend.home', compact('jobs'));
     }
 }
