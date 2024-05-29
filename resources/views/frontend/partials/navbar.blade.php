@@ -17,19 +17,24 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         @guest
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="/job-listing">Find a Jobs </a></li>
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/contact">Contact</a></li>
-                                            <li><a href="/login">Login</a></li>
+                                            <span style="margin-right: 200px">
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/job-listing">Find a Jobs </a></li>
+                                                <li><a href="/about">About</a></li>
+                                                <li><a href="/contact">Contact</a></li>
+                                            </span>
+                                            <li><a href="{{ route('login') }}">Login</a></li>
+                                            <li><a href="{{ route('register') }}">Register</a></li>
                                         @endguest
                                         @auth
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="/job-listing">Find a Jobs </a></li>
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/contact">Contact</a></li>
-                                            <li><a href="{{ route('dashboarduser') }}">Dashboard</a></li>
-                                            <li><a href="{{ route('coba2') }}">Coba2</a></li>
+                                            <span style="margin-right: 200px">
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/job-listing">Find a Jobs </a></li>
+                                                <li><a href="/about">About</a></li>
+                                                <li><a href="/contact">Contact</a></li>
+                                            </span>
+                                            <li><a href="{{ route('dashboarduser') }}" class="">Dashboard</a>
+                                            </li>
                                             <li>
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                     class="d-none">

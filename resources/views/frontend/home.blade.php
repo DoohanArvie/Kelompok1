@@ -202,6 +202,7 @@
                         </div>
 
                     @empty
+                        <h4>Belum ada lowongan yang di post</h4>
                     @endforelse
 
 

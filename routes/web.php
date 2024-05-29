@@ -41,7 +41,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -89,6 +89,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
-    Route::get('/coba2', [FrontController::class, 'index_dua'])->name('coba2');
+
 });
 // -----------------------------------------

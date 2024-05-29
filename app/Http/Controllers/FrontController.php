@@ -11,8 +11,4 @@ class FrontController extends Controller
         return view('frontend.coba');
     }
 
-    public function index_dua()
-    {
-        return view('frontend.coba2');
-    }
 }
