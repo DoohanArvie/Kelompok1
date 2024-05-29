@@ -14,7 +14,6 @@ class CompanyController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-
     {
         return view('admin.company.index', [
             'companies' => tblCompany::orderBy('created_at', 'desc')->get(),
@@ -65,9 +64,12 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
+
         $company = tblCompany::findOrFail($id);
+        $jobs = $company->Job()->orderBy('id', 'DESC')->get();
         return view('admin.company.detail', [
-            'company' => $company
+            'company' => $company,
+            'jobs' => $jobs,
         ]);
     }
 

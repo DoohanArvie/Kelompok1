@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="#"><img src="assets/img/logo/logo.png" alt="" /></a>
+                            <a href="javascript:;"><img src="assets/img/logo/logo.png" alt="" /></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -16,11 +16,32 @@
                             <div class="main-menu">
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/job-listing">Find a Jobs </a></li>
-                                        <li><a href="/about">About</a></li>
-                                        <li><a href="/contact">Contact</a></li>
-                                        <li><a href="/login">Login</a></li>
+                                        @guest
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="/job-listing">Find a Jobs </a></li>
+                                            <li><a href="/about">About</a></li>
+                                            <li><a href="/contact">Contact</a></li>
+                                            <li><a href="/login">Login</a></li>
+                                        @endguest
+                                        @auth
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="/job-listing">Find a Jobs </a></li>
+                                            <li><a href="/about">About</a></li>
+                                            <li><a href="/contact">Contact</a></li>
+                                            <li><a href="{{ route('dashboarduser') }}">Dashboard</a></li>
+                                            <li><a href="{{ route('coba2') }}">Coba2</a></li>
+                                            <li>
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    class="d-none">
+                                                    @csrf
+                                                </form>
+                                                <a class="sidebar-link" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </li>
+                                        @endauth
                                     </ul>
                                 </nav>
                             </div>

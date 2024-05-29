@@ -49,7 +49,7 @@
 
                 <li class="sidebar-item  {{ Route::currentRouteName() === 'dashboard.profile.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.profile.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </a>
                 </li>
@@ -87,7 +87,7 @@
 
                 <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.contact' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.contact') }}" class='sidebar-link'>
-                        <i class="bi bi-people-fill"></i>
+                        <i class="fa-regular fa-id-card"></i>
                         <span>Contacts</span>
                     </a>
                 </li>

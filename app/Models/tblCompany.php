@@ -16,6 +16,6 @@ class tblCompany extends Model
 
     public function Job()
     {
-        return $this->hasMany(tblJob::class, 'company_id', 'id');
+        return $this->hasMany(tblJob::class, 'tbl_company_id', 'id');
     }
 }

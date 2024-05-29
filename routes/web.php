@@ -1,16 +1,21 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\RegisterController;
+
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 /*
@@ -31,7 +36,7 @@ Route::get('/', function () {
 
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -53,7 +58,7 @@ Route::get('/contact', function () {
     return view('frontend.contact');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
         Route::resource('profile', ProfileController::class);
@@ -62,5 +67,31 @@ Route::middleware('auth')->group(function () {
         Route::resource('job', JobController::class);
         Route::resource('user', UserController::class);
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
     });
 });
+
+
+
+//  ---------------validating email--------------------
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect()->route('dashboarduser');
+
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
+    Route::get('/coba2', [FrontController::class, 'index_dua'])->name('coba2');
+});
+// -----------------------------------------
+
+
+
