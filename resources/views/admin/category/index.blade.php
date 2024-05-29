@@ -34,6 +34,7 @@
                                 <th>No</th>
                                 <th>Category</th>
                                 <th>slug</th>
+                                <th>Cover</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -43,6 +44,10 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->slug }}</td>
+                                    <td>
+                                        <img width="150px" height="100px" src="{{ Storage::url($category->cover) }}"
+                                            alt="">
+                                    </td>
                                     <td>
                                         <a href="{{ route('dashboard.category.edit', $category->id) }}"
                                             class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
@@ -60,7 +65,11 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3">Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
                                 </tr>
                             @endforelse
 
