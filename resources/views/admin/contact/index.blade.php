@@ -26,25 +26,30 @@
                         <table class="table table-hover table-lg">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Pesan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Fauzan</td>
-                                    <td class="col-auto">
-                                        <p class=" mb-0">fauzan@gmail.com</p>
-                                    </td>
-                                    <td>Saya terkendala login gmn dong min.. -__-</td>
-                                </tr>
-                                <tr>
-                                    <td>Vannie</td>
-                                    <td>Vannie@gmail</td>
-                                    <td>wah ga sia" dgn web ini saya jadi satpol pp min😍</td>
-                                </tr>
-
+                                @forelse ($contacts as $contact)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $contact->name }}</td>
+                                        <td class="col-auto">
+                                            <p class=" mb-0">{{ $contact->email }}</p>
+                                        </td>
+                                        <td>{{ $contact->pesan }}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>No Data</td>
+                                        <td>No Data</td>
+                                        <td>No Data</td>
+                                        <td>No Data</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

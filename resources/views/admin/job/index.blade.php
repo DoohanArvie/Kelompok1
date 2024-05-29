@@ -29,6 +29,7 @@
                     <table class="table table-striped text-center" id="table1">
                         <thead class="thead-center">
                             <tr>
+                                <th>No</th>
                                 <th>Job</th>
                                 <th>Category</th>
                                 <th>Company</th>
@@ -38,6 +39,7 @@
                         <tbody>
                             @forelse ($jobs as $job)
                                 <tr class="text-center">
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $job->job }}</td>
                                     <td>{{ $job->category->name }}</td>
                                     <td>{{ $job->company->company }}</td>

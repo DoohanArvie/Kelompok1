@@ -26,7 +26,7 @@
 </style>
 
 <body>
-    <script src="assets/static/js/initTheme.js"></script>
+    <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
     <div id="app">
 
         <div id="main">

@@ -15,7 +15,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = tblJob::with(['company', 'category'])->get();
+        $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
         return view('admin.job.index', compact('jobs'));
     }
 

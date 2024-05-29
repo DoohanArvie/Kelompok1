@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -78,7 +79,7 @@ class RegisterController extends Controller
             'role' => 'user',
             'tgl_lahir' => $data['tgl_lahir'],
             'gender' => $data['gender'],
-            'foto' =>  'default.jpg',
+            'foto' => 'default.jpg',
         ]);
     }
 
@@ -105,11 +106,23 @@ class RegisterController extends Controller
 
         $create = User::create($data);
 
-        if ($create) { // jika berhasil maka loginkan
-            Auth::login($create);
-            return redirect()->route('dashboard');
-        }
+        event(new Registered($create));
 
-        return redirect()->route('register');
+        Auth::login($create);
+
+        return redirect('/email/verify');
+
+        // if ($create) { // jika berhasil maka loginkan
+        //     Auth::login($create);
+
+        //     if (Auth::user()->role == 'admin') {
+        //         return '/dashboard';
+
+        //     } else {
+        //         return '/dashboarduser';
+        //     }
+        // }
+
+        // return redirect()->route('register');
     }
 }

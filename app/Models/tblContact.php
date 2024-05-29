@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class tblContact extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'pesan',
+    ];
 }
