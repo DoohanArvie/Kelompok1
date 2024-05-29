@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FrontController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
@@ -30,35 +29,15 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-// Route::get('/', function () {
-//     return view('frontend.home');
-// });
-
-
-
-
-
-
+Route::post('/register', [RegisterController::class, 'register'])->name('register-proses');
 Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-
-
-
-
-Route::post('/register', [RegisterController::class, 'register'])->name('register-proses');
-
 Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listing');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
 
-Route::get('/about', function () {
-    return view('frontend.about');
-});
-
-Route::get('/contact', function () {
-    return view('frontend.contact');
-});
 
 Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
