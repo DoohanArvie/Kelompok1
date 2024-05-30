@@ -21,12 +21,20 @@
         </div>
 
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="card-body">
             <form method="POST" enctype="multipart/form-data" action="{{ route('dashboard.company.store') }}">
                 @csrf
                 <div class="row">
-
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="company" class="mb-2">Company</label>
@@ -36,8 +44,10 @@
                         @error('company')
                             <div class="alert alert-danger ">{{ $message }}</div>
                         @enderror
-
                     </div>
+
+
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -56,6 +66,19 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="about" class="mb-2">About</label>
+                                <textarea class="form-control" name="about" id="about" cols="30" rows="10" placeholder="about">{{ old('about') }}</textarea>
+                            </div>
+                            @error('about')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
 
 
                     <div>

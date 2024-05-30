@@ -97,11 +97,11 @@
                         <div class="card job-card single-job-items mb-30 col-md-5 p-4">
                             <div class="job-items mb-3  ">
                                 <div class="company-img mb-3">
-                                    <a href="job_details.html"><img class="img-thumbnail"
+                                    <a href="{{ route('job-detail', $job->slug) }}"><img class="img-thumbnail"
                                             src="{{ Storage::url($job->company->cover) }}" alt="" /></a>
                                 </div>
                                 <div class="job-tittle">
-                                    <a href="job_details.html">
+                                    <a href="{{ route('job-detail', $job->slug) }}">
                                         <h4>{{ $job->job }}</h4>
 
                                     </a>
@@ -115,7 +115,7 @@
                                         </li>
                                         <li>
                                             <i class="fas fa-money-bill-alt"></i>
-                                            $3500 - $4000
+                                            {{ number_format((float) $job->salary, 2, '.', ',') }}
                                         </li>
                                         <li>
                                             Status Lowongan : {{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}

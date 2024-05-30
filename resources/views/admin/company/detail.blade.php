@@ -35,6 +35,10 @@
                             <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"
                                 alt="">
                         </div>
+                        <div class="col-md-6  text-center">
+                            <h5>About Company</h5>
+                            <p>{{ $company->about }}</p>
+                        </div>
                     </div>
 
                     <div class="row mt-5">

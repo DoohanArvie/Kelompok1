@@ -110,6 +110,20 @@
                         </div>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <div class="form-group">
+                                <label for="salary">Salary</label>
+                                <input type="text" class="form-control @error('salary') is-invalid @enderror"
+                                    id="job" placeholder="Salary" name="salary" value="{{ old('salary') }}"
+                                    autofocus>
+                            </div>
+                            @error('salary')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
@@ -132,6 +146,20 @@
                                 </div>
 
                                 @error('requirement')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="benefit">Benefit</label>
+                                    <textarea style="height: 150px;" class="form-control @error('benefit') is-invalid @enderror" id="benefit"
+                                        name="benefit">{{ old('benefit', $job->benefit) }}</textarea>
+                                </div>
+
+                                @error('benefit')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -179,6 +207,20 @@
 
             $('#requirement').summernote({
                 height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+
+            $('#benefit').summernote({
+                height: 200, // Atur tinggi editor
                 toolbar: [
                     ['style', ['style']],
                     ['font', ['bold', 'underline', 'clear']],

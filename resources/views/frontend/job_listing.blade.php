@@ -86,12 +86,13 @@
                                                 class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
                                                 <div class="job-items mb-3">
                                                     <div class="company-img mb-3">
-                                                        <a href="#"><img class="img-thumbnail"
+                                                        <a href="{{ route('job-detail', $job->slug) }}"><img
+                                                                class="img-thumbnail"
                                                                 src="{{ Storage::url($job->Company->cover) }}"
                                                                 alt="" /></a>
                                                     </div>
                                                     <div class="job-tittle job-tittle2">
-                                                        <a href="#">
+                                                        <a href="{{ route('job-detail', $job->slug) }}">
                                                             <h4>{{ $job->job }}</h4>
                                                         </a>
                                                         <ul class="text-secondary">

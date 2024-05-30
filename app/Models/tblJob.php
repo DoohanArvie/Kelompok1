@@ -18,7 +18,9 @@ class tblJob extends Model
         'tbl_company_id',
         'is_open',
         'description',
-        'requirement'
+        'requirement',
+        'salary',
+        'benefit',
     ];
 
     public function category()

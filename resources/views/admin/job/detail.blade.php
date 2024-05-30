@@ -25,56 +25,76 @@
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
                                         <h5 class="fs-4 mb-2 ">Job <i class="fa-solid fa-laptop-file"></i></h5>
-                                        <div class="fs-5"> {{ $job->job }}</div>
+                                        <div class="fs-6"> {{ $job->job }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
                                         <h5 class="fs-4 mb-2">Category <i class="fa-solid fa-layer-group"></i></h5>
-                                        <div class="fs-5"> {{ $job->category->name }}</div>
+                                        <div class="fs-6"> {{ $job->category->name }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
                                         <h5 class="fs-4 mb-2">Company <i class="fa-solid fa-building"></i></h5>
-                                        <div class="fs-5"> {{ $job->company->company }}</div>
+                                        <div class="fs-6"> {{ $job->company->company }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
                                         <h5 class="fs-4 mb-2">Lokasi <i class="fa-solid fa-location-dot"></i></h5>
-                                        <div class="fs-5"> {{ $job->lokasi }}</div>
+                                        <div class="fs-6"> {{ $job->lokasi }}</div>
                                     </div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group mb-3">
-                                    <h5 class="fs-4 mb-2">Job status <i class="fa-solid fa-circle-check"></i></h5>
-                                    <div class="fs-5">
-                                        @if ($job->is_open == 1)
-                                            Yes
-                                        @else
-                                            No
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group mb-3">
-                                    <h5 class="fs-4 mb-2">Description</h5>
-                                    <div class="fs-5"> {!! $job->description !!}</div>
                                 </div>
 
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
-                                        <h5 class="fs-4 mb-2">Requirement</h5>
-                                        <div class="fs-5"> {!! $job->requirement !!}</div>
+                                        <h5 class="fs-4 mb-2">Job status <i class="fa-solid fa-circle-check"></i></h5>
+                                        <div class="fs-6">
+                                            @if ($job->is_open == 1)
+                                                Yes
+                                            @else
+                                                No
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-3">
+                                        <h5 class="fs-4 mb-2 ">Salary <i class="fa-solid fa-laptop-file"></i></h5>
+                                        <div class="fs-6"> {{ $job->salary }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <h5 class="fs-4 mb-2">Description</h5>
+                                        <div class="fs-5"> {!! $job->description !!}</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="col-lg-6">
+                                        <div class="form-group mb-3">
+                                            <h5 class="fs-4 mb-2">Requirement</h5>
+                                            <div class="fs-5"> {!! $job->requirement !!}</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group mb-3">
+                                        <h5 class="fs-4 mb-2">Benefit</h5>
+                                        <div class="fs-5"> {!! $job->benefit !!}</div>
                                     </div>
                                 </div>
                             </div>

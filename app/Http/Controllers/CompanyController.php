@@ -36,6 +36,7 @@ class CompanyController extends Controller
         $data = $request->validate([
             'company' => 'required|string',
             'cover' => 'required|mimes:png,jpg,jpeg|max:2048|image',
+            'about' => 'required|string',
         ]);
 
         DB::beginTransaction();
@@ -45,6 +46,7 @@ class CompanyController extends Controller
                 $data['cover'] = $coverPath;
             }
 
+            $data['about'] = $request->about;
             tblCompany::create($data);
             DB::commit();
 
@@ -92,6 +94,7 @@ class CompanyController extends Controller
         $data = $request->validate([
             'company' => 'required|string',
             'cover' => 'sometimes|mimes:png,jpg,jpeg|max:2048|image',
+            'about' => 'required|string',
         ]);
 
         try {
@@ -102,6 +105,7 @@ class CompanyController extends Controller
                 }
                 $data['cover'] = $coverPath;
             }
+            $data['about'] = $request->about;
             tblCompany::findOrFail($id)->update($data);
             DB::commit();
             return redirect()->route('dashboard.company.index')->with('success', 'Company updated successfully');

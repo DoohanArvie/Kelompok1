@@ -76,14 +76,10 @@
                             <div class="post-details2 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
-                                    <h4>Edukasi + Pengalaman</h4>
+                                    <h4>Benefit</h4>
                                 </div>
                                 <ul>
-                                    <li>3 or more years of professional design experience</li>
-                                    <li>Direct response email experience</li>
-                                    <li>Ecommerce website design experience</li>
-                                    <li>Familiarity with mobile and web apps preferred</li>
-                                    <li>Experience using Invision a plus</li>
+                                    <li>{!! $job->benefit !!}</li>
                                 </ul>
                             </div>
                         </div>
@@ -112,8 +108,7 @@
                             </div>
                             <span>{{ $job->company->company }}</span>
                             <p>
-                                It is a long established fact that a reader will be distracted
-                                by the readable content of a page when looking at its layout.
+                                {{ $job->company->about }}
                             </p>
                             <ul>
                                 <li>Name: <span>Colorlib </span></li>

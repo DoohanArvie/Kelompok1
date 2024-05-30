@@ -40,6 +40,8 @@ class JobController extends Controller
             'is_open' => 'required|boolean',
             'description' => 'required|string',
             'requirement' => 'required|string',
+            'benefit' => 'required|string',
+            'salary' => 'required|string',
         ]);
 
         DB::beginTransaction();
@@ -88,7 +90,9 @@ class JobController extends Controller
             'tbl_company_id' => 'required',
             'is_open' => 'required|boolean',
             'description' => 'required|string',
-            'requirement' => 'required|string'
+            'requirement' => 'required|string',
+            'benefit' => 'required|string',
+            'salary' => 'required|string',
         ]);
 
         try {

@@ -56,6 +56,19 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="about" class="mb-2">About</label>
+                                <textarea class="form-control" name="about" id="about" cols="30" rows="10" placeholder="about">{{ old('about', $company->about) }}</textarea>
+                            </div>
+                            @error('about')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                            @enderror
+
+                        </div>
+                    </div>
+
 
                     <div>
                         <button type="submit" class="btn btn-primary btn-sm mt-5">Save</button>
