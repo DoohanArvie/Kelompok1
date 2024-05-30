@@ -14,18 +14,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('tbl_users')->insert([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'no_hp' => '08123456789',
-            'tgL_lahir' => '2003-08-11',
-            'address' => 'Irian jaya barat',
-            'foto' => 'avatars/admin.jpg',
-            'role' => 'admin',
-            'gender' => 'laki-laki',
-            'password' => Hash::make('12345678'),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        DB::table('tbl_users')->updateOrInsert(
+            ['email' => 'admin@gmail.com'],
+            [
+                'name' => 'admin',
+                'no_hp' => '08123456789',
+                'tgL_lahir' => '2003-08-11',
+                'address' => 'Irian jaya barat',
+                'foto' => 'avatars/admin.jpg',
+                'role' => 'admin',
+                'gender' => 'laki-laki',
+                'password' => Hash::make('12345678'),
+                'created_at' => now(),
+            ]);
+        
     }
 }

@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="javascript:;"><img src="assets/img/logo/logo.png" alt="" /></a>
+                            <a href="javascript:;"><img src="assets/img/logo/logo.png" alt="logo" width="100" height="90"/></a>
                         </div>
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -17,17 +17,17 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         @guest
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="/job-listing">Find a Jobs </a></li>
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/contact">Contact</a></li>
+                                            <li><a href="/">Beranda</a></li>
+                                            <li><a href="/job-listing">Cari Lowongan Kerja</a></li>
+                                            <li><a href="/about">Tentang</a></li>
+                                            <li><a href="/contact">Kontak</a></li>
                                             <li><a href="/login">Login</a></li>
                                         @endguest
                                         @auth
-                                            <li><a href="/">Home</a></li>
-                                            <li><a href="/job-listing">Find a Jobs </a></li>
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/contact">Contact</a></li>
+                                            <li><a href="/">Beranda</a></li>
+                                            <li><a href="/job-listing">Cari Lowongan Kerja</a></li>
+                                            <li><a href="/about">Tentang</a></li>
+                                            <li><a href="/contact">Kontak</a></li>
                                             <li><a href="{{ route('dashboarduser') }}">Dashboard</a></li>
                                             <li><a href="{{ route('coba2') }}">Coba2</a></li>
                                             <li>
