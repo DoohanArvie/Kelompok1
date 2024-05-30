@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Get your job</h2>
+                                <h2>Dapatkan Pekerjaan Impianmu</h2>
                             </div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                                                 d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z" />
                                         </svg>
                                     </div>
-                                    <h4>Filter Jobs</h4>
+                                    <h4>Filter Pekerjaan</h4>
                                 </div>
                             </div>
                         </div>
@@ -43,16 +43,16 @@
                             <!-- single one -->
                             <div class="single-listing">
                                 <div class="small-section-tittle2">
-                                    <h4>Job Category</h4>
+                                    <h4>Kategori Pekerjaan</h4>
                                 </div>
                                 <!-- Select job items start -->
                                 <div class="select-job-items2 mb-5">
                                     <select name="select">
-                                        <option value="">All Category</option>
-                                        <option value="">Category 1</option>
-                                        <option value="">Category 2</option>
-                                        <option value="">Category 3</option>
-                                        <option value="">Category 4</option>
+                                        <option value="">Semua Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+
                                     </select>
                                 </div>
                                 <!--  Select job items End-->
@@ -70,7 +70,7 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="count-job mb-35">
-                                            <span>{{ $total_jobs }} Jobs found</span>
+                                            <span>{{ $total_jobs }} Pekerjaan ditemukan</span>
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +86,7 @@
                                                 class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
                                                 <div class="job-items mb-3">
                                                     <div class="company-img mb-3">
-                                                        <a href="#"><img
+                                                        <a href="#"><img class="img-thumbnail"
                                                                 src="{{ Storage::url($job->Company->cover) }}"
                                                                 alt="" /></a>
                                                     </div>
@@ -111,7 +111,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="items-link items-link2 f-right">
-                                                    <a href="/job-detail">Apply</a>
+                                                    <a href="{{ route('job-detail', $job->slug) }}">Lamar</a>
                                                     <span></span>
                                                 </div>
                                             </div>

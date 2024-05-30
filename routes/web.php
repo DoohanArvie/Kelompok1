@@ -34,6 +34,7 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listing');
+Route::get('/job-listing/{slug}', [JoblistController::class, 'show'])->name('job-detail');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
@@ -68,6 +69,5 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
-
 });
 // -----------------------------------------
