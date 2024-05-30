@@ -2600,6 +2600,14 @@ hr {
     font-size: 14px;
     color: #fff;
 }
+<<<<<<< HEAD
+=======
+
+.job-card {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
 .blog_right_sidebar .post_category_widget .cat-list li {
     border-bottom: 1px solid #f0e9ff;
     transition: all 0.3s ease 0s;
@@ -4781,7 +4789,11 @@ del {
     font-size: 80px;
     font-weight: 900;
     margin-bottom: 78px;
+<<<<<<< HEAD
     color: #ee298c;
+=======
+    color: #28395a;
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     line-height: 1.2;
 }
 @media (max-width: 767px) {
@@ -5477,7 +5489,16 @@ form.search-box .search-form a {
         padding: 20px 25px;
     }
 }
+<<<<<<< HEAD
 .single-job-items .company-img img {
+=======
+
+.company-img {
+    width: 100%;
+}
+.single-job-items .company-img img {
+    width: 100px;
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     overflow: hidden;
     float: left;
     margin-right: 32px;
@@ -5500,7 +5521,11 @@ form.search-box .search-form a {
     color: #8b92dd;
 }
 .single-job-items .job-tittle ul li {
+<<<<<<< HEAD
     display: inline-block;
+=======
+    display: block;
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     margin-right: 48px;
     font-size: 15px;
     color: #808080;
@@ -5536,7 +5561,11 @@ form.search-box .search-form a {
     }
 }
 .single-job-items:hover {
+<<<<<<< HEAD
     box-shadow: 0px 22px 57px 0px rgba(34, 41, 72, 0.05);
+=======
+    box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
 }
 .single-job-items .job-items {
     display: flex;
@@ -6333,6 +6362,7 @@ form.search-box .search-form a {
     background: #242b5e;
     color: #fff;
 }
+<<<<<<< HEAD
 
 #navigation li a {
     position: relative;
@@ -6358,3 +6388,5 @@ form.search-box .search-form a {
     left: 0;
     background: #000000; /* Customize the color of the underline */
 }
+=======
+>>>>>>> b61419bd611cb6c169ba8383042871475fb293a9

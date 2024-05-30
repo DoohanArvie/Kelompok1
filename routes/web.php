@@ -1,20 +1,21 @@
 <?php
 
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use App\Http\Controllers\Auth\RegisterController;
-
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CompanyController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardUserController;
-use App\Http\Controllers\FrontController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JobController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\frontend\JoblistController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 
 
@@ -29,16 +30,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+// Route::get('/', function () {
+//     return view('frontend.home');
+// });
+
+
 
 
 
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 
@@ -46,9 +49,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register-proses');
 
-Route::get('/job-listing', function () {
-    return view('frontend.job_listing');
-});
+Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listing');
+
 
 Route::get('/about', function () {
     return view('frontend.about');
@@ -67,7 +69,6 @@ Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
         Route::resource('job', JobController::class);
         Route::resource('user', UserController::class);
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
     });
 });
 
@@ -83,15 +84,11 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
 
     return redirect()->route('dashboarduser');
-
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
-    Route::get('/coba2', [FrontController::class, 'index_dua'])->name('coba2');
+
 });
 // -----------------------------------------
-
-
-
