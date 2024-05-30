@@ -18,20 +18,20 @@
                                     <ul id="navigation">
                                         @guest
                                             <span style="margin-right: 200px">
-                                                <li><a href="/">Beranda</a></li>
-                                                <li><a href="/job-listing">Cari Pekerjaan</a></li>
-                                                <li><a href="/about">Tentang</a></li>
-                                                <li><a href="/contact">Kontak</a></li>
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/job-listing">Find a Jobs </a></li>
+                                                <li><a href="/about">About</a></li>
+                                                <li><a href="/contact">Contact</a></li>
                                             </span>
                                             <li><a href="{{ route('login') }}">Login</a></li>
                                             <li><a href="{{ route('register') }}">Register</a></li>
                                         @endguest
                                         @auth
                                             <span style="margin-right: 200px">
-                                                <li><a href="/">Beranda</a></li>
-                                                <li><a href="/job-listing">Cari Pekerjaan</a></li>
-                                                <li><a href="/about">Tentang</a></li>
-                                                <li><a href="/contact">Kontak</a></li>
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="/job-listing">Find a Jobs </a></li>
+                                                <li><a href="/about">About</a></li>
+                                                <li><a href="/contact">Contact</a></li>
                                             </span>
                                             <li><a href="{{ route('dashboarduser') }}" class="">Dashboard</a>
                                             </li>
