@@ -10,11 +10,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-<<<<<<< HEAD
                                 <h2>Temukan Pekerjaanmu</h2>
-=======
-                                <h2>Cari Pekerjaan Impianmu</h2>
->>>>>>> 4903f95d7744fe111dd946f60f538f8524e4e33f
                             </div>
                         </div>
                     </div>
