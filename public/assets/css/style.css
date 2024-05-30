@@ -2600,14 +2600,11 @@ hr {
     font-size: 14px;
     color: #fff;
 }
-<<<<<<< HEAD
-=======
 
 .job-card {
     margin-left: 10px;
     margin-right: 10px;
 }
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
 .blog_right_sidebar .post_category_widget .cat-list li {
     border-bottom: 1px solid #f0e9ff;
     transition: all 0.3s ease 0s;
@@ -4789,7 +4786,7 @@ del {
     font-size: 80px;
     font-weight: 900;
     margin-bottom: 78px;
-    color: #28395a;
+    color: #ffffff;
     line-height: 1.2;
 }
 @media (max-width: 767px) {
@@ -5485,16 +5482,12 @@ form.search-box .search-form a {
         padding: 20px 25px;
     }
 }
-<<<<<<< HEAD
-.single-job-items .company-img img {
-=======
 
 .company-img {
     width: 100%;
 }
 .single-job-items .company-img img {
     width: 100px;
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     overflow: hidden;
     float: left;
     margin-right: 32px;
@@ -5517,11 +5510,7 @@ form.search-box .search-form a {
     color: #8b92dd;
 }
 .single-job-items .job-tittle ul li {
-<<<<<<< HEAD
-    display: inline-block;
-=======
     display: block;
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     margin-right: 48px;
     font-size: 15px;
     color: #808080;
@@ -5557,11 +5546,7 @@ form.search-box .search-form a {
     }
 }
 .single-job-items:hover {
-<<<<<<< HEAD
-    box-shadow: 0px 22px 57px 0px rgba(34, 41, 72, 0.05);
-=======
     box-shadow: 0px 10px 30px 0px rgba(133, 66, 189, 0.1);
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
 }
 .single-job-items .job-items {
     display: flex;
@@ -6358,3 +6343,141 @@ form.search-box .search-form a {
     background: #242b5e;
     color: #fff;
 }
+
+/* Add this CSS to your stylesheet */
+.header-area {
+    background: transparent;
+}
+
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-menu nav ul#navigation {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-menu nav ul#navigation li {
+    margin-right: 20px;
+}
+
+.main-menu nav ul#navigation li a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 11px;
+    position: relative;
+}
+
+.main-menu nav ul#navigation li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.main-menu nav ul#navigation li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.login-btn,
+.register-btn,
+.dashboard-btn,
+.logout-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn {
+    background-color: #007bff;
+    color: white !important; /* Make text white */
+    padding: 12px 25px !important;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+.register-btn {
+    background-color: #2863a7;
+    color: white !important; /* Make text white */
+    border: 2px solid #2863a7; /* Add border */
+     padding: 10px 25px !important;
+}
+
+.register-btn:hover {
+    background-color: #214e88;
+    color: white; /* Ensure text remains white on hover */
+    border: 2px solid #218838; /* Change border color on hover */
+}
+
+.dashboard-btn {
+    background-color: #17a2b8;
+    color: white !important;
+     padding: 10px 20px !important;
+}
+
+.dashboard-btn:hover {
+    background-color: #138496;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white !important;
+     padding: 10px 20px !important;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#navigation span {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .login-btn,
+    .register-btn,
+    .dashboard-btn,
+    .logout-btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #navigation span {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
