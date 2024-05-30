@@ -6407,18 +6407,19 @@ form.search-box .search-form a {
 
 .login-btn {
     background-color: #007bff;
-    color: white; /* Make text white */
+    color: white !important; /* Make text white */
+    padding: 12px 25px !important;
 }
 
 .login-btn:hover {
     background-color: #0056b3;
-    color: white; /* Ensure text remains white on hover */
 }
 
 .register-btn {
-    background-color: #ffffff;
-    color: white; /* Make text white */
+    background-color: #2863a7;
+    color: white !important; /* Make text white */
     border: 2px solid #2863a7; /* Add border */
+     padding: 10px 25px !important;
 }
 
 .register-btn:hover {
@@ -6429,7 +6430,8 @@ form.search-box .search-form a {
 
 .dashboard-btn {
     background-color: #17a2b8;
-    color: white;
+    color: white !important;
+     padding: 10px 20px !important;
 }
 
 .dashboard-btn:hover {
@@ -6438,7 +6440,8 @@ form.search-box .search-form a {
 
 .logout-btn {
     background-color: #dc3545;
-    color: white;
+    color: white !important;
+     padding: 10px 20px !important;
 }
 
 .logout-btn:hover {

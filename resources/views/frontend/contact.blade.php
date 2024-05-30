@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
     <div class="slider-area">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-            data-background="assets/img/hero/kontak.jpg">
+            data-background="{{ asset('assets/img/hero/kontak.jpg') }}">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -33,17 +33,17 @@
                         <i class="fas fa-map-marker-alt"></i>
                         &nbsp &nbsp
 
-                        <p>92 Cherry Drive Uniondale, NY 11553</p>
+                        <p>South Jakarta, Kebayoran, Indonesia</p>
                     </div>
                     <div class="information">
                         <i class="fas fa-envelope"></i>
                         &nbsp &nbsp
-                        <p>lorem@ipsum.com</p>
+                        <p>singatidur@gmail.com</p>
                     </div>
                     <div class="information">
                         <i class="fas fa-phone"></i>
                         &nbsp&nbsp
-                        <p>123-456-789</p>
+                        <p>+62 812 3456 789</p>
                     </div>
                 </div>
             </div>

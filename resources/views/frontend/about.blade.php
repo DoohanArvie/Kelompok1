@@ -5,7 +5,7 @@
         <!-- Hero Area Start-->
         <div class="slider-area">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-                data-background="assets/img/hero/about.jpg">
+                data-background="{{ asset('assets/img/hero/about.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -120,84 +120,5 @@
             </div>
         </div>
         <!-- How  Apply Process End-->
-        <!-- Testimonial Start -->
-        <div class="testimonial-area testimonial-padding">
-            <div class="container">
-                <!-- Testimonial contents -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-xl-8 col-lg-8 col-md-10">
-                        <div class="h1-testimonial-active dot-style">
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
     </main>
 @endsection
