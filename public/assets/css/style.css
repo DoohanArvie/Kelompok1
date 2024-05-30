@@ -6343,3 +6343,50 @@ form.search-box .search-form a {
     background: #242b5e;
     color: #fff;
 }
+
+/* Add this CSS to your stylesheet */
+.header-area {
+    background: transparent;
+}
+
+.header-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.main-menu nav ul#navigation {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.main-menu nav ul#navigation li {
+    margin-right: 20px;
+}
+
+.main-menu nav ul#navigation li a {
+    text-decoration: none;
+    color: #000;
+    padding: 10px 13px;
+    position: relative;
+}
+
+.main-menu nav ul#navigation li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.main-menu nav ul#navigation li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
