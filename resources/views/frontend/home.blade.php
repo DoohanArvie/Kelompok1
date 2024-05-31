@@ -7,11 +7,7 @@
             <!-- Mobile Menu -->
             <div class="slider-active">
                 <div class="single-slider slider-height d-flex align-items-center"
-<<<<<<< HEAD
                     data-background="assets/img/hero/hero_1.jpg">
-=======
-                    data-background="{{ asset('assets/img/hero/h1_hero.jpg') }}">
->>>>>>> 4903f95d7744fe111dd946f60f538f8524e4e33f
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
