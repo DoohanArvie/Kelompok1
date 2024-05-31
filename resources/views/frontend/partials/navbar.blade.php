@@ -10,43 +10,36 @@
                             <a href="javascript:;"><img src="assets/img/logo/logo.png" alt="logo" width="100" height="90"/></a>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="menu-wrapper" style="justify-content: flex-end">
+                    <div class="col-lg-9 col-md-10">
+                        <div class="menu-wrapper" style="display: flex; justify-content: space-between; align-items: center;">
                             <!-- Main-menu -->
-                            <div class="main-menu">
+                            <div class="main-menu" style="flex-grow: 1;">
                                 <nav class="d-none d-lg-block">
-                                    <ul id="navigation">
-                                        @guest
-                                            <span style="margin-right: 200px">
-                                                <li><a href="/">Home</a></li>
-                                                <li><a href="/job-listing">Find a Jobs </a></li>
-                                                <li><a href="/about">About</a></li>
-                                                <li><a href="/contact">Contact</a></li>
-                                            </span>
-                                            <li><a href="{{ route('login') }}">Login</a></li>
-                                            <li><a href="{{ route('register') }}">Register</a></li>
-                                        @endguest
-                                        @auth
-                                            <span style="margin-right: 200px">
-                                                <li><a href="/">Home</a></li>
-                                                <li><a href="/job-listing">Find a Jobs </a></li>
-                                                <li><a href="/about">About</a></li>
-                                                <li><a href="/contact">Contact</a></li>
-                                            </span>
-                                            <li><a href="{{ route('dashboarduser') }}" class="">Dashboard</a>
-                                            </li>
-                                            <li>
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                    class="d-none">
-                                                    @csrf
-                                                </form>
-                                                <a class="sidebar-link" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                                    <span>Logout</span>
-                                                </a>
-                                            </li>
-                                        @endauth
+                                    <ul id="navigation" style="display: flex; justify-content: space-between; width: 100%;">
+                                        <span style="display: flex; gap: 20px;">
+                                            <li><a href="/">Beranda</a></li>
+                                            <li><a href="/job-listing">Cari Pekerjaan</a></li>
+                                            <li><a href="/about">Tentang</a></li>
+                                            <li><a href="/contact">Kontak</a></li>
+                                        </span>
+                                        <span style="display: flex; gap: 10px;">
+                                            @guest
+                                                <li><a href="{{ route('login') }}" class="login-btn">Masuk</a></li>
+                                                <li><a href="{{ route('register') }}" class="register-btn">Daftar</a></li>
+                                            @endguest
+                                            @auth
+                                                <li><a href="{{ route('dashboarduser') }}" class="dashboard-btn">Dashboard</a></li>
+                                                <li>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
+                                                    <a class="logout-btn" href="{{ route('logout') }}"
+                                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        Keluar <i class="fas fa-sign-out-alt"></i>
+                                                    </a>
+                                                </li>
+                                            @endauth
+                                        </span>
                                     </ul>
                                 </nav>
                             </div>

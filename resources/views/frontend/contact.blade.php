@@ -4,12 +4,12 @@
     <link rel="stylesheet" href="{{ asset('assets/css/contact.css') }}">
     <div class="slider-area">
         <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-            data-background="assets/img/hero/about.jpg">
+            data-background="assets/img/hero/kontak.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>Contact</h2>
+                            <h2>Kontak Kami</h2>
                         </div>
                     </div>
                 </div>

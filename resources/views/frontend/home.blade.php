@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
                                 <div class="hero__caption">
-                                    <h1>Find the most exciting startup jobs</h1>
+                                    <h1>Wujudkan Mimpimu Disini</h1>
                                 </div>
                             </div>
                         </div>
@@ -22,10 +22,10 @@
                                 <!-- form -->
                                 <form action="#" class="search-box">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Job Tittle or keyword" />
+                                        <input type="text" placeholder="Cari Pekerjaan impianmu" />
                                     </div>
                                     <div class="search-form">
-                                        <button>Find job</button>
+                                        <button>Cari</button>
                                     </div>
                                 </form>
                             </div>

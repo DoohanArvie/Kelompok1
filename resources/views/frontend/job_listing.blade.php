@@ -5,12 +5,12 @@
         <!-- Hero Area Start-->
         <div class="slider-area">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-                data-background="assets/img/hero/about.jpg">
+                data-background="assets/img/hero/cari_pekerjaan.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Get your job</h2>
+                                <h2>Cari Pekerjaan Impianmu</h2>
                             </div>
                         </div>
                     </div>

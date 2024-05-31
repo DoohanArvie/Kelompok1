@@ -112,7 +112,7 @@ h4,
 h5,
 h6 {
     font-family: "Muli", sans-serif;
-    color: #0b1c39;
+    color: #383838;
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
@@ -2011,7 +2011,7 @@ hr {
 .section-overly::before {
     position: absolute;
     content: "";
-    background-color: rgba(31, 43, 123, 0.8);
+    background-color: rgba(12, 12, 12, 0.8);
     width: 100%;
     height: 100%;
     left: 0;
@@ -4786,7 +4786,7 @@ del {
     font-size: 80px;
     font-weight: 900;
     margin-bottom: 78px;
-    color: #28395a;
+    color: #ffffff;
     line-height: 1.2;
 }
 @media (max-width: 767px) {
@@ -6369,7 +6369,7 @@ form.search-box .search-form a {
 .main-menu nav ul#navigation li a {
     text-decoration: none;
     color: #000;
-    padding: 10px 12px;
+    padding: 10px 11px;
     position: relative;
 }
 
@@ -6390,3 +6390,91 @@ form.search-box .search-form a {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
+
+.login-btn,
+.register-btn,
+.dashboard-btn,
+.logout-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn {
+    background-color: #007bff;
+    color: white; /* Make text white */
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+    color: white; /* Ensure text remains white on hover */
+}
+
+.register-btn {
+    background-color: #ffffff;
+    color: white; /* Make text white */
+    border: 2px solid #2863a7; /* Add border */
+}
+
+.register-btn:hover {
+    background-color: #214e88;
+    color: white; /* Ensure text remains white on hover */
+    border: 2px solid #218838; /* Change border color on hover */
+}
+
+.dashboard-btn {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.dashboard-btn:hover {
+    background-color: #138496;
+}
+
+.logout-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#navigation span {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .login-btn,
+    .register-btn,
+    .dashboard-btn,
+    .logout-btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #navigation {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #navigation span {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
