@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="items-link f-right">
-                                <a href="job_details.html">Apply</a>
+                                <a href="{{ route('job-detail', $job->slug) }}">Lamar</a>
                                 <span>{{ $job->created_at->diffForHumans() }}</span>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
 
                 </div>
                 <div class="text-center">
-                    <a href="/job-listing" class="btn btn-primary">All Jobs &raquo;</a>
+                    <a href="/job-listing" class="btn btn-primary">Semua Pekerjaan &raquo;</a>
                 </div>
 
             </div>

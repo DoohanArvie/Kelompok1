@@ -117,7 +117,7 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <p>No jobs available.</p>
+                                        <p>Pekerjaan Tidak Tersedia.</p>
                                     @endforelse
                                 </div>
 
