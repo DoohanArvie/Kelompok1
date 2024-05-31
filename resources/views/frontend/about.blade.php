@@ -5,12 +5,12 @@
         <!-- Hero Area Start-->
         <div class="slider-area">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-                data-background="assets/img/hero/about.jpg">
+                data-background="{{ asset('assets/img/hero/about.jpg') }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>About us</h2>
+                                <h2>Tentang Kami</h2>
                             </div>
                         </div>
                     </div>
@@ -27,31 +27,33 @@
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2">
                                 <span>What we are doing</span>
-                                <h2>24k Talented people are getting Jobs</h2>
+                                <h2>Membuka Pintu Kesempatan Karir</h2>
                             </div>
                             <div class="support-caption">
                                 <p class="pera-top">
-                                    Mollit anim laborum duis au dolor in voluptate velit ess
-                                    cillum dolore eu lore dsu quality mollit anim laborumuis au
-                                    dolor in voluptate velit cillum.
+                                    Kami adalah perusahaan penyedia layanan job portal terkemuka
+                                    yang berkomitmen untuk menjadi jembatan penghubung antara
+                                    pencari kerja dan perusahaan-perusahaan terbaik di seluruh
+                                    [wilayah operasi, misalnya Indonesia/Asia Tenggara/global].
                                 </p>
                                 <p>
-                                    Mollit anim laborum.Duis aute irufg dhjkolohr in re
-                                    voluptate velit esscillumlore eu quife nrulla parihatur.
-                                    Excghcepteur signjnt occa cupidatat non inulpadeserunt
-                                    mollit aboru. temnthp incididbnt ut labore mollit anim
-                                    laborum suis aute.
+                                    Dengan tim profesional yang berdedikasi dan berpengalaman,
+                                    kami berkomitmen untuk memberikan layanan terbaik dan
+                                    memastikan bahwa setiap klien kami mendapatkan hasil yang
+                                    memuaskan. Bergabunglah dengan ribuan perusahaan dan pencari
+                                    kerja lainnya yang telah merasakan manfaat dari layanan
+                                    kami.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-6 col-lg-6">
                         <div class="support-location-img">
-                            <img src="assets/img/service/support-img.jpg" alt="" />
-                            <div class="support-img-cap text-center">
+                            <img height="700px" class="rounded" src="{{ asset('assets/about-us.jpg') }}" alt="" />
+                            {{-- <div class="support-img-cap text-center">
                                 <p>Since</p>
                                 <span>1994</span>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -118,84 +120,5 @@
             </div>
         </div>
         <!-- How  Apply Process End-->
-        <!-- Testimonial Start -->
-        <div class="testimonial-area testimonial-padding">
-            <div class="container">
-                <!-- Testimonial contents -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-xl-8 col-lg-8 col-md-10">
-                        <div class="h1-testimonial-active dot-style">
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/testimonial-founder.png" alt="" />
-                                            <span>Margaret Lawson</span>
-                                            <p>Creative Director</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>
-                                            “I am at an age where I just want to be fit and healthy
-                                            our bodies are our responsibility! So start caring for
-                                            your body and it will care for you. Eat clean it will
-                                            care for you and workout hard.”
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
     </main>
 @endsection

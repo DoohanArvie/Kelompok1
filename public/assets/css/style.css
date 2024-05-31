@@ -112,7 +112,7 @@ h4,
 h5,
 h6 {
     font-family: "Muli", sans-serif;
-    color: #0b1c39;
+    color: #383838;
     margin-top: 0px;
     font-style: normal;
     font-weight: 500;
@@ -2011,7 +2011,7 @@ hr {
 .section-overly::before {
     position: absolute;
     content: "";
-    background-color: rgba(31, 43, 123, 0.8);
+    background-color: rgba(12, 12, 12, 0.8);
     width: 100%;
     height: 100%;
     left: 0;
@@ -4789,11 +4789,7 @@ del {
     font-size: 80px;
     font-weight: 900;
     margin-bottom: 78px;
-<<<<<<< HEAD
-    color: #ee298c;
-=======
     color: #28395a;
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9
     line-height: 1.2;
 }
 @media (max-width: 767px) {
@@ -6362,31 +6358,3 @@ form.search-box .search-form a {
     background: #242b5e;
     color: #fff;
 }
-<<<<<<< HEAD
-
-#navigation li a {
-    position: relative;
-    display: inline-block;
-    padding: 5px 15px;
-}
-
-#navigation li a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    display: block;
-    margin-top: 5px;
-    right: 0;
-    background: #000000; /* Customize the color of the underline */
-    transition: width 0.3s ease;
-    -webkit-transition: width 0.3s ease;
-}
-
-#navigation li a:hover::after {
-    width: 100%;
-    left: 0;
-    background: #000000; /* Customize the color of the underline */
-}
-=======
->>>>>>> b61419bd611cb6c169ba8383042871475fb293a9

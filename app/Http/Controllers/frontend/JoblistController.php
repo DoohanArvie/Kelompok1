@@ -10,8 +10,6 @@ class JoblistController extends Controller
 {
     public function index()
     {
-
-
         return view('frontend.job_listing', [
             'total_jobs' => tblJob::count(),
             'jobs' => tblJob::latest()->get(),
