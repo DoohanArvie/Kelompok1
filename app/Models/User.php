@@ -56,4 +56,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(tblJob::class, 'tbl_jobseekers', 'tbl_user_id', 'tbl_job_id');
     }
+
+    public function cvs()
+    {
+        return $this->hasOne(tblCv::class, 'tbl_user_id', 'id');
+    }
 }

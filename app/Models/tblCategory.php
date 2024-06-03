@@ -20,6 +20,6 @@ class tblCategory extends Model
 
     public function Jobs(): HasMany
     {
-        return $this->hasMany(tblJob::class);
+        return $this->hasMany(tblJob::class, 'tbl_category_id', 'id');
     }
 }
