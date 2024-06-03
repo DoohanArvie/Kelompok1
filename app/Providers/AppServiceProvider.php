@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\tblJob;
+use App\Models\tblCompany;
+use App\Models\User;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        view()->composer('*', function ($view) {
+            $view->with('total_jobs', tblJob::count())
+                ->with('total_companies', tblCompany::count())
+                ->with('total_users', User::count());
+        });
         //
     }
 }

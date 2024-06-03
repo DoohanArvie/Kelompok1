@@ -5805,6 +5805,7 @@ form.search-box .search-form a {
     color: #fb246a;
     padding-left: 5px;
 }
+
 .footer-area .footer-tittle-bottom span {
     display: inline-block;
     color: #fff;
@@ -5850,7 +5851,7 @@ form.search-box .search-form a {
     color: #fb246a;
 }
 .footer-bg {
-    background: #010b1d;
+    background: #191919;
 }
 .footer-bottom-area .footer-border {
     border-top: 1px solid #2d3544;
@@ -6374,7 +6375,7 @@ form.search-box .search-form a {
 }
 
 .main-menu nav ul#navigation li a::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     transform: scaleX(0);
@@ -6419,7 +6420,7 @@ form.search-box .search-form a {
     background-color: #2863a7;
     color: white !important; /* Make text white */
     border: 2px solid #2863a7; /* Add border */
-     padding: 10px 25px !important;
+    padding: 10px 25px !important;
 }
 
 .register-btn:hover {
@@ -6431,7 +6432,7 @@ form.search-box .search-form a {
 .dashboard-btn {
     background-color: #17a2b8;
     color: white !important;
-     padding: 10px 20px !important;
+    padding: 10px 20px !important;
 }
 
 .dashboard-btn:hover {
@@ -6441,7 +6442,7 @@ form.search-box .search-form a {
 .logout-btn {
     background-color: #dc3545;
     color: white !important;
-     padding: 10px 20px !important;
+    padding: 10px 20px !important;
 }
 
 .logout-btn:hover {
@@ -6480,4 +6481,3 @@ form.search-box .search-form a {
         align-items: flex-start;
     }
 }
-

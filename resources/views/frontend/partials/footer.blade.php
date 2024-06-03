@@ -2,18 +2,17 @@
     <!-- Footer Start-->
     <div class="footer-area footer-bg footer-padding">
         <div class="container">
-            <div class="row d-flex justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+            <div class="row d-flex justify-content-between text-md-left text-center">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mr-md-30 mr-0">
                     <div class="single-footer-caption mb-50">
                         <div class="single-footer-caption mb-30">
                             <div class="footer-tittle">
-                                <h4>About Us</h4>
-                                <div class="footer-pera">
-                                    <p>
-                                        Heaven frucvitful doesn't cover lesser dvsays appear
-                                        creeping seasons so behold.
-                                    </p>
-                                </div>
+                                <h4>Tentang Kami</h4>
+
+                                <p>
+                                    Temukan peluang karir terbaik bersama kami, karir impian menanti Anda.
+                                </p>
+
                             </div>
                         </div>
                     </div>
@@ -21,13 +20,14 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Contact Info</h4>
+                            <h4>Info Kontak</h4>
                             <ul>
                                 <li>
-                                    <p>Address :Your address goes here, your demo address.</p>
+                                    <p>Alamat : Jalan Sisingamangaraja No. 73, Kebayoran Baru, Jakarta Selatan Jakarta
+                                        12120.</p>
                                 </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
+                                <li><a href="#">Phone : +62 812 3456 789</a></li>
+                                <li><a href="#">Email : singatidur@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -35,13 +35,12 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Important Link</h4>
+                            <h4>Link Cepat</h4>
                             <ul>
-                                <li><a href="#"> View Project</a></li>
-                                <li><a href="#">Contact Us</a></li>
-                                <li><a href="#">Testimonial</a></li>
-                                <li><a href="#">Proparties</a></li>
-                                <li><a href="#">Support</a></li>
+                                <li><a href="/">Beranda</a></li>
+                                <li><a href="{{ route('job-listing') }}">Cari Pekerjaan</a></li>
+                                <li><a href="{{ route('about') }}">Tentang</a></li>
+                                <li><a href="{{ route('contact') }}">Kontak</a></li>
                             </ul>
                         </div>
                     </div>
@@ -49,63 +48,55 @@
                 <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
                     <div class="single-footer-caption mb-50">
                         <div class="footer-tittle">
-                            <h4>Newsletter</h4>
+                            <h4>Sosial Media</h4>
                             <div class="footer-pera footer-pera2">
-                                <p>
-                                    Heaven fruitful doesn't over lesser in days. Appear
-                                    creeping.
-                                </p>
+
+                                <ul>
+                                    <li><a href="https://facebook.com" target="_blank"><i
+                                                class="fab fa-facebook-f mr-3"></i>Facebook</a></li>
+                                    <li><a href="https://instagram.com " target="_blank"><i
+                                                class="fab fa-instagram mr-3"></i>Instagram</a></li>
+                                    <li><a href="https://linkedin.com mr-3" target="_blank"><i
+                                                class="fab fa-linkedin-in mr-3"></i>Linkedin</a></li>
+                                    <li><a href="https://x.com" target="_blank"><i class="fab fa-x-twitter mr-3"></i>X
+                                            Twitter</a>
+                                    </li>
+                                </ul>
+
+
                             </div>
-                            <!-- Form -->
-                            <div class="footer-form">
-                                <div id="mc_embed_signup">
-                                    <form target="_blank"
-                                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                                        method="get" class="subscribe_form relative mail_part">
-                                        <input type="email" name="email" id="newsletter-form-email"
-                                            placeholder="Email Address" class="placeholder hide-on-focus"
-                                            onfocus="this.placeholder = ''"
-                                            onblur="this.placeholder = ' Email Address '" />
-                                        <div class="form-icon">
-                                            <button type="submit" name="submit" id="newsletter-submit"
-                                                class="email_icon newsletter-submit button-contactForm">
-                                                <img src="{{ asset('assets/img/icon/form.png') }}" alt="" />
-                                            </button>
-                                        </div>
-                                        <div class="mt-10 info"></div>
-                                    </form>
-                                </div>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
             </div>
             <!--  -->
-            <div class="row footer-wejed justify-content-between">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+            <div class="row footer-wejed justify-content-between align-item-center align-items-center text-center">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
                     <!-- logo -->
                     <div class="footer-logo mb-20">
-                        <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png') }}"
-                                alt="" /></a>
+                        <a href="#"><img src="{{ asset('assets/img/logo/logo.png') }}" alt=""
+                                width="200" /></a>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                     <div class="footer-tittle-bottom">
-                        <span>5000+</span>
-                        <p>Talented Hunter</p>
+                        <span>{{ $total_jobs }}</span>
+                        <p>Lowongan Tersedia</p>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                     <div class="footer-tittle-bottom">
-                        <span>451</span>
-                        <p>Talented Hunter</p>
+                        <span>{{ $total_companies }}</span>
+                        <p>Perusahaan Terdaftar</p>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12">
                     <!-- Footer Bottom Tittle -->
                     <div class="footer-tittle-bottom">
-                        <span>568</span>
-                        <p>Talented Hunter</p>
+                        <span>{{ $total_users }}</span>
+                        <p>Pengguna Terdaftar</p>
                     </div>
                 </div>
             </div>
@@ -124,19 +115,20 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                All rights reserved | This template is made with
-                                <i class="fa fa-heart" aria-hidden="true"></i> by
-                                <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                All rights reserved | Kelompok 1
+                                <i class="fas fa-briefcase mx-2" aria-hidden="true"></i> Gamelab Fullstack
+                                Developer #4
+
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-2">
-                        <div class="footer-social f-right">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
+                        <div class="footer-social f-right mr-3">
+                            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
                         </div>
                     </div>
                 </div>

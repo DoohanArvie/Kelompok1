@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tblCategory;
+use App\Models\User;
 use App\Models\tblJob;
 use App\Models\tblCompany;
+use App\Models\tblCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,6 +18,14 @@ class HomeController extends Controller
             'categories' => $categories,
             'jobs' => $jobs,
         ]);
+    }
+
+    public function footer()
+    {
+        $total_jobs = tblJob::count();
+        $total_companies = tblCompany::count();
+        $total_users = User::count();
+        return view('frontend.partials.footer', compact('total_jobs', 'total_companies', 'total_users'));
     }
 
     public function about()

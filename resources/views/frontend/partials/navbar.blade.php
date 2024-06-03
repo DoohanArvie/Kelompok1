@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="javascript:;"><img src="{{ asset('assets/img/logo/logo.png') }}"" alt="logo"
+                            <a href="javascript:;"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo"
                                     width="100" height="90" /></a>
 
                         </div>
@@ -22,7 +22,7 @@
                                             <li><a class="{{ Route::currentRouteName() === 'home' ? 'text-danger' : '' }}"
                                                     href="/">Beranda</a></li>
                                             <li><a class="{{ Route::currentRouteName() === 'job-listing' ? 'text-danger' : '' }}"
-                                                    href="/job-listing">Cari Pekerjaan</a></li>
+                                                    href="{{ route('job-listing') }}">Cari Pekerjaan</a></li>
                                             <li><a class="{{ Route::currentRouteName() === 'about' ? 'text-danger' : '' }}"
                                                     href="{{ route('about') }}">Tentang</a></li>
                                             <li><a class="{{ Route::currentRouteName() === 'contact' ? 'text-danger' : '' }}"
