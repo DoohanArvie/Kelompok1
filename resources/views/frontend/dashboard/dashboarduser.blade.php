@@ -54,7 +54,7 @@
 
                         <div class="col-lg-6">
                             <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">No Handphone</label>
+                                <label class="col-4 fw-bold text-muted">Handphone</label>
                                 <div class="col-8">
                                     <span class="fw-bold fs-6 text-white-50">: {{ $user->no_hp }}</span>
                                 </div>
@@ -63,23 +63,35 @@
 
                         <div class="col-lg-6">
                             <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Tanggal Lahir</label>
+                                <label class="col-4 fw-bold  text-muted">Birthday</label>
                                 <div class="col-8">
                                     <span class="fw-bold fs-6 text-white-50">: {{ $user->tgl_lahir }}</span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-lg-6">
                             <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Alamat</label>
+                                <label class="col-4 fw-bold text-muted">Role</label>
                                 <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->role }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 ml-3">
+                            <div class="row mb-2">
+                                <label class=" fw-bold text-muted">Alamat</label>
+                                <div class="col-10">
                                     <span class="fw-bold fs-6 text-white-50">: {{ $user->address }}</span>
                                 </div>
                             </div>
                         </div>
 
-
                     </div>
+
+
+
 
 
                 </div>
