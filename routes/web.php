@@ -71,5 +71,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
+    Route::get('/dashboarduser/edit/{id}', [DashboardUserController::class, 'edit'])->name('dashboarduser.edit');
+    Route::put('/dasboarduser/update/{id}', [DashboardUserController::class, 'update'])->name('dashboarduser.update');
+    Route::post('/dashboarduser/uploadcv', [DashboardUserController::class, 'uploadCv'])->name('dashboarduser.uploadcv');
+    Route::get('/dashboarduser/editCv/{id}', [DashboardUserController::class, 'editCv'])->name('dashboarduser.editCv');
+    Route::put('/dashboarduser/updateCv/{id}', [DashboardUserController::class, 'updateCv'])->name('dashboarduser.updateCv');
 });
-// -----------------------------------------

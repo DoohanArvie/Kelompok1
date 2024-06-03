@@ -5,13 +5,13 @@
         <!-- slider Area Start-->
         <div class="slider-area">
             <!-- Mobile Menu -->
-            <div class="slider">
+            <div class="slider-active">
                 <div class="single-slider slider-height d-flex align-items-center"
-                    data-background="{{ asset('assets/img/hero/hero_1.jpg') }}">
+                    data-background="assets/img/hero/hero_1.jpg">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10">
-                                <div class="hero__caption text-md-left text-center">
+                                <div class="hero__caption">
                                     <h1>Wujudkan Mimpimu Disini</h1>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@
                                     </span>
                                 </div>
                                 <div class="services-cap">
-                                    <h5><a href="job_listing.html"{{ $category->name }}</a></h5>
+                                    <h5><a href="job_listing.html" {{ $category->name }}></a></h5>
                                     <span>{{ $category->name }}</span>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                         </li>
                                         <li>
                                             <i class="fas fa-money-bill-alt"></i>
-                                            {{ number_format((int) $job->salary, 0, '.', ',') }}
+                                            {{ number_format((float) $job->salary, 2, '.', ',') }}
                                         </li>
                                         <li>
                                             Status Lowongan : {{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}
@@ -200,6 +200,8 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
         <!-- How  Apply Process End-->
     </main>

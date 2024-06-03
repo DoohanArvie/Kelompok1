@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class tblCv extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'cv',
+        'document',
+        'tbl_user_id',
+    ];
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_hp', 15);
             $table->date('tgl_lahir');
             $table->text('address');
-            $table->string('foto')->nullable()->default('default.jpg');
+            $table->string('foto')->nullable();
             $table->string('role', 10);
             $table->string('gender', 15);
             $table->string('password');
