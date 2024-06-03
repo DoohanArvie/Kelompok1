@@ -34,7 +34,7 @@
                                     Kami adalah perusahaan penyedia layanan job portal terkemuka
                                     yang berkomitmen untuk menjadi jembatan penghubung antara
                                     pencari kerja dan perusahaan-perusahaan terbaik di seluruh
-                                    [wilayah operasi, misalnya Indonesia/Asia Tenggara/global].
+                                    wilayah operasi, Indonesia/Asia Tenggara/global.
                                 </p>
                                 <p>
                                     Dengan tim profesional yang berdedikasi dan berpengalaman,

@@ -29,7 +29,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::post('/register', [RegisterController::class, 'register'])->name('register-proses');
 Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -37,6 +36,8 @@ Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listi
 Route::get('/job-listing/{slug}', [JoblistController::class, 'show'])->name('job-detail');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/register', [RegisterController::class, 'store'])->name('register-proses');
+
 
 
 

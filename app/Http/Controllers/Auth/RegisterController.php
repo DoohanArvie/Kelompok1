@@ -83,7 +83,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',

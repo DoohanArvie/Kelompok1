@@ -115,7 +115,7 @@
                                         </li>
                                         <li>
                                             <i class="fas fa-money-bill-alt"></i>
-                                            {{ number_format((float) $job->salary, 2, '.', ',') }}
+                                            {{ number_format((int) $job->salary, 0, '.', ',') }}
                                         </li>
                                         <li>
                                             Status Lowongan : {{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}
