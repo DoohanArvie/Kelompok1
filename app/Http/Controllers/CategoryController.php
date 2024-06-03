@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Models\tblCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -73,19 +74,26 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $data = $request->validate([
             'name' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+            'cover' => 'sometimes|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
+
+        $category = tblCategory::findOrFail($id);
 
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('category_covers', 'public');
             $data['cover'] = $coverPath;
         }
 
+        if ($category->cover) {
+            Storage::disk('public')->delete($category->cover);
+        }
+
         $data['slug'] = Str::slug($data['name']);
 
-        tblCategory::findOrFail($id)->update($data);
+        $category->update($data);
 
         return redirect()->route('dashboard.category.index')->with('success', 'Category updated successfully');
         //
@@ -96,7 +104,11 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        tblCategory::findOrFail($id)->delete();
+        $category = tblCategory::findOrFail($id);
+        if ($category->cover) {
+            Storage::disk('public')->delete($category->cover);
+        }
+        $category->delete();
         return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully');
 
         //

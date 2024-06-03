@@ -1,6 +1,7 @@
 @extends('frontend.layouts.main')
 
 @section('content')
+    <link rel="stylesheet" href="{{ asset('assets/css/search.css') }}">
     <main>
         <!-- Hero Area Start-->
         <div class="slider-area">
@@ -68,7 +69,7 @@
                             <div class="container">
                                 <!-- Count of Job list Start -->
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-6">
                                         <div class="count-job mb-35">
                                             <span>{{ $total_jobs }} Pekerjaan ditemukan</span>
                                         </div>

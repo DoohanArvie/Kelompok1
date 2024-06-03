@@ -36,6 +36,7 @@ Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listi
 Route::get('/job-listing/{slug}', [JoblistController::class, 'show'])->name('job-detail');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact-store', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::post('/register', [RegisterController::class, 'store'])->name('register-proses');
 
 

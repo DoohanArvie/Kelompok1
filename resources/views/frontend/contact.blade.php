@@ -52,24 +52,40 @@
                 <span class="circle one"></span>
                 <span class="circle two"></span>
 
-                <form action="index.html" autocomplete="off">
+                <form action="{{ route('contact.store') }}" method="POST" autocomplete="off">
+                    @csrf
                     <h3 class="title">Contact us</h3>
                     <div class="input-container">
-                        <input type="text" name="name" class="input" />
-                        <label for="">Username</label>
-                        <span>Username</span>
+                        <input type="text" name="name" class="input @error('name') is-invalid @enderror"
+                            value="{{ old('name') }}" />
+                        <label for="">Name</label>
+                        <span>Name</span>
                     </div>
+
+                    @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
                     <div class="input-container">
-                        <input type="email" name="email" class="input" />
+                        <input type="email" class="input @error('email') is-invalid @enderror" name="email"
+                            value="{{ old('email') }}" />
                         <label for="">Email</label>
                         <span>Email</span>
                     </div>
 
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
                     <div class="input-container textarea">
-                        <textarea name="message" class="input"></textarea>
+                        <textarea name="pesan" class="input @error('pesan') is-invalid @enderror">{{ old('pesan') }}</textarea>
                         <label for="">Message</label>
                         <span>Message</span>
                     </div>
+
+                    @error('pesan')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <input type="submit" value="Send" class="btn" />
                 </form>
             </div>
