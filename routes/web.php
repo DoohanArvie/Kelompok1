@@ -38,6 +38,7 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact-store', [HomeController::class, 'contactStore'])->name('contact.store');
 Route::post('/register', [RegisterController::class, 'store'])->name('register-proses');
+Route::get('/search', [JoblistController::class, 'search'])->name('search');
 
 
 

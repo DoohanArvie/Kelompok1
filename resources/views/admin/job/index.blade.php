@@ -3,14 +3,13 @@
 @section('title', 'Jobs')
 
 @section('after-style')
-    <link rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css    ') }}">
-    <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" crossorigin href="{{ asset('assets/compiled/css/table-datatable-jquery.css') }}">
 @endsection
 
 @include('admin.components.sidebar')
 
 @section('content')
-
     <div class="page-heading">
         <h3>Halaman Jobs</h3>
     </div>
@@ -59,18 +58,26 @@
                                     </td>
                                 </tr>
                             @empty
+                                <tr>
+                                    <td colspan="5">No jobs available</td>
+                                </tr>
                             @endforelse
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
         </section>
     </div>
 @endsection
 
 @section('after-script')
-    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="assets/static/js/pages/simple-datatables.js"></script>
+    <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/static/js/pages/datatables.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#table1').DataTable();
+        });
+    </script>
 @endsection

@@ -115,8 +115,8 @@
                             <div class="form-group">
                                 <label for="salary">Salary</label>
                                 <input type="text" class="form-control @error('salary') is-invalid @enderror"
-                                    id="job" placeholder="Salary" name="salary" value="{{ old('salary') }}"
-                                    autofocus>
+                                    id="job" placeholder="Salary" name="salary"
+                                    value="{{ old('salary', $job->salary) }}" autofocus>
                             </div>
                             @error('salary')
                                 <div class="alert alert-danger">{{ $message }}</div>

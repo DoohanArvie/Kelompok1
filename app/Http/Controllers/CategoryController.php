@@ -77,18 +77,17 @@ class CategoryController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'cover' => 'sometimes|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+            'cover' => 'image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
 
         $category = tblCategory::findOrFail($id);
 
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('category_covers', 'public');
+            if ($category->cover) {
+                Storage::disk('public')->delete($category->cover);
+            }
             $data['cover'] = $coverPath;
-        }
-
-        if ($category->cover) {
-            Storage::disk('public')->delete($category->cover);
         }
 
         $data['slug'] = Str::slug($data['name']);

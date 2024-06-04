@@ -13,7 +13,7 @@ class JoblistController extends Controller
     {
         return view('frontend.job_listing', [
             'total_jobs' => tblJob::count(),
-            'jobs' => tblJob::where('is_open', '1')->latest()->get(),
+            'jobs' => tblJob::where('is_open', '1')->paginate(6)->withQueryString(),
             'categories' => tblCategory::all()
 
         ]);
@@ -23,5 +23,18 @@ class JoblistController extends Controller
     {
         $job = tblJob::where('slug', $slug)->first();
         return view('frontend.job_detail', compact('job'));
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $jobs = tblJob::where('job', 'like', '%' . $keyword . '%')
+            ->orWhereHas('category', function ($query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%');
+            })->paginate(1)->withQueryString();
+        return view('frontend.search', [
+            'jobs' => $jobs,
+            'keyword' => $keyword,
+        ]);
     }
 }

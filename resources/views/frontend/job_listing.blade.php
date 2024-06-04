@@ -2,6 +2,7 @@
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/search.css') }}">
+
     <main>
         <!-- Hero Area Start-->
         <div class="slider-area">
@@ -63,26 +64,28 @@
                         <!-- Job Category Listing End -->
                     </div>
                     <!-- Right content -->
-                    <div class="col-xl-9 col-lg-9 col-md-8">
+                    <div class="col-xl-9 col-lg-10 col-md-8">
                         <!-- Featured_job_start -->
                         <section class="featured-job-area">
                             <div class="container">
                                 <!-- Count of Job list Start -->
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="count-job mb-35">
-                                            <span>{{ $total_jobs }} Pekerjaan ditemukan</span>
-                                        </div>
+                                <div class="row justify-content-between ">
+                                    <div class="count-job mb-35 text-center text-lg-start">
+                                        <span>{{ $total_jobs }} Pekerjaan ditemukan</span>
                                     </div>
+
+                                    <form action="{{ route('search') }}" method="GET" class="input-container">
+                                        <input type="text" name="keyword" placeholder="Search Jobs..."
+                                            class="form-control">
+                                        <button type="submit" class="invite-btn ml-2">Search</button>
+                                    </form>
                                 </div>
-
-
                                 <!-- Count of Job list End -->
 
                                 <!-- single-job-content -->
                                 <div class="row">
                                     @forelse ($jobs as $job)
-                                        <div class="col-lg-4 col-md-6 p-2 d-flex justify-content-center">
+                                        <div class="col-sm-6 col-lg-4 col-md-6 p-2 d-flex justify-content-center">
                                             <div
                                                 class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
                                                 <div class="job-items mb-3">
@@ -123,9 +126,6 @@
                                     @endforelse
                                 </div>
 
-
-
-
                             </div>
                         </section>
                         <!-- Featured_job_end -->
@@ -140,22 +140,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active">
-                                        <a class="page-link" href="#">01</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">02</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">03</a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"><span class="ti-angle-right"></span></a>
-                                    </li>
-                                </ul>
-                            </nav>
+                            {{ $jobs->links() }}
                         </div>
                     </div>
                 </div>

@@ -102,12 +102,64 @@
                     <div class="card-body bg-primary" style="border-radius: 12px;">
                         <h4 class="text-4xl text-center text-white">Lihat CV</h4>
                         <div class="d-flex justify-content-between">
-                            <div>
-                                <span class="align-items-end py-2 text-white">Lihat CV kamu disini</span>
-                                <button class="btn-sm bg-danger shadow-xl"
-                                    style="width: 125px; border-style: none; border-radius: 8px; height: 44px;"
-                                    type="button" data-toggle="modal" data-target="#lihatCv">Lihat CV</button>
-                            </div>
+                            <span class="align-items-end py-2 text-white">Lihat CV kamu disini</span>
+                            <button class="btn-sm bg-danger shadow-xl"
+                                style="width: 125px; border-style: none; border-radius: 8px; height: 44px;" type="button"
+                                data-toggle="modal" data-target="#lihatCv">Lihat CV</button>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- modal update --}}
+                <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered justify-content-center align-items-center"
+                        style="max-width: 800px;">
+                        <div class="modal-content" style="border-radius: 12px;">
+                            <form action="{{ route('dashboarduser.updateCv', $cv->id) }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="lihatCvLabel">Update CV dan Dokumen Penting</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                        style="border-style: none"><i class="ti-close" style="font-size: 20px"></i></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="cv" class="form-label">CV</label>
+                                        <iframe src="{{ asset('storage') . '/' . $cv->cv }}" width="100%"
+                                            height="300px"></iframe>
+                                        <input class="form-control p-1 @error('cv') is-invalid @enderror" type="file"
+                                            id="cv" name="cv">
+                                        <p class="text-danger" style="font-size: 10px">Catatan: Hanya file (doc, docx,
+                                            pdf)
+                                            dengan
+                                            ukuran maksimal 2MB yang diperbolehkan.</p>
+                                        @error('cv')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="document" class="form-label">Dokumen Penting</label>
+                                        <iframe src="{{ asset('storage') . '/' . $cv->document }}" width="100%"
+                                            height="300px"></iframe>
+                                        <input class="form-control p-1 @error('document') is-invalid @enderror"
+                                            type="file" id="document" name="document">
+                                        <p class="text-danger" style="font-size: 10px">Catatan: Hanya file (doc, docx,
+                                            pdf) dengan
+                                            ukuran maksimal 2MB yang diperbolehkan.</p>
+                                        @error('document')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-center align-items-center">
+                                    <button type="button" class="btn-secondary" data-dismiss="modal"
+                                        style="border-radius: 8px; width:125px">Close</button>
+                                    <button type="submit" class="btn-primary"
+                                        style="border-radius: 8px; width:125px">Update</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -172,54 +224,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered justify-content-center align-items-center"
-                style="max-width: 800px;">
-                <div class="modal-content" style="border-radius: 12px;">
-                    <form action="{{ route('dashboarduser.updateCv', $cv->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="lihatCvLabel">Update CV dan Dokumen Penting</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                                style="border-style: none"><i class="ti-close" style="font-size: 20px"></i></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="cv" class="form-label">CV</label>
-                                <iframe src="{{ asset('storage') . '/' . $cv->cv }}" width="100%"
-                                    height="300px"></iframe>
-                                <input class="form-control p-1 @error('cv') is-invalid @enderror" type="file"
-                                    id="cv" name="cv">
-                                <p class="text-danger" style="font-size: 10px">Catatan: Hanya file (doc, docx, pdf) dengan
-                                    ukuran maksimal 2MB yang diperbolehkan.</p>
-                                @error('cv')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="document" class="form-label">Dokumen Penting</label>
-                                <iframe src="{{ asset('storage') . '/' . $cv->document }}" width="100%"
-                                    height="300px"></iframe>
-                                <input class="form-control p-1 @error('document') is-invalid @enderror" type="file"
-                                    id="document" name="document">
-                                <p class="text-danger" style="font-size: 10px">Catatan: Hanya file (doc, docx, pdf) dengan
-                                    ukuran maksimal 2MB yang diperbolehkan.</p>
-                                @error('document')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="modal-footer justify-content-center align-items-center">
-                            <button type="button" class="btn-secondary" data-dismiss="modal"
-                                style="border-radius: 8px; width:125px">Close</button>
-                            <button type="submit" class="btn-primary"
-                                style="border-radius: 8px; width:125px">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+
     </div>
 @endsection

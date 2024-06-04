@@ -24,7 +24,10 @@ class DashboardUserController extends Controller
         // $companies = tblCompany::latest()->limit(6)->get();
         // $categories = tblCategory::orderBy('id', 'DESC')->get();
         // $jobs = $user->Jobs()->latest()->limit(6)->get();
-        return view('frontend.dashboard.dashboarduser', compact('user', 'cv'));
+        return view('frontend.dashboard.dashboarduser', [
+            'cv' => $cv,
+            'user' => $user,
+        ]);
     }
 
     public function edit(string $id)
@@ -42,6 +45,8 @@ class DashboardUserController extends Controller
             'no_hp' => 'required|string',
             'address' => 'required|string',
             'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gender' => 'required|string',
+            'tgl_lahir' => 'required|before:today|string',
         ]);
 
         DB::beginTransaction();

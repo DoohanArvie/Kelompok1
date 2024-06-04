@@ -3,8 +3,8 @@
 @section('title', 'Contact')
 
 @section('after-style')
-    <link rel="stylesheet" href="{{ asset('assets/extensions/simple-datatables/style.css    ') }}">
-    <link rel="stylesheet" href="{{ asset('assets/compiled/css/table-datatable.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+    <link rel="stylesheet" crossorigin href="{{ asset('assets/compiled/css/table-datatable-jquery.css') }}">
 @endsection
 
 @include('admin.components.sidebar')
@@ -23,13 +23,14 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-hover table-lg">
+                        <table class="table table-hover table-lg" id="table1">
                             <thead>
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Pesan</th>
+                                    <th>Terkirim</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,6 +42,7 @@
                                             <p class=" mb-0">{{ $contact->email }}</p>
                                         </td>
                                         <td>{{ $contact->pesan }}</td>
+                                        <td>{{ $contact->created_at->diffForHumans() }}</td>
                                     </tr>
                                 @empty
                                     <tr>
@@ -60,6 +62,13 @@
 @endsection
 
 @section('after-script')
-    <script src="assets/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="assets/static/js/pages/simple-datatables.js"></script>
+    <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/static/js/pages/datatables.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#table1').DataTable();
+        });
+    </script>
 @endsection

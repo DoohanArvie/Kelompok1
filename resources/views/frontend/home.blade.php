@@ -20,12 +20,12 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <!-- form -->
-                                <form action="#" class="search-box">
+                                <form action="{{ route('search') }}" method="GET" class="search-box">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Cari Pekerjaan impianmu" />
+                                        <input type="text" name="keyword" placeholder="Cari Pekerjaan impianmu" />
                                     </div>
                                     <div class="search-form">
-                                        <button>Cari</button>
+                                        <button type="submit">Cari</button>
                                     </div>
                                 </form>
                             </div>
@@ -57,7 +57,8 @@
                                 </div>
                                 <div class="services-cap">
                                     <h5><a href="job_listing.html" {{ $category->name }}></a></h5>
-                                    <span>{{ $category->name }}</span>
+                                    <span class="d-block">{{ $category->name }}</span>
+                                    <span>{{ $category->jobs_count }}</span>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +137,7 @@
 
                 </div>
                 <div class="text-center">
-                    <a href="/job-listing" class="btn btn-primary">Semua Pekerjaan &raquo;</a>
+                    <a href="{{ route('job-listing') }}" class="btn btn-primary">Semua Pekerjaan &raquo;</a>
                 </div>
 
             </div>

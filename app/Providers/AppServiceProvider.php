@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\tblJob;
 use App\Models\tblCompany;
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 ->with('total_companies', tblCompany::count())
                 ->with('total_users', User::count());
         });
-        //
+
+        Paginator::useBootstrapFive();
     }
 }

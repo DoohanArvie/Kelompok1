@@ -7,6 +7,7 @@ use App\Models\tblCompany;
 use App\Models\tblContact;
 use App\Models\tblJob;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,7 +17,11 @@ class HomeController extends Controller
         $jobs = tblJob::where('is_open', '1')->latest()->limit(6)->get();
         $categories = tblCategory::orderBy('id', 'DESC')->get();
         return view('frontend.home', [
-            'categories' => $categories,
+            'categories' => tblCategory::withCount([
+                'Jobs' => function (Builder $query) {
+                    $query->where('is_open', 1);
+                }
+            ])->latest()->get(),
             'jobs' => $jobs,
         ]);
     }
