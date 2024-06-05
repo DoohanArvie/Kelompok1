@@ -12,7 +12,9 @@ class tblCompany extends Model
     protected $fillable = [
         'company',
         'cover',
-        'about'
+        'about',
+        'website',
+        'email',
     ];
 
     public function Job()

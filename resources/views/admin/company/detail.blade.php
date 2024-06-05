@@ -29,7 +29,12 @@
                         <div class="col-md-6 text-center" style="padding: 0 15px;">
                             <h5>Nama Company : </h5>
                             <h3>{{ $company->company }}</h3>
+                            <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
+                            <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
+
                         </div>
+
+
                         <div class="col-md-6  text-center">
                             <h5>Cover Perusahaan</h5>
                             <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"

@@ -37,6 +37,8 @@ class CompanyController extends Controller
             'company' => 'required|string',
             'cover' => 'required|mimes:png,jpg,jpeg|max:2048|image',
             'about' => 'required|string',
+            'website' => 'sometimes|string',
+            'email' => 'sometimes|email',
         ]);
 
         DB::beginTransaction();
@@ -47,6 +49,8 @@ class CompanyController extends Controller
             }
 
             $data['about'] = $request->about;
+            $data['website'] = $request->website;
+            $data['email'] = $request->email;
             tblCompany::create($data);
             DB::commit();
 
@@ -95,6 +99,8 @@ class CompanyController extends Controller
             'company' => 'required|string',
             'cover' => 'sometimes|mimes:png,jpg,jpeg|max:2048|image',
             'about' => 'required|string',
+            'website' => 'sometimes|nullable|string',
+            'email' => 'sometimes|nullable|email',
         ]);
 
         try {
@@ -106,6 +112,9 @@ class CompanyController extends Controller
                 $data['cover'] = $coverPath;
             }
             $data['about'] = $request->about;
+            $data['website'] = $request->website;
+            $data['email'] = $request->email;
+
             tblCompany::findOrFail($id)->update($data);
             DB::commit();
             return redirect()->route('dashboard.company.index')->with('success', 'Company updated successfully');

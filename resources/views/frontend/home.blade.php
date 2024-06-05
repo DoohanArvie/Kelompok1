@@ -115,7 +115,7 @@
                                             <i class="fas fa-map-marker-alt"></i>{{ $job->lokasi }}
                                         </li>
                                         <li>
-                                            <i class="fas fa-money-bill-alt"></i>
+                                            <i class="fas fa-money-bill-alt"></i>Rp.
                                             {{ number_format((float) $job->salary, 2, '.', ',') }}
                                         </li>
                                         <li>

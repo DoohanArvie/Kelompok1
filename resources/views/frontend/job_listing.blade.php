@@ -109,6 +109,10 @@
                                                                     class="fas fa-map-marker-alt mr-2"></i>{{ $job->lokasi }}
                                                             </li>
                                                             <li class="mb-2">
+                                                                <i class="fas fa-money-bill-alt"></i>Rp.
+                                                                {{ number_format((float) $job->salary, 2, '.', ',') }}
+                                                            </li>
+                                                            <li class="mb-2">
                                                                 Status Lowongan:
                                                                 {{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}
                                                             </li>

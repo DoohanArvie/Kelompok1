@@ -58,7 +58,7 @@
                 <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.company.index' ? 'active' : '' }}">
                     <a href="{{ route('dashboard.company.index') }}" class='sidebar-link'>
                         <i class="bi bi-buildings"></i>
-                        <span>Companaies</span>
+                        <span>Companies</span>
                     </a>
                 </li>
 

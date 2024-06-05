@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('company', 50);
             $table->string('cover');
+            $table->string('website');
+            $table->string('email');
             $table->timestamps();
         });
     }

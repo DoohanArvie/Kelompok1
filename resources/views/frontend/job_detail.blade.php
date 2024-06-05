@@ -43,6 +43,10 @@
                                         <li>
                                             <i class="fas fa-map-marker-alt mr-2"></i>{{ $job->lokasi }}
                                         </li>
+                                        <li>
+                                            <i class="fas fa-money-bill-alt"></i>Rp.
+                                            {{ number_format((float) $job->salary, 2, '.', ',') }}
+                                        </li>
 
                                     </ul>
                                 </div>
@@ -95,6 +99,7 @@
                                 <li>Perusahaan : <span>{{ $job->company->company }}</span></li>
                                 <li>Diposting : <span>{{ $job->created_at->format('d-m-Y') }}</span></li>
                                 <li>Lokasi : <span>{{ $job->lokasi }}</span></li>
+                                <li>Gaji : <span>Rp. {{ number_format((float) $job->salary, 2, '.', ',') }}</span></li>
                                 <li>Status Lowongan : <span>{{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}</span></li>
                             </ul>
                             <div class="apply-btn2">
@@ -111,9 +116,8 @@
                                 {{ $job->company->about }}
                             </p>
                             <ul>
-                                <li>Name: <span>Colorlib </span></li>
-                                <li>Web : <span> colorlib.com</span></li>
-                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                                <li>Web : <span> {{ $job->company->website }}</span></li>
+                                <li>Email: <span>{{ $job->company->email }}</span></li>
                             </ul>
                         </div>
                     </div>

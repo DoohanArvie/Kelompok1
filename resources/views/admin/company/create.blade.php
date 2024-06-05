@@ -35,16 +35,44 @@
             <form method="POST" enctype="multipart/form-data" action="{{ route('dashboard.company.store') }}">
                 @csrf
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="company" class="mb-2">Company</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="company"
-                                placeholder="Company" name="company" value="{{ old('company') }}">
+                    <div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="company" class="mb-2">Company</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                    id="company" placeholder="Company" name="company" value="{{ old('company') }}">
+                            </div>
+                            @error('company')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                            @enderror
                         </div>
-                        @error('company')
-                            <div class="alert alert-danger ">{{ $message }}</div>
-                        @enderror
                     </div>
+                    <div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="website" class="mb-2">Website</label>
+                                <input type="text" class="form-control @error('website') is-invalid @enderror"
+                                    id="website" placeholder="Website" name="website" value="{{ old('website') }}">
+                            </div>
+                            @error('website')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email" class="mb-2">Email</label>
+                                <input type="email" class="form-control @error('name') is-invalid @enderror"
+                                    id="email" placeholder="email" name="email" value="{{ old('email') }}">
+                            </div>
+                            @error('email')
+                                <div class="alert alert-danger ">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+
 
 
 
@@ -65,6 +93,7 @@
                                 <div class="alert alert-danger ">{{ $message }}</div>
                             @enderror
                         </div>
+
                     </div>
                     <div class="row">
                         <div class="col-md-6">

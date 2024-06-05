@@ -31,6 +31,8 @@
                             <tr>
                                 <th>No</th>
                                 <th>Company</th>
+                                <th>Website</th>
+                                <th>Email</th>
                                 <th>Cover</th>
                                 <th>Action</th>
                             </tr>
@@ -40,6 +42,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $company->company }}</td>
+                                    <td>{{ $company->website }}</td>
+                                    <td>{{ $company->email }}</td>
+
                                     <td>
                                         <img width="150px" height="100px" src="{{ Storage::url($company->cover) }}"
                                             alt="img {{ $company->company }}">
