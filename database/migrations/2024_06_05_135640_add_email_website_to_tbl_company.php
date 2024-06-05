@@ -10,9 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('tbl_jobs', function (Blueprint $table) {
-            $table->string('salary', 50)->after('requirement');
-            $table->text('benefit')->after('salary');
+        Schema::table('tbl_companies', function (Blueprint $table) {
+            $table->string('email', 50)->after('company');
+            $table->string('website')->after('about');
         });
     }
 
@@ -21,9 +21,9 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('tbl_jobs', function (Blueprint $table) {
-            $table->dropColumn('salary');
-            $table->dropColumn('benefit');
+        Schema::table('tbl_companies', function (Blueprint $table) {
+            $table->dropColumn('email');
+            $table->dropColumn('website');
         });
     }
 };

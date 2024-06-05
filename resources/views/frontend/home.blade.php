@@ -1,13 +1,14 @@
 @extends('frontend.layouts.main')
 
 @section('content')
+    </style>
     <main>
         <!-- slider Area Start-->
         <div class="slider-area">
             <!-- Mobile Menu -->
             <div class="slider">
                 <div class="single-slider slider-height d-flex align-items-center"
-                    data-background="assets/img/hero/hero_1.jpg">
+                    data-background="{{ asset('assets/img/hero/hero_1.jpg') }} ">
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-6 col-lg-9 col-md-10 text-md-left text-center">
