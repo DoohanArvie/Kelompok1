@@ -56,4 +56,14 @@ class HomeController extends Controller
 
         return redirect()->route('contact')->with('success', 'Message sent successfully');
     }
+
+    public function category($slug)
+    {
+        $categories = tblCategory::where('slug', $slug)->first();
+        $job_categories = tblJob::where('tbl_category_id', $categories->id)->where('is_open', 1)->paginate(8);
+        return view('frontend.category', [
+            'category' => $categories,
+            'job_categories' => $job_categories
+        ]);
+    }
 }

@@ -13,7 +13,7 @@ class JoblistController extends Controller
     {
         return view('frontend.job_listing', [
             'total_jobs' => tblJob::count(),
-            'jobs' => tblJob::where('is_open', '1')->paginate(6)->withQueryString(),
+            'jobs' => tblJob::where('is_open', '1')->paginate(8)->withQueryString(),
             'categories' => tblCategory::all()
 
         ]);

@@ -49,20 +49,22 @@
                 </div>
                 <div class="row d-flex justify-contnet-center">
                     @forelse ($categories as $category)
-                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-services text-center mb-30">
-                                <div class="services-ion">
-                                    <span>
-                                        <img width="50px" src="{{ Storage::url($category->cover) }}" alt="">
-                                    </span>
-                                </div>
-                                <div class="services-cap">
-                                    <h5><a href="job_listing.html" {{ $category->name }}></a></h5>
-                                    <span class="d-block">{{ $category->name }}</span>
-                                    <span>{{ $category->jobs_count }}</span>
+                        <a href="{{ route('category', $category->slug) }}">
+                            <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-services text-center mb-30">
+                                    <div class="services-ion">
+                                        <span>
+                                            <img width="50px" src="{{ Storage::url($category->cover) }}" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="services-cap">
+                                        <h5><a href="job_listing.html" {{ $category->name }}></a></h5>
+                                        <span class="d-block">{{ $category->name }}</span>
+                                        <span>{{ $category->jobs_count }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @empty
                         <h5>Catagory belum tersedia</h5>
                     @endforelse
