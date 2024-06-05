@@ -46,8 +46,8 @@
                                     <td>cv.pdf</td>
                                     <td>p.pdf</td>
                                     <td>
-                                        <a href="#"
-                                            class="btn btn-warning">status<i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="#" class="btn btn-warning fw-bold">status <i
+                                                class="fa-solid fa-circle-check"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
