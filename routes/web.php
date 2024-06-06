@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PelamarController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -43,6 +44,7 @@ Route::get('/search', [JoblistController::class, 'search'])->name('search');
 
 
 
+
 Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
@@ -52,6 +54,7 @@ Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
         Route::resource('job', JobController::class);
         Route::resource('user', UserController::class);
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+        Route::get('/daftarpelamar', [PelamarController::class, 'index'])->name('daftarpelamar');
     });
 });
 
