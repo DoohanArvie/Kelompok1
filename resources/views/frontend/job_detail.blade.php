@@ -103,7 +103,7 @@
                                 <li>Status Lowongan : <span>{{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}</span></li>
                             </ul>
                             <div class="apply-btn2">
-                                <a href="#" class="btn">Lamar Sekarang</a>
+                                <a href="{{ route('applyjob', $job->slug) }}" class="btn">Lamar Sekarang</a>
                             </div>
                         </div>
                         <div class="post-details4 mb-50">

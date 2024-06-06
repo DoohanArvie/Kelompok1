@@ -81,4 +81,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/dashboarduser/uploadcv', [DashboardUserController::class, 'uploadCv'])->name('dashboarduser.uploadcv');
     Route::get('/dashboarduser/editCv/{id}', [DashboardUserController::class, 'editCv'])->name('dashboarduser.editCv');
     Route::put('/dashboarduser/updateCv/{id}', [DashboardUserController::class, 'updateCv'])->name('dashboarduser.updateCv');
+
+    // apply Job
+    Route::get('/applyjob/{slug}', [JoblistController::class, 'applyJob'])->name('applyjob');
+    Route::post('/applyjob/save/{slug}', [JoblistController::class, 'applyStore'])->name('applyStore');
 });

@@ -31,7 +31,6 @@
                             <tr>
                                 <th>No</th>
                                 <th>Company</th>
-                                <th>Website</th>
                                 <th>Email</th>
                                 <th>Cover</th>
                                 <th>Action</th>
@@ -42,7 +41,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $company->company }}</td>
-                                    <td>{{ $company->website }}</td>
                                     <td>{{ $company->email }}</td>
 
                                     <td>

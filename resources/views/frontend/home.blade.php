@@ -1,7 +1,6 @@
 @extends('frontend.layouts.main')
 
 @section('content')
-    </style>
     <main>
         <!-- slider Area Start-->
         <div class="slider-area">
@@ -207,6 +206,7 @@
 
 
         </div>
+
         <!-- How  Apply Process End-->
     </main>
 @endsection

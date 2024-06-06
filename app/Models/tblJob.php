@@ -35,6 +35,6 @@ class tblJob extends Model
 
     public function seekers()
     {
-        return $this->belongsToMany(User::class, 'tbl_jobseekers', 'tbl_job_id', 'users_id');
+        return $this->belongsToMany(User::class, 'tbl_jobseekers', 'tbl_job_id', 'tbl_user_id');
     }
 }

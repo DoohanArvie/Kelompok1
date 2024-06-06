@@ -1,0 +1,57 @@
+.container {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.apply-process {
+text-align: center;
+background-color: rgba(0, 0, 0, 0.7);
+padding: 40px;
+border-radius: 10px;
+max-width: 800px;
+margin: 0 auto;
+}
+
+.apply-process h2 {
+color: #ff3860;
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+.apply-process h1 {
+font-size: 36px;
+margin-bottom: 40px;
+}
+
+.steps {
+display: flex;
+justify-content: center;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+.step {
+background-color: rgba(255, 255, 255, 0.9);
+padding: 20px;
+border-radius: 10px;
+width: 200px;
+text-align: center;
+color: #333;
+margin-bottom: 20px;
+}
+
+.icon {
+font-size: 40px;
+margin-bottom: 10px;
+}
+
+.step h3 {
+font-size: 18px;
+margin-bottom: 10px;
+}
+
+.step p {
+font-size: 14px;
+}
