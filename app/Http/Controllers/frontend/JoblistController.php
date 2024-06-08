@@ -75,7 +75,7 @@ class JoblistController extends Controller
 
         DB::beginTransaction();
         try {
-            $job->seekers()->attach($user->id);
+            $job->seekers()->attach($user->id, ['created_at' => now(), 'updated_at' => now()]);
             DB::commit();
 
             return redirect()->route('job-detail', $job->slug)->with('toast_success', 'Anda Berhasil Mendaftar Pekejaan Ini');

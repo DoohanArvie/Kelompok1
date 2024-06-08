@@ -55,7 +55,7 @@ Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
         Route::resource('job', JobController::class);
         Route::resource('user', UserController::class);
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-        Route::get('/daftarpelamar', [PelamarController::class, 'index'])->name('daftarpelamar');
+        Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
     });
 });
 

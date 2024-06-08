@@ -46,7 +46,6 @@ class CategoryController extends Controller
         tblCategory::create($data);
 
         return redirect()->route('dashboard.category.index')->with('success', 'Category created successfully');
-        //
     }
 
     /**

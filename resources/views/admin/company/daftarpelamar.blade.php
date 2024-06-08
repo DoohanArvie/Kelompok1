@@ -37,19 +37,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+
+                                @forelse ($jobs as $job)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $job->name }}</td>
+                                        <td>{{ $job->email }}</td>
+                                        <td>{{ $job->pivot->created_at->format('D-m-y') }}</td>
+                                        <td>
+                                            @if ($job->pivot->status == 1)
+                                                <p class="text-success">Sudah di baca</p>
+                                            @else
+                                                <p class="text-danger">Belum di baca</p>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="" class="btn btn-primary">CV</a>
+                                        </td>
+                                        <td><a href="" class="btn btn-primary">Document</a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-warning fw-bold">status <i
+                                                    class="fa-solid fa-circle-check"></i></a>
+                                        </td>
+                                    </tr>
+                                @empty
                                     <td>1</td>
-                                    <td>Udin</td>
-                                    <td>udin@gmail.com</td>
-                                    <td>18-09-2024</td>
-                                    <td>Diterima</td>
-                                    <td>cv.pdf</td>
-                                    <td>p.pdf</td>
-                                    <td>
-                                        <a href="#" class="btn btn-warning fw-bold">status <i
-                                                class="fa-solid fa-circle-check"></i></a>
-                                    </td>
-                                </tr>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                    <td>no data</td>
+                                @endforelse
+
                             </tbody>
                         </table>
                     </div>

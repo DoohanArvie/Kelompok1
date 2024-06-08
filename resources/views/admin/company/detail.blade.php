@@ -71,7 +71,8 @@
 
                                                     </ul>
                                                 </div>
-                                                <a href="{{ route('dashboard.daftarpelamar') }}" class="btn btn-primary block btn-sm">Daftar
+                                                <a href="{{ route('dashboard.daftarpelamar', $job->slug) }}"
+                                                    class="btn btn-primary block btn-sm">Daftar
                                                     Pelamar</a>
                                                 <p class="pt-3 mb-0">{{ $job->created_at->diffForHumans() }}</p>
                                             </div>
