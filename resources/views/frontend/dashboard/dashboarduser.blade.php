@@ -90,10 +90,6 @@
 
                     </div>
 
-
-
-
-
                 </div>
 
             </div>
@@ -120,7 +116,8 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="lihatCvLabel">Update CV dan Dokumen Penting</h5>
+                                    <h5 class="modal-title text-center" id="lihatCvLabel">Update CV dan Dokumen Pendukung
+                                    </h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                                         style="border-style: none"><i class="ti-close" style="font-size: 20px"></i></button>
                                 </div>
@@ -140,7 +137,7 @@
                                         @enderror
                                     </div>
                                     <div class="mb-3">
-                                        <label for="document" class="form-label">Dokumen Penting</label>
+                                        <label for="document" class="form-label">Dokumen Pendukung</label>
                                         <iframe src="{{ asset('storage') . '/' . $cv->document }}" width="100%"
                                             height="300px"></iframe>
                                         <input class="form-control p-1 @error('document') is-invalid @enderror"
@@ -225,6 +222,59 @@
         </div>
 
 
-
     </div>
+
+    <section class="my_jobs mt-5">
+        <div class="container">
+            <h2 class="fw-bold mb-4">My Jobs</h2>
+            <div class="row">
+                @forelse ($my_jobs as $job)
+                    <div class="col-sm-6 col-lg-4 col-md-6 p-2 d-flex justify-content-center">
+                        <div class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
+                            <div class="job-items mb-3">
+                                <div class="company-img mb-3">
+                                    <a href="{{ route('job-detail', $job->slug) }}"><img class="img-thumbnail"
+                                            src="{{ Storage::url($job->Company->cover) }}" alt="" /></a>
+                                </div>
+                                <div class="job-tittle job-tittle2">
+                                    <a href="{{ route('job-detail', $job->slug) }}">
+                                        <h4>{{ $job->job }}</h4>
+                                    </a>
+                                    <ul class="text-secondary">
+                                        <li class="mb-2">
+                                            <i class="fas fa-building mr-2"></i>
+                                            {{ $job->company->company }}
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-map-marker-alt mr-2"></i>{{ $job->lokasi }}
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-money-bill-alt"></i>Rp.
+                                            {{ number_format((float) $job->salary, 2, '.', ',') }}
+                                        </li>
+                                        <li class="mb-2">
+                                            Status Lowongan:
+                                            {{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="items-link items-link2 f-right">
+                                <a href="javascript:;" class="text-danger"">
+                                    @if ($job->pivot->status == 1)
+                                        <span class="text-success">Sudah di baca</span>
+                                    @else
+                                        <span class="text-danger">Belum di baca</span>
+                                    @endif
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <p>Pekerjaan Tidak Tersedia.</p>
+                @endforelse
+            </div>
+        </div>
+    </section>
 @endsection

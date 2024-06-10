@@ -46,7 +46,7 @@ Route::get('/category/{slug}', [HomeController::class, 'category'])->name('categ
 
 
 
-Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
+Route::middleware(['auth', 'UserAccess:admin', ''])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
         Route::resource('profile', ProfileController::class);
