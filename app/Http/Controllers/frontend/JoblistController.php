@@ -17,7 +17,7 @@ class JoblistController extends Controller
     {
         return view('frontend.job_listing', [
             'total_jobs' => tblJob::count(),
-            'jobs' => tblJob::where('is_open', '1')->paginate(8)->withQueryString(),
+            'jobs' => tblJob::where('is_open', '1')->paginate(9)->withQueryString(),
             'categories' => tblCategory::all()
 
         ]);
@@ -93,21 +93,18 @@ class JoblistController extends Controller
 
     public function category($slug)
     {
-        $jobs = tblJob::whereHas('category', function (Builder $query) use ($slug) {
-            $query->where('slug', $slug);
-        })->paginate(9)->withQueryString();
+
         $total_jobs_category = tblJob::whereHas('category', function (Builder $query) use ($slug) {
             $query->where('slug', $slug);
         })->count();
         $all_categories = tblCategory::all();
         $category = tblCategory::where('slug', $slug)->first();
-        $job_categories = tblJob::where('tbl_category_id', $category->id)->where('is_open', '1')->paginate(8)->withQueryString();
+        $job_categories = tblJob::where('tbl_category_id', $category->id)->where('is_open', '1')->paginate(9)->withQueryString();
         return view('frontend.filtercategory', [
             'all_categories' => $all_categories,
             'category' => $category,
             'job_categories' => $job_categories,
             'total_jobs_category' => $total_jobs_category,
-            'jobs' => $jobs,
 
         ]);
     }

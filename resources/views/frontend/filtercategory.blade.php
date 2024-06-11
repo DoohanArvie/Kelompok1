@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Temukan Pekerjaanmu</h2>
+                                <h2>{{ $category->name }}</h2>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                                         aria-expanded="false">
-                                        Lihta Kategori
+                                        Lihat Kategori
                                     </button>
                                     <div class="dropdown-menu">
 
@@ -135,7 +135,7 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <h5>Pekerjaan "<b>{{ $keyword }}</b>" tidak ditemukan.</h5>
+                                        <h5>tidak ditemukan.</h5>
                                     @endforelse
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
-                            {{ $jobs->links() }}
+                            {{ $job_categories->links() }}
                         </div>
                     </div>
                 </div>
