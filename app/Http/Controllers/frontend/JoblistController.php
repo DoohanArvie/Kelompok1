@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Models\tblJob;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\tblCategory;
-use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use App\Models\tblJob;
+use App\Models\tblCategory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Validation\ValidationException;
 
 class JoblistController extends Controller
 {
@@ -16,7 +17,7 @@ class JoblistController extends Controller
     {
         return view('frontend.job_listing', [
             'total_jobs' => tblJob::count(),
-            'jobs' => tblJob::where('is_open', '1')->paginate(8)->withQueryString(),
+            'jobs' => tblJob::where('is_open', '1')->paginate(9)->withQueryString(),
             'categories' => tblCategory::all()
 
         ]);
@@ -40,6 +41,8 @@ class JoblistController extends Controller
             'keyword' => $keyword,
         ]);
     }
+
+
 
     public function applyJob($slug)
     {
@@ -87,6 +90,22 @@ class JoblistController extends Controller
             throw $error;
         }
     }
+
+    public function category($slug)
+    {
+
+        $total_jobs_category = tblJob::whereHas('category', function (Builder $query) use ($slug) {
+            $query->where('slug', $slug);
+        })->where('is_open', '1')->count();
+        $all_categories = tblCategory::all();
+        $category = tblCategory::where('slug', $slug)->first();
+        $job_categories = tblJob::where('tbl_category_id', $category->id)->where('is_open', '1')->paginate(9)->withQueryString();
+        return view('frontend.filtercategory', [
+            'all_categories' => $all_categories,
+            'category' => $category,
+            'job_categories' => $job_categories,
+            'total_jobs_category' => $total_jobs_category,
+
+        ]);
+    }
 }
-
-

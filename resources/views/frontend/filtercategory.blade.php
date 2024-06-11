@@ -7,12 +7,12 @@
         <!-- Hero Area Start-->
         <div class="slider-area">
             <div class="single-slider section-overly slider-height2 d-flex align-items-center"
-                data-background="assets/img/hero/about.jpg">
+                data-background={{ asset('assets/img/hero/about.jpg') }}>
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap text-center">
-                                <h2>Temukan Pekerjaanmu</h2>
+                                <h2>{{ $category->name }}</h2>
                             </div>
                         </div>
                     </div>
@@ -47,16 +47,8 @@
                                 <div class="small-section-tittle2">
                                     <h4>Kategori Pekerjaan</h4>
                                 </div>
-                                <!-- Select job items start -->
-                                {{-- <div class="select-job-items2 mb-5">
-                                    <select name="select">
-                                        <option value="">Semua Category</option>
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
 
-                                    </select>
-                                </div> --}}
+
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"
                                         aria-expanded="false">
@@ -66,9 +58,9 @@
 
                                         <li><a class="dropdown-item" href="{{ route('job-listing') }}">Semua Kategori</a>
                                         </li>
-                                        @foreach ($categories as $category)
+                                        @foreach ($all_categories as $single_category)
                                             <li><a class="dropdown-item"
-                                                    href="{{ route('job-category', $category->slug) }}">{{ $category->name }}</a>
+                                                    href="{{ route('job-category', $single_category->slug) }}">{{ $single_category->name }}</a>
                                             </li>
                                         @endforeach
 
@@ -88,7 +80,7 @@
                                 <!-- Count of Job list Start -->
                                 <div class="row justify-content-between ">
                                     <div class="count-job mb-35 text-center text-lg-start">
-                                        <span>{{ $total_jobs }} Pekerjaan ditemukan</span>
+                                        <span>{{ $total_jobs_category }} Pekerjaan "{{ $category->name }}" ditemukan</span>
                                     </div>
 
                                     <form action="{{ route('search') }}" method="GET" class="input-container">
@@ -100,9 +92,9 @@
                                 <!-- Count of Job list End -->
 
                                 <!-- single-job-content -->
-                                <div class="row">
-                                    @forelse ($jobs as $job)
-                                        <div class="col-sm-6 col-lg-4 col-md-6 p-2 d-flex justify-content-center">
+                                <div class="row ">
+                                    @forelse ($job_categories as $job)
+                                        <div class="col-lg-4 col-md-6 p-2 d-flex justify-content-center">
                                             <div
                                                 class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
                                                 <div class="job-items mb-3">
@@ -143,10 +135,9 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <p>Pekerjaan Tidak Tersedia.</p>
+                                        <h5>tidak ditemukan.</h5>
                                     @endforelse
                                 </div>
-
                             </div>
                         </section>
                         <!-- Featured_job_end -->
@@ -161,7 +152,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="single-wrap d-flex justify-content-center">
-                            {{ $jobs->links() }}
+                            {{ $job_categories->links() }}
                         </div>
                     </div>
                 </div>
