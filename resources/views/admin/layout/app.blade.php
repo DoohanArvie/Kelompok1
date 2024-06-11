@@ -31,7 +31,8 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
         z-index: 9999;
         display: flex;
         align-items: center;
