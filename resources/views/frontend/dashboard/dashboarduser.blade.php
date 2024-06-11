@@ -226,7 +226,7 @@
 
     <section class="my_jobs mt-5">
         <div class="container">
-            <h2 class="fw-bold mb-4">My Jobs</h2>
+            <h2 class="fw-bold mb-4">Daftar Perusahaan Yang di Lamar</h2>
             <div class="row">
                 @forelse ($my_jobs as $job)
                     <div class="col-sm-6 col-lg-4 col-md-6 p-2 d-flex justify-content-center">
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                 @empty
-                    <p>Pekerjaan Tidak Tersedia.</p>
+                    <p class="fw-bold">Belum ada perusahaan yang kamu lamar nih...</p>
                 @endforelse
             </div>
         </div>

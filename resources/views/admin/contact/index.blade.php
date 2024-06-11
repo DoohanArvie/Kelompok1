@@ -42,7 +42,7 @@
                                             <p class=" mb-0">{{ $contact->email }}</p>
                                         </td>
                                         <td>{{ $contact->pesan }}</td>
-                                        <td>{{ $contact->created_at->diffForHumans() }}</td>
+                                        <td>{{ $contact->created_at->format('Y-d-m  H:i') }}</td>
                                     </tr>
                                 @empty
                                     <tr>

@@ -15,8 +15,8 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('tbl_users')->updateOrInsert(
-            ['email' => 'admin@gmail.com'],
             [
+                'email' => 'admin@gmail.com',
                 'name' => 'admin',
                 'no_hp' => '08123456789',
                 'tgL_lahir' => '2003-08-11',
@@ -26,7 +26,8 @@ class UserSeeder extends Seeder
                 'gender' => 'laki-laki',
                 'password' => Hash::make('12345678'),
                 'created_at' => now(),
-            ]);
-        
+            ]
+        );
+
     }
 }

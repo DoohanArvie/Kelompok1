@@ -30,7 +30,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Auth::routes(['verify' => true]);
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/job-listing', [JoblistController::class, 'index'])->name('job-listing');
@@ -38,7 +37,7 @@ Route::get('/job-listing/{slug}', [JoblistController::class, 'show'])->name('job
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/contact-store', [HomeController::class, 'contactStore'])->name('contact.store');
-Route::post('/register', [RegisterController::class, 'store'])->name('register-proses');
+// Route::post('/register', [RegisterController::class, 'store'])->name('register-proses');
 Route::get('/search', [JoblistController::class, 'search'])->name('search');
 Route::get('/category/{slug}', [HomeController::class, 'category'])->name('category');
 
@@ -46,7 +45,7 @@ Route::get('/category/{slug}', [HomeController::class, 'category'])->name('categ
 
 
 
-Route::middleware(['auth', 'UserAccess:admin', ''])->group(function () {
+Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('admin');
         Route::resource('profile', ProfileController::class);
@@ -55,25 +54,30 @@ Route::middleware(['auth', 'UserAccess:admin', ''])->group(function () {
         Route::resource('job', JobController::class);
         Route::resource('user', UserController::class);
         Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
         Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
+        Route::patch('/jobseekers/{id}/update-status', [PelamarController::class, 'updateStatus'])->name('daftarpelamat.update');
+
+        Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
+        Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
     });
 });
 
 
 
 //  ---------------validating email--------------------
-Route::get('/email/verify', function () {
-    return view('auth.verify');
-})->middleware('auth')->name('verification.notice');
+// Route::get('/email/verify', function () {
+//     return view('auth.verify');
+// })->middleware('auth')->name('verification.notice');
 
 
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+// Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//     $request->fulfill();
 
-    return redirect()->route('dashboarduser');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+//     return redirect()->route('dashboarduser');
+// })->middleware(['auth', 'signed'])->name('verification.verify');
 
-
+Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
     Route::get('/dashboarduser/edit/{id}', [DashboardUserController::class, 'edit'])->name('dashboarduser.edit');

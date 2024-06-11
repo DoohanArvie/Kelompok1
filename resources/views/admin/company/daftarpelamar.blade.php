@@ -43,7 +43,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $job->name }}</td>
                                         <td>{{ $job->email }}</td>
-                                        <td>{{ $job->pivot->created_at->format('D-m-y') }}</td>
+                                        <td>{{ $job->pivot->created_at->format('Y-m-d') }}</td>
                                         <td>
                                             @if ($job->pivot->status == 1)
                                                 <p class="text-success">Sudah di baca</p>
@@ -52,13 +52,21 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="" class="btn btn-primary">CV</a>
+                                            <a href="{{ route('dashboard.download_cv', $job->cvs->id) }}"
+                                                class="btn btn-primary">CV</a>
                                         </td>
-                                        <td><a href="" class="btn btn-primary">Document</a>
+                                        <td><a href="{{ route('dashboard.download_document', $job->cvs->id) }}"
+                                                class="btn btn-primary">Document</a>
                                         </td>
                                         <td>
-                                            <a href="#" class="btn btn-warning fw-bold">status <i
-                                                    class="fa-solid fa-circle-check"></i></a>
+                                            <form class="pt-3 pb-0"
+                                                action="{{ route('dashboard.daftarpelamat.update', $job->pivot->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-success fw-bold">Status <i
+                                                        class="fa-solid fa-circle-check"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @empty

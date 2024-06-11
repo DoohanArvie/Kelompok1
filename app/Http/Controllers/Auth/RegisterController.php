@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -31,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboarduser';
 
     /**
      * Create a new controller instance.
@@ -53,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:tbl_users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'no_hp' => ['required'],
             'address' => ['required', 'string', "max:255"],
@@ -79,50 +77,38 @@ class RegisterController extends Controller
             'role' => 'user',
             'tgl_lahir' => $data['tgl_lahir'],
             'gender' => $data['gender'],
-            'foto' => 'default.jpg',
         ]);
     }
 
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:tbl_users',
-            'no_hp' => 'required|string|max:15',
-            'tgl_lahir' => 'required|date|before:today',
-            'address' => 'required|string|max:255',
-            'gender' => 'required|string',
-            'password' => ['required', 'string', 'min:8', 'confirmed']
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $validatedData = $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => ['required', 'string', 'email', 'max:255', new UniqueEmailRule],
+    //         'no_hp' => 'required|string|max:15',
+    //         'tgl_lahir' => 'required|date|before:today',
+    //         'address' => 'required|string|max:255',
+    //         'gender' => 'required|string',
+    //         'password' => ['required', 'string', 'min:8', 'confirmed']
+    //     ]);
 
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['no_hp'] = $request->no_hp;
-        $data['tgl_lahir'] = $request->tgl_lahir;
-        $data['address'] = $request->address;
-        $data['gender'] = $request->gender;
-        $data['password'] = Hash::make($request->password);
-        $data['role'] = 'user';
+    //     $user = User::create([
+    //         'name' => $validatedData['name'],
+    //         'email' => $validatedData['email'],
+    //         'password' => Hash::make($validatedData['password']),
+    //         'no_hp' => $validatedData['no_hp'],
+    //         'address' => $validatedData['address'],
+    //         'role' => 'user',
+    //         'tgl_lahir' => $validatedData['tgl_lahir'],
+    //         'gender' => $validatedData['gender'],
+    //     ]);
 
-        $create = User::create($data);
+    //     event(new Registered($user));
 
-        event(new Registered($create));
+    //     Auth::login($user);
 
-        Auth::login($create);
+    //     return redirect('/email/verify');
 
-        return redirect('/email/verify');
 
-        // if ($create) { // jika berhasil maka loginkan
-        //     Auth::login($create);
-
-        //     if (Auth::user()->role == 'admin') {
-        //         return '/dashboard';
-
-        //     } else {
-        //         return '/dashboarduser';
-        //     }
-        // }
-
-        // return redirect()->route('register');
-    }
+    // }
 }
