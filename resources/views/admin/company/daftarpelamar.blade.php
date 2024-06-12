@@ -52,11 +52,20 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('dashboard.download_cv', $job->cvs->id) }}"
-                                                class="btn btn-primary">CV</a>
+                                            @if (isset($job->cvs) && isset($job->cvs->id))
+                                                <a href="{{ route('dashboard.download_cv', $job->cvs->id) }}"
+                                                    class="btn btn-primary">CV</a>
+                                            @else
+                                                <span class="text-danger">CV not available</span>
+                                            @endif
                                         </td>
-                                        <td><a href="{{ route('dashboard.download_document', $job->cvs->id) }}"
-                                                class="btn btn-primary">Document</a>
+                                        <td>
+                                            @if (isset($job->cvs) && isset($job->cvs->id))
+                                                <a href="{{ route('dashboard.download_document', $job->cvs->id) }}"
+                                                    class="btn btn-primary">Document</a>
+                                            @else
+                                                <span class="text-danger">Document not available</span>
+                                            @endif
                                         </td>
                                         <td>
                                             <form class="pt-3 pb-0"
