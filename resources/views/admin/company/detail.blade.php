@@ -29,8 +29,11 @@
                         <div class="col-md-6 text-center" style="padding: 0 15px;">
                             <h5>Nama Company : </h5>
                             <h3>{{ $company->company }}</h3>
-                            <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
-                            <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
+                            <div class="mt-3 text-center">
+                                <h5>About Company</h5>
+                                <p>{{ $company->about }}</p>
+                            </div>
+
 
                         </div>
 
@@ -39,20 +42,21 @@
                             <h5>Cover Perusahaan</h5>
                             <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"
                                 alt="">
+                            <div class="mt-3">
+                                <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
+                                <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
+                            </div>
                         </div>
-                        <div class="col-md-6  text-center">
-                            <h5>About Company</h5>
-                            <p>{{ $company->about }}</p>
-                        </div>
+
                     </div>
 
                     <div class="row mt-5">
 
                         @forelse ($jobs as $job)
-                            <div class="col-md-4 col-sm-12">
+                            <div class="col-lg-4 col-md-6 col-sm-12">
                                 <a href="{{ route('dashboard.job.show', $job->id) }}">
-                                    <div class="card bg-dark">
-                                        <div class="card-content">
+                                    <div class="card bg-dark shadow">
+                                        <div class="card-content" style="height: 500px">
                                             <img style="height: 230px !important"
                                                 class="card-img-top img-fluid object-fit-cover"
                                                 src="{{ Storage::url($company->cover) }}" alt="Card image cap" />
@@ -61,7 +65,7 @@
 
                                                 <div class="job-tittle mb-3 ">
 
-                                                    <ul class="d-flex justify-content-between list-unstyled">
+                                                    <ul class=" justify-content-between list-unstyled">
 
                                                         <li> <i class="bi bi-bookmark-dash-fill"></i>
                                                             {{ $job->Category->name }}</li>

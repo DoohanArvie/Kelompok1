@@ -87,8 +87,8 @@
     {{-- <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script> --}}
     <script>
-        // Event listener untuk menampilkan preloader saat tautan diklik
-        document.querySelectorAll('a').forEach(function(link) {
+        // Event listener untuk menampilkan preloader saat tautan sidebar diklik
+        document.querySelectorAll('.sidebar-link').forEach(function(link) {
             link.addEventListener('click', function() {
                 const preloader = document.getElementById('preloader');
                 if (preloader) {
@@ -113,8 +113,6 @@
             }
         });
     </script>
-
-
 </body>
 
 </html>
