@@ -25,16 +25,14 @@
         <section class="section">
             <div class="card ">
                 <div class="card-body">
-                    <div class="row" style="display: flex; justify-content: space-between; ">
+                    <div class="row mb-5" style="display: flex; justify-content: space-between; ">
                         <div class="col-md-6 text-center" style="padding: 0 15px;">
                             <h5>Nama Company : </h5>
-                            <h3>{{ $company->company }}</h3>
+                            <h3 class="mb-5">{{ $company->company }}</h3>
                             <div class="mt-3 text-center">
                                 <h5>About Company</h5>
                                 <p>{{ $company->about }}</p>
                             </div>
-
-
                         </div>
 
 
@@ -42,7 +40,7 @@
                             <h5>Cover Perusahaan</h5>
                             <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"
                                 alt="">
-                            <div class="mt-3">
+                            <div class="mt-5">
                                 <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
                                 <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
                             </div>
@@ -50,7 +48,7 @@
 
                     </div>
 
-                    <div class="row mt-5">
+                    <div class="row mt-5 ">
 
                         @forelse ($jobs as $job)
                             <div class="col-lg-4 col-md-6 col-sm-12">
