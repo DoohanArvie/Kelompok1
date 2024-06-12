@@ -63,6 +63,10 @@ Route::middleware(['auth', 'UserAccess:admin'])->group(function () {
 
         Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
         Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
+
+        // update status job
+        Route::post('/updatejob/{id}/close', [JobController::class, 'UpdateStatusClose'])->name('updatestatusclose');
+        Route::post('/updatejob/{id}/open', [JobController::class, 'updateStatusOpen'])->name('updatestatusopen');
     });
 });
 

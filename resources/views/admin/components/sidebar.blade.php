@@ -55,15 +55,14 @@
                 </li>
 
 
-                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.company.index' ? 'active' : '' }}">
+                <li class="sidebar-item {{ Route::is('dashboard.company.*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.company.index') }}" class='sidebar-link'>
                         <i class="bi bi-buildings"></i>
                         <span>Companies</span>
                     </a>
                 </li>
 
-                <li
-                    class="sidebar-item  {{ Route::currentRouteName() === 'dashboard.category.index' ? 'active' : '' }}">
+                <li class="sidebar-item  {{ Route::is('dashboard.category.*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.category.index') }}" class='sidebar-link'>
                         <i class="bi bi-bookmark-dash-fill"></i>
                         <span>Categories</span>
@@ -71,14 +70,14 @@
                 </li>
 
 
-                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.job.index' ? 'active' : '' }}">
+                <li class="sidebar-item {{ Route::is('dashboard.job.*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.job.index') }}" class='sidebar-link'>
                         <i class="bi bi-person-workspace"></i>
                         <span>Jobs</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.user.index' ? 'active' : '' }}">
+                <li class="sidebar-item {{ Route::is('dashboard.user.*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard.user.index') }}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>User Managements</span>

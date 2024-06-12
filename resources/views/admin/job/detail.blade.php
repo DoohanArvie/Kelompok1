@@ -97,6 +97,24 @@
                                         <div class="fs-5"> {!! $job->benefit !!}</div>
                                     </div>
                                 </div>
+
+                                <div class="pt-4">
+                                    @if ($job->is_open)
+                                        <form action="{{ route('dashboard.updatestatusclose', $job->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger" style="border-radius: 8px">Close
+                                                Job</button>
+                                        </form>
+                                    @else
+                                        <form action="{{ route('dashboard.updatestatusopen', $job->id) }}" method="POST">
+                                            @csrf
+                                            <button class="btn btn-success" style="border-radius: 8px">Open Job</button>
+                                        </form>
+                                    @endif
+
+
+
+                                </div>
                             </div>
 
 

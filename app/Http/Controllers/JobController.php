@@ -16,6 +16,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
+        // $jobs = tblJob::with(['category', 'company'])->where('tbl_company_id', 4)->orderBy('created_at', 'DESC')->get();
         return view('admin.job.index', compact('jobs'));
     }
 
@@ -129,5 +130,20 @@ class JobController extends Controller
             ]);
             throw $error;
         }
+    }
+    public function UpdateStatusClose($id)
+    {
+        $job = tblJob::findOrFail($id);
+        $job->is_open = 0;
+        $job->save();
+        return redirect()->back()->with('success', 'Job closed successfully');
+    }
+
+    public function updateStatusOpen($id)
+    {
+        $job = tblJob::findOrFail($id);
+        $job->is_open = 1;
+        $job->save();
+        return redirect()->back()->with('success', 'Job opened successfully');
     }
 }

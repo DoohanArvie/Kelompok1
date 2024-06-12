@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="d-flex justify-content-end">
-                    <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary">Tambah User <i
+                    <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary mb-3">Tambah User <i
                             class="fa-solid fa-user-plus"></i></a>
                 </div>
 
