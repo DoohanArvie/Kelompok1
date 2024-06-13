@@ -21,7 +21,7 @@ class DashboardUserController extends Controller
     {
 
         $user = Auth::user();
-        $my_jobs = $user->Jobs()->with(['category', 'company'])->orderBy('id', 'DESC')->get();
+        // $my_jobs = $user->Jobs()->with(['category', 'company'])->orderBy('id', 'DESC')->get();
         $cv = tblCv::where('tbl_user_id', $user->id)->first();
         // $companies = tblCompany::latest()->limit(6)->get();
         // $categories = tblCategory::orderBy('id', 'DESC')->get();
@@ -29,7 +29,7 @@ class DashboardUserController extends Controller
         return view('frontend.dashboard.dashboarduser', [
             'cv' => $cv,
             'user' => $user,
-            'my_jobs' => $my_jobs,
+            // 'my_jobs' => $my_jobs,
         ]);
     }
 

@@ -26,8 +26,19 @@ class UserSeeder extends Seeder
                 'gender' => 'laki-laki',
                 'password' => Hash::make('12345678'),
                 'created_at' => now(),
+            ],
+            [
+                'email' => 'user@gmail.com',
+                'name' => 'user',
+                'no_hp' => '08123456789',
+                'tgL_lahir' => '2003-08-11',
+                'address' => 'Irian jaya barat',
+                'foto' => 'avatars/admin.jpg',
+                'role' => 'user',
+                'gender' => 'laki-laki',
+                'password' => Hash::make('12345678'),
+                'created_at' => now(),
             ]
         );
-
     }
 }
