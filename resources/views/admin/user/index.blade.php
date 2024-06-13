@@ -60,7 +60,10 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="3">Data Kosong</td>
+                                <td>Data Kosong</td>
+                                <td>Data Kosong</td>
+                                <td>Data Kosong</td>
+                                <td>Data Kosong</td>
                             </tr>
                         @endforelse
 

@@ -16,13 +16,12 @@ class UserSeeder extends Seeder
     {
         DB::table('tbl_users')->updateOrInsert(
             [
-                'email' => 'admin@gmail.com',
-                'name' => 'admin',
+                'email' => 'superadmin@gmail.com',
+                'name' => 'owner',
                 'no_hp' => '08123456789',
-                'tgL_lahir' => '2003-08-11',
+                'tgL_lahir' => '1997-03-11',
                 'address' => 'Irian jaya barat',
-                'foto' => 'avatars/admin.jpg',
-                'role' => 'admin',
+                'role' => 'superadmin',
                 'gender' => 'laki-laki',
                 'password' => Hash::make('12345678'),
                 'created_at' => now(),

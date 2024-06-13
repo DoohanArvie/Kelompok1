@@ -15,7 +15,10 @@ use Illuminate\Validation\ValidationException;
 
 class DashboardUserController extends Controller
 {
-    // sekalian untuk halaman user dashboardnya
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
 
     public function index()
     {

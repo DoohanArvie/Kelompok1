@@ -45,30 +45,41 @@ Route::get('/category/{slug}', [HomeController::class, 'category'])->name('categ
 Route::get('job-listing/category/{slug}', [JoblistController::class, 'category'])->name('job-category');
 
 
-
-
-
 Route::middleware(['auth'])->group(function () {
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('admin');
-        Route::resource('profile', ProfileController::class);
-        Route::resource('company', CompanyController::class);
-        Route::resource('category', CategoryController::class);
-        Route::resource('job', JobController::class);
-        Route::resource('user', UserController::class);
-        Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-        Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
-        Route::patch('/jobseekers/{id}/update-status', [PelamarController::class, 'updateStatus'])->name('daftarpelamat.update');
+        // Routes accessible by admin and superadmin
+        Route::middleware('UserAccess:admin,superadmin')->group(function () {
+            Route::get('/', [DashboardController::class, 'index'])->name('admin');
+            Route::resource('profile', ProfileController::class);
+            Route::resource('company', CompanyController::class);
+            Route::resource('job', JobController::class);
 
-        Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
-        Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
+            Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
 
-        // update status job
-        Route::post('/updatejob/{id}/close', [JobController::class, 'UpdateStatusClose'])->name('updatestatusclose');
-        Route::post('/updatejob/{id}/open', [JobController::class, 'updateStatusOpen'])->name('updatestatusopen');
+            Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
+            Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
+
+            // update status pelamar
+            Route::patch('/jobseekers/{id}/update-status', [PelamarController::class, 'updateStatus'])->name('daftarpelamat.update');
+            // update status job
+            Route::post('/updatejob/{id}/close', [JobController::class, 'UpdateStatusClose'])->name('updatestatusclose');
+            Route::post('/updatejob/{id}/open', [JobController::class, 'updateStatusOpen'])->name('updatestatusopen');
+        });
+
+        // Routes only by superadmin
+        Route::middleware('UserAccess:superadmin')->group(function () {
+            Route::resource('category', CategoryController::class);
+            Route::resource('user', UserController::class);
+            Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+        });
+
     });
 });
+
+
+
+
 
 
 

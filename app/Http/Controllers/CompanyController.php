@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tblCompany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
@@ -15,8 +16,16 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+
+        if ($user->role === 'superadmin') {
+            $companies = tblCompany::orderBy('created_at', 'desc')->get();
+        } else {
+            $companies = tblCompany::where('id', $user->tbl_company_id)->get();
+        }
+
         return view('admin.company.index', [
-            'companies' => tblCompany::orderBy('created_at', 'desc')->get(),
+            'companies' => $companies,
         ]);
     }
 
@@ -43,15 +52,33 @@ class CompanyController extends Controller
 
         DB::beginTransaction();
         try {
-            if ($request->hasFile('cover')) {
-                $coverPath = $request->file('cover')->store('company_covers', 'public');
-                $data['cover'] = $coverPath;
+
+            // Buat atau dapatkan objek perusahaan
+            $company = auth()->user()->Company;
+
+            if (!$company) {
+                $company = new tblCompany();
             }
 
-            $data['about'] = $request->about;
-            $data['website'] = $request->website;
-            $data['email'] = $request->email;
-            tblCompany::create($data);
+            if ($request->hasFile('cover')) {
+                $coverPath = $request->file('cover')->store('company_covers', 'public');
+                $company['cover'] = $coverPath;
+            }
+
+            // Isi data perusahaan
+            $company->company = $data['company'];
+            $company->email = $data['email']; // pastikan email diisi dari form atau kosongkan jika tidak ada
+            $company->about = $data['about'];
+            $company->website = $data['website'];
+
+            // Simpan perusahaan
+            $company->save();
+
+            // Hubungkan pengguna dengan perusahaan
+            $user = Auth::user();
+            $user->tbl_company_id = $company->id;
+            $user->save();
+
             DB::commit();
 
             return redirect()->route('dashboard.company.index')->with('success', 'Company created successfully');

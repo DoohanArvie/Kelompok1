@@ -10,8 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::table('tbl_jobseekers', function (Blueprint $table) {
-            $table->boolean('status')->default(0)->after('tbl_job_id');
+        Schema::table('tbl_users', function (Blueprint $table) {
+            $table->foreignId('tbl_company_id')->nullable()->after('password')->constrained('tbl_companies')->onDelete('cascade');
+
         });
     }
 
@@ -20,8 +21,8 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::table('tbl_jobseekers', function (Blueprint $table) {
-            $table->dropColumn('status');
+        Schema::table('tbl_users', function (Blueprint $table) {
+            $table->dropColumn(['tbl_company_id']);
         });
     }
 };

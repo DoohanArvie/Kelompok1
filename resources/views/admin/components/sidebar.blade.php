@@ -62,12 +62,15 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item  {{ Route::is('dashboard.category.*') ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.category.index') }}" class='sidebar-link'>
-                        <i class="bi bi-bookmark-dash-fill"></i>
-                        <span>Categories</span>
-                    </a>
-                </li>
+                @if (auth()->user()->role == 'superadmin')
+                    <li class="sidebar-item  {{ Route::is('dashboard.category.*') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.category.index') }}" class='sidebar-link'>
+                            <i class="bi bi-bookmark-dash-fill"></i>
+                            <span>Categories</span>
+                        </a>
+                    </li>
+                @else
+                @endif
 
 
                 <li class="sidebar-item {{ Route::is('dashboard.job.*') ? 'active' : '' }}">
@@ -77,19 +80,26 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Route::is('dashboard.user.*') ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.user.index') }}" class='sidebar-link'>
-                        <i class="bi bi-people-fill"></i>
-                        <span>User Managements</span>
-                    </a>
-                </li>
+                @if (auth()->user()->role == 'superadmin')
+                    <li class="sidebar-item {{ Route::is('dashboard.user.*') ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.user.index') }}" class='sidebar-link'>
+                            <i class="bi bi-people-fill"></i>
+                            <span>User Managements</span>
+                        </a>
+                    </li>
+                @else
+                @endif
 
-                <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.contact' ? 'active' : '' }}">
-                    <a href="{{ route('dashboard.contact') }}" class='sidebar-link'>
-                        <i class="fa-regular fa-id-card"></i>
-                        <span>Contacts</span>
-                    </a>
-                </li>
+                @if (auth()->user()->role == 'superadmin')
+                    <li class="sidebar-item {{ Route::currentRouteName() === 'dashboard.contact' ? 'active' : '' }}">
+                        <a href="{{ route('dashboard.contact') }}" class='sidebar-link'>
+                            <i class="fa-regular fa-id-card"></i>
+                            <span>Contacts</span>
+                        </a>
+                    </li>
+                @else
+                @endif
+
 
                 <li class="sidebar-item ">
                     {{-- dpt  dari views layouts app.blade.php --}}

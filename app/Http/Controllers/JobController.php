@@ -15,7 +15,15 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
+
+        if (auth()->user()->role === 'superadmin') {
+            $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
+
+        } else {
+            $jobs = tblJob::with(['company', 'category'])->where('tbl_company_id', auth()->user()->tbl_company_id)->get();
+
+        }
+
         // $jobs = tblJob::with(['category', 'company'])->where('tbl_company_id', 4)->orderBy('created_at', 'DESC')->get();
         return view('admin.job.index', compact('jobs'));
     }

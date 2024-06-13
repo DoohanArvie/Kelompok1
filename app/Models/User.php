@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -28,6 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'gender',
         'password',
+        'tbl_company_id',
     ];
 
     protected $table = 'tbl_users';
@@ -61,5 +63,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function cvs()
     {
         return $this->hasOne(tblCv::class, 'tbl_user_id', 'id');
+    }
+
+    public function Company(): BelongsTo
+    {
+        return $this->belongsTo(tblCompany::class);
     }
 }

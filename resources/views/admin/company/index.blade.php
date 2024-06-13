@@ -64,7 +64,11 @@
 
                             </tbody>
                         @empty
-                            <p>Belum ada perusahaan</p>
+                            <td>No data</td>
+                            <td>No data</td>
+                            <td>No data</td>
+                            <td>No data</td>
+                            <td>No data</td>
                         @endforelse
                     </table>
                 </div>

@@ -59,7 +59,11 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">No jobs available</td>
+                                    <td>No jobs </td>
+                                    <td>No jobs </td>
+                                    <td>No jobs </td>
+                                    <td>No jobs </td>
+                                    <td>No jobs </td>
                                 </tr>
                             @endforelse
                         </tbody>

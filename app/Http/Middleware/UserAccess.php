@@ -13,11 +13,14 @@ class UserAccess
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if (auth()->user()->role != $role) { // jk user rolenya tdk sama dengan 1 maka dia tdk bsa akses categories
+        $userRole = auth()->user()->role;
+
+        if (!in_array($userRole, $roles)) {
             return abort(404); // forbidden
         }
+
         return $next($request);
     }
 }

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     public function index()
     {
         $jobs = tblJob::where('is_open', '1')->latest()->limit(6)->get();
