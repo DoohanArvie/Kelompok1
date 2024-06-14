@@ -6503,11 +6503,20 @@ form.search-box .search-form a {
 
 
 @media (max-width: 768px) {
+    .company-logo {
+        width: 200px; 
+        height: 130px; 
+        display: block;
+        margin-top: 50px; 
+        padding-left: 20px;
+    }
     .mobile-column {
         display: flex;
         flex-direction: column;
+        padding-right: 25px;
     }
     .mobile-column p {
         margin-top: 10px; 
+        padding-right: 25px;
     }
 }
