@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tblCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -11,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = tblCategory::all();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -19,6 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        return view('admin.category.create');
         //
     }
 
@@ -27,7 +32,20 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+        ]);
+
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('category_covers', 'public');
+            $data['cover'] = $coverPath;
+        }
+
+        $data['slug'] = Str::slug($data['name']);
+        tblCategory::create($data);
+
+        return redirect()->route('dashboard.category.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -43,6 +61,10 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
+        return view('admin.category.edit', [
+            'category' => tblCategory::findOrFail($id),
+        ]);
+
         //
     }
 
@@ -51,6 +73,27 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        $data = $request->validate([
+            'name' => 'required',
+            'cover' => 'image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+        ]);
+
+        $category = tblCategory::findOrFail($id);
+
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('category_covers', 'public');
+            if ($category->cover) {
+                Storage::disk('public')->delete($category->cover);
+            }
+            $data['cover'] = $coverPath;
+        }
+
+        $data['slug'] = Str::slug($data['name']);
+
+        $category->update($data);
+
+        return redirect()->route('dashboard.category.index')->with('success', 'Category updated successfully');
         //
     }
 
@@ -59,6 +102,13 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        $category = tblCategory::findOrFail($id);
+        if ($category->cover) {
+            Storage::disk('public')->delete($category->cover);
+        }
+        $category->delete();
+        return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully');
+
         //
     }
 }
