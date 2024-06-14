@@ -2601,7 +2601,6 @@ hr {
     color: #fff;
 }
 
-
 .job-card {
     margin-left: 10px;
     margin-right: 10px;
@@ -6483,4 +6482,32 @@ form.search-box .search-form a {
     }
 }
 
+@media (max-width: 768px) {
+    .mobile-search-form .input-form input {
+        font-size: 14px !important;
+        padding: 10px 2px !important;
+        height: 40px !important;
+        border-radius: 5px !important;
+        text-indent: 10px;
+    }
+    .mobile-search-form .input-form input::placeholder {
+        font-size: 14px;
+    }
+    .mobile-search-form .search-form button {
+        font-size: 14px;
+        padding: 1px 2px;
+        height: 40px;
+        border-radius: 5px;
+    }
+}
 
+
+@media (max-width: 768px) {
+    .mobile-column {
+        display: flex;
+        flex-direction: column;
+    }
+    .mobile-column p {
+        margin-top: 10px; 
+    }
+}

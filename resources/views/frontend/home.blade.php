@@ -20,9 +20,9 @@
                         <div class="row">
                             <div class="col-xl-8">
                                 <!-- form -->
-                                <form action="{{ route('search') }}" method="GET" class="search-box">
+                                <form action="{{ route('search') }}" method="GET" class="search-box mobile-search-form">
                                     <div class="input-form">
-                                        <input type="text" name="keyword" placeholder="Cari Pekerjaan impianmu" />
+                                        <input type="text" name="keyword" placeholder="Cari Pekerjaan impianmu..." />
                                     </div>
                                     <div class="search-form">
                                         <button type="submit">Cari</button>
