@@ -106,7 +106,7 @@
                                 <a href="{{ route('applyjob', $job->slug) }}" class="btn">Lamar Sekarang</a>
                             </div>
                         </div>
-                        <div class="post-details4 mb-50">
+                        <div class="post-details4 mb-50 card p-4">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>Informasi Perusahaan</h4>
