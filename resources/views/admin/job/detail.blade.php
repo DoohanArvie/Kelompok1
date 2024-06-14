@@ -67,7 +67,7 @@
                                 <div class="col-lg-6">
                                     <div class="form-group mb-3">
                                         <h5 class="fs-4 mb-2 ">Salary <i class="fa-solid fa-laptop-file"></i></h5>
-                                        <div class="fs-6"> {{ $job->salary }}</div>
+                                        <div class="fs-6"> {{ number_format((float) $job->salary, 0, '.', '.') }}</div>
                                     </div>
                                 </div>
                             </div>

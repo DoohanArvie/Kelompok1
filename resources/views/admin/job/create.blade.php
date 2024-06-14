@@ -70,8 +70,8 @@
                             <div class="form-group">
                                 <label for="tbl_company_id">Company</label>
                                 <select name="tbl_company_id" class="form-control" id="tbl_company_id" required>
-                                    <option>Pilih Company Job</option>
-                                    @foreach (App\Models\tblCompany::all() as $company)
+                                    <option selected hidden>Pilih Company </option>
+                                    @foreach ($companies as $company)
                                         <option value="{{ $company->id }}">{{ $company->company }}</option>
                                     @endforeach
                                 </select>
