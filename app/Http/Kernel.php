@@ -70,5 +70,4 @@ class Kernel extends HttpKernel
         'check.company' => \App\Http\Middleware\CheckCompany::class,
     ];
 
-
 }
