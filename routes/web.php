@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('category', CategoryController::class);
             Route::resource('user', UserController::class);
             Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+            Route::delete('/contact_delete/{id}', [ContactController::class, 'destroy'])->name('contactDelete');
         });
 
     });
