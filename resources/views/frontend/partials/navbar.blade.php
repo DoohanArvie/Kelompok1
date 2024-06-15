@@ -7,7 +7,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="javascript:;"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo"
+                            <a href="#"><img src="{{ asset('assets/img/logo/logo.png') }}" alt="logo"
                                     width="100" height="90" /></a>
                         </div>
                     </div>
