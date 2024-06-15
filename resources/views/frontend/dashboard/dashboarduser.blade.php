@@ -115,7 +115,8 @@
                 </div>
 
                 {{-- modal update --}}
-                <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true">
+                <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true"
+                    style="z-index: 999999;">
                     <div class="modal-dialog modal-dialog-centered justify-content-center align-items-center"
                         style="max-width: 800px;">
                         <div class="modal-content" style="border-radius: 12px;">
@@ -256,7 +257,8 @@
 
 
         {{-- Upload Cv Modal --}}
-        <div class="modal fade" id="uploadCv" tabindex="-1" aria-labelledby="uploadCvLabel" aria-hidden="true">
+        <div class="modal fade" id="uploadCv" tabindex="-1" aria-labelledby="uploadCvLabel" aria-hidden="true"
+            style="z-index: 99999;">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 12px">
                     <form action="{{ route('dashboarduser.uploadcv') }}" method="POST" enctype="multipart/form-data">
