@@ -67,8 +67,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle white-text text-center">
-                            <span>Apply process</span>
-                            <h2>How it works</h2>
+                            <span>Proses Pendaftaran</span>
+                            <h2>Bagimana cara kerjanya</h2>
                         </div>
                     </div>
                 </div>
@@ -80,10 +80,10 @@
                                 <span class="flaticon-search"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>1. Search a job</h5>
+                                <h5>1. Mencari Pekerjaan</h5>
                                 <p>
-                                    Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod
-                                    tempor incididunt ut laborea.
+                                    Website kami adalah gerbang menuju karir yang Anda impikan. Jelajahi ribuan lowongan
+                                    terbaru dari berbagai perusahaan ternama di berbagai industri.
                                 </p>
                             </div>
                         </div>
@@ -94,10 +94,10 @@
                                 <span class="flaticon-curriculum-vitae"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>2. Apply for job</h5>
+                                <h5>2. Melamar Pekerjaan</h5>
                                 <p>
-                                    Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod
-                                    tempor incididunt ut laborea.
+                                    Setelah menemukan lowongan impian, lamarlah dengan mudah melalui website kami. Ikuti
+                                    panduan langkah demi langkah untuk membuat lamaran yang menarik.
                                 </p>
                             </div>
                         </div>
@@ -108,16 +108,18 @@
                                 <span class="flaticon-tour"></span>
                             </div>
                             <div class="process-cap">
-                                <h5>3. Get your job</h5>
+                                <h5>3. Dapatkan Pekerjaan</h5>
                                 <p>
-                                    Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod
-                                    tempor incididunt ut laborea.
+                                    Mencari pekerjaan baru bisa menjadi proses yang menantang, tapi dengan persiapan dan
+                                    strategi yang tepat, Anda dapat membuka pintu menuju karir Anda.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
         <!-- How  Apply Process End-->
     </main>

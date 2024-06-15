@@ -6539,3 +6539,7 @@ form.search-box .search-form a {
         padding-right: 25px;
     }
 }
+
+.z-index{
+    z-index: 9000;
+}

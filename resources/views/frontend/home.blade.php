@@ -173,7 +173,7 @@
                                 <h5>2. Melamar Pekerjaan</h5>
                                 <p>
                                     Setelah menemukan lowongan impian, lamarlah dengan mudah melalui website kami. Ikuti
-                                    panduan langkah demi langkah untuk membuat lamaran yang menarik dan profesional.
+                                    panduan langkah demi langkah untuk membuat lamaran yang menarik.
                                 </p>
                             </div>
                         </div>
@@ -187,7 +187,7 @@
                                 <h5>3. Dapatkan Pekerjaan</h5>
                                 <p>
                                     Mencari pekerjaan baru bisa menjadi proses yang menantang, tapi dengan persiapan dan
-                                    strategi yang tepat, Anda dapat membuka pintu menuju karir yang Anda impikan.
+                                    strategi yang tepat, Anda dapat membuka pintu menuju karir Anda.
                                 </p>
                             </div>
                         </div>
