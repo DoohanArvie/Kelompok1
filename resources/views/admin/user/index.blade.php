@@ -29,46 +29,48 @@
                     <a href="{{ route('dashboard.user.create') }}" class="btn btn-primary mb-3">Tambah User <i
                             class="fa-solid fa-user-plus"></i></a>
                 </div>
+                <div class="table-responsive">
 
-                <table class="table table-striped text-center table1" id="userTable">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($users as $user)
+                    <table class="table table-striped text-center table1" id="userTable">
+                        <thead>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td>
-
-                                    <form action="{{ route('dashboard.user.destroy', $user->id) }}" class="d-inline"
-                                        method="POST"
-                                        onsubmit="return confirm('Are you sure you want to delete this User?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i
-                                                class="fa-solid fa-trash-can"></i></button>
-                                    </form>
-
-                                </td>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Action</th>
                             </tr>
-                        @empty
-                            <tr>
-                                <td>Data Kosong</td>
-                                <td>Data Kosong</td>
-                                <td>Data Kosong</td>
-                                <td>Data Kosong</td>
-                            </tr>
-                        @endforelse
+                        </thead>
+                        <tbody>
+                            @forelse ($users as $user)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
 
-                    </tbody>
-                </table>
+                                        <form action="{{ route('dashboard.user.destroy', $user->id) }}" class="d-inline"
+                                            method="POST"
+                                            onsubmit="return confirm('Are you sure you want to delete this User?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger"><i
+                                                    class="fa-solid fa-trash-can"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                    <td>Data Kosong</td>
+                                </tr>
+                            @endforelse
+
+                        </tbody>
+                    </table>
+                </div>
 
                 <table class="table table-striped text-center" id="adminTable" style="display: none;">
                     <thead>
