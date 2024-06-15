@@ -4696,6 +4696,7 @@ del {
 }
 .header-sticky.sticky-bar {
     background: #fff;
+    position: fixed;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-sticky.sticky-bar.sticky {
@@ -6501,24 +6502,22 @@ form.search-box .search-form a {
     }
 }
 
-
 @media (max-width: 768px) {
-    .title-company{
+    .title-company {
         font-size: 16px !important;
         margin-left: 10px !important;
         text-wrap: wrap !important;
-        
     }
-    .category-title{
+    .category-title {
         font-size: 15px !important;
     }
-    .category-title i{
+    .category-title i {
         font-size: 13px !important;
     }
-    .pelamar-title{
+    .pelamar-title {
         font-size: 11px !important;
     }
-    .pelamar-title i{
+    .pelamar-title i {
         font-size: 14px !important;
     }
     .company-logo {
