@@ -15,7 +15,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $jobs = tblJob::where('is_open', '1')->latest()->limit(6)->get();
+        $jobs = tblJob::where('is_open', '1')->latest()->limit(4)->get();
         $categories = tblCategory::orderBy('id', 'DESC')->get();
         return view('frontend.home', [
             'categories' => tblCategory::withCount([
