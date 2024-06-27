@@ -56,7 +56,7 @@
                             <div class="form-group">
                                 <label for="tbl_category_id">Category</label>
                                 <select name="tbl_category_id" class="form-control" id="tbl_category_id" required>
-                                    <option>Pilih Category Job</option>
+                                    <option selected disabled hidden>Pilih Category Job</option>
                                     @foreach (App\Models\tblCategory::all() as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label for="tbl_company_id">Open Job</label>
                                 <select name="is_open" class="form-control" id="is_open" required>
-                                    <option selected disabled>Pilih</option>
+                                    <option selected disabled hidden>Pilih</option>
                                     <option value="1">Yes</option>
                                     <option value="0">No</option>
                                 </select>

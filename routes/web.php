@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group(function () {
         // Routes accessible by admin and superadmin
         Route::middleware('UserAccess:admin,superadmin')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin');
-            Route::resource('profile', ProfileController::class);
+            Route::resource('profile', ProfileController::class)->only(['index', 'update']);
             Route::resource('company', CompanyController::class);
             Route::resource('job', JobController::class);
 
