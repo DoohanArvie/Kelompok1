@@ -67,7 +67,8 @@
                                         <li><a class="dropdown-item" href="{{ route('job-listing') }}">Semua Kategori</a>
                                         </li>
                                         @foreach ($categories as $category)
-                                            <li><a class="dropdown-item"
+                                            <li>
+                                                <a class="dropdown-item"
                                                     href="{{ route('job-category', $category->slug) }}">{{ $category->name }}</a>
                                             </li>
                                         @endforeach

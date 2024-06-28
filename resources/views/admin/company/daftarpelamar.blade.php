@@ -34,6 +34,7 @@
                                     <th>CV</th>
                                     <th>Dokumen</th>
                                     <th>Action</th>
+                                    <th>send email</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,6 +78,50 @@
                                                         class="fa-solid fa-circle-check"></i></button>
                                             </form>
                                         </td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#emailModal{{ $job->id }}">
+                                                Kirim Email
+                                            </button>
+
+                                            <!-- Email Modal -->
+                                            <div class="modal fade" id="emailModal{{ $job->id }}" tabindex="-1"
+                                                aria-labelledby="emailModalLabel{{ $job->id }}" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title"
+                                                                id="emailModalLabel{{ $job->id }}">Kirim Email ke
+                                                                {{ $job->name }}</h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <form
+                                                            action="{{ route('dashboard.daftarpelamar.send_email', $job->pivot->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            <div class="modal-body">
+                                                                <div class="mb-3">
+                                                                    <label for="subject" class="form-label">Subject</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="subject" name="subject" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="message" class="form-label">Pesan</label>
+                                                                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                                <button type="submit" class="btn btn-primary">Kirim
+                                                                    Email</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @empty
                                     <td>1</td>
@@ -92,6 +137,8 @@
                             </tbody>
                         </table>
                     </div>
+
+
                 </div>
             </div>
         </div>

@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('job', JobController::class);
 
             Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
+            Route::post('/dashboard/send-email/{id}', [PelamarController::class, 'sendEmail'])->name('daftarpelamar.send_email');
 
             Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
             Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
