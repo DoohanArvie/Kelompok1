@@ -52,11 +52,10 @@
                                             <a href="{{ route('dashboard.company.edit', $company->id) }}"
                                                 class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
                                             <form action="{{ route('dashboard.company.destroy', $company->id) }}"
-                                                class="d-inline" method="POST"
-                                                onsubmit="return confirm('Jika kamu menghapus company, akun mu juga akan terhapus. Lebih baik edit saja. Apakah kamu yakin ingin menghapus company ini?');">
+                                                class="d-inline" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger"><i
+                                                <button type="submit" class="btn btn-danger delete-btn"><i
                                                         class="fa-solid fa-trash-can"></i></button>
                                             </form>
                                             <a href="{{ route('dashboard.company.show', $company->id) }}"
@@ -88,6 +87,26 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             $('#table1').DataTable();
+
+            $('.delete-btn').on('click', function(e) {
+                e.preventDefault();
+                let form = $(this).closest('form');
+
+                Swal.fire({
+                    title: 'Warning?',
+                    text: "Jika kamu menghapus company, akun mu juga akan terhapus. Lebih baik edit saja. Apakah kamu yakin ingin menghapus company ini?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
         });
     </script>
 @endsection

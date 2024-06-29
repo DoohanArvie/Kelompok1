@@ -53,7 +53,7 @@
                                             onsubmit="return confirm('Are you sure you want to delete this User?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
+                                            <button type="submit" class="btn btn-danger delete-btn"><i
                                                     class="fa-solid fa-trash-can"></i></button>
                                         </form>
 
@@ -95,7 +95,7 @@
                                         onsubmit="return confirm('Are you sure you want to delete this User?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger"><i
+                                        <button type="submit" class="btn btn-danger delete-btn"><i
                                                 class="fa-solid fa-trash-can"></i></button>
                                     </form>
 
@@ -123,6 +123,26 @@
         // datatable
         document.addEventListener('DOMContentLoaded', function() {
             $('#userTable').DataTable();
+
+            $('.delete-btn').on('click', function(e) {
+                e.preventDefault();
+                let form = $(this).closest('form');
+
+                Swal.fire({
+                    title: 'Warning?',
+                    text: "Apakah anda yakin ingin mengahapus akun ini",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
         });
     </script>
 

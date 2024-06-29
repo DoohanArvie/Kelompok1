@@ -86,6 +86,7 @@
     <!-- Need: Apexcharts -->
     {{-- <script src="{{ asset('assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/static/js/pages/dashboard.js') }}"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Event listener untuk menampilkan preloader saat tautan sidebar diklik
         document.querySelectorAll('.sidebar-link').forEach(function(link) {
