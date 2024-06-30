@@ -51,11 +51,12 @@ Route::middleware(['auth'])->group(function () {
         // Routes accessible by admin and superadmin
         Route::middleware('UserAccess:admin,superadmin')->group(function () {
             Route::get('/', [DashboardController::class, 'index'])->name('admin');
-            Route::resource('profile', ProfileController::class);
+            Route::resource('profile', ProfileController::class)->only(['index', 'update']);
             Route::resource('company', CompanyController::class);
             Route::resource('job', JobController::class);
 
             Route::get('/daftarpelamar/{slug}', [PelamarController::class, 'daftarpelamar'])->name('daftarpelamar');
+            Route::post('/dashboard/send-email/{id}', [PelamarController::class, 'sendEmail'])->name('daftarpelamar.send_email');
 
             Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
             Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');

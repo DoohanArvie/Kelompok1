@@ -16,14 +16,28 @@ class DashboardController extends Controller
     public function index()
     {
 
-        return view('admin.dashboard', [
-            'total_job' => tblJob::count(),
-            'total_company' => tblCompany::count(),
-            'total_category' => tblCategory::count(),
-            'total_user' => User::where('role', 'user')->count(),
-            'total_admin' => User::where('role', 'admin')->count(),
-            'total_contact' => tblContact::count(),
-        ]);
+        $user = auth()->user();
+        $isSuperAdmin = $user->role === 'superadmin';
+
+        if ($isSuperAdmin) {
+            $data = [
+                'total_job' => tblJob::count(),
+                'total_company' => tblCompany::count(),
+                'total_category' => tblCategory::count(),
+                'total_user' => User::where('role', 'user')->count(),
+                'total_admin' => User::where('role', 'admin')->count(),
+                'total_contact' => tblContact::count(),
+            ];
+        } else {
+            $data = [
+                'total_job' => tblJob::whereHas('company', function ($query) use ($user) {
+                    $query->where('id', $user->tbl_company_id);
+                })->count(),
+                'total_company' => tblCompany::where('id', $user->tbl_company_id)->count(),
+            ];
+        }
+
+        return view('admin.dashboard', $data);
     }
 
 

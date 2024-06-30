@@ -51,7 +51,8 @@
                                         @if (Auth::user()->foto === null)
                                             <img class="gambar" src="{{ asset('assets/no-cover.jpg') }}" alt="Avatar">
                                         @else
-                                            <img class="gambar" src="{{ Storage::url(Auth::user()->foto) }}" alt="Avatar">
+                                            <img class="gambar" src="{{ Storage::url(Auth::user()->foto) }}"
+                                                alt="{{ Auth::user()->name }}">
                                         @endif
                                     </div>
 
@@ -62,8 +63,8 @@
                                         name="foto" id="foto" onchange="previewImg()">
 
                                     <div class="mt-3">
-                                        <img src="" class="img-preview img-thumbnail" alt="" width="250px"
-                                            height="50px" hidden>
+                                        <img src="" class="img-preview img-thumbnail" width="250px" height="50px"
+                                            hidden>
                                     </div>
 
                                 </div>

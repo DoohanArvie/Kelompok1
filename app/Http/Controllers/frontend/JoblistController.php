@@ -59,6 +59,14 @@ class JoblistController extends Controller
             'email' => 'string|required|email',
         ]);
         $job = tblJob::where('id', $id)->first();
+        $currentUser = auth()->user();
+
+        // Periksa apakah email yang dimasukkan sesuai dengan email user yang sedang login
+        if ($request->email !== $currentUser->email) {
+            throw ValidationException::withMessages([
+                'email' => ['Anda hanya dapat mendaftar menggunakan email Anda sendiri.'],
+            ]);
+        }
 
         $user = User::where('email', $request->email)->first();
         if (!$user) {

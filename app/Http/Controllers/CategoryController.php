@@ -6,6 +6,7 @@ use App\Models\tblCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -107,8 +108,8 @@ class CategoryController extends Controller
             Storage::disk('public')->delete($category->cover);
         }
         $category->delete();
-        return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully');
 
-        //
+        // Alert::success('Berhasil', 'Kategori berhasil dihapus');
+        return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully');
     }
 }
