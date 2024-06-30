@@ -1,9 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title', 'Dashboard - Admin')
-
 @include('admin.components.sidebar')
-
 @section('content')
 
     <div class="page-heading">
@@ -124,5 +122,4 @@
 
         </section>
     </div>
-
 @endsection

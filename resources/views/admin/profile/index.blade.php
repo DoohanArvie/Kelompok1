@@ -51,7 +51,7 @@
                                         @if (Auth::user()->foto === null)
                                             <img class="gambar" src="{{ asset('assets/no-cover.jpg') }}" alt="Avatar">
                                         @else
-                                            <img src="{{ Storage::url(Auth::user()->foto) }}" alt="Avatar">
+                                            <img class="gambar" src="{{ Storage::url(Auth::user()->foto) }}" alt="Avatar">
                                         @endif
                                     </div>
 

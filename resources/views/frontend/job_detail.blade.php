@@ -1,6 +1,13 @@
 @extends('frontend.layouts.main')
 
+
 @section('content')
+    <style>
+        div:where(.swal2-container).swal2-top-end>.swal2-popup,
+        div:where(.swal2-container).swal2-top-right>.swal2-popup {
+            margin-top: 100px;
+        }
+    </style>
     <main>
         <!-- Hero Area Start-->
         <div class="slider-area">
@@ -54,7 +61,7 @@
                         </div>
                         <!-- job single End -->
 
-                        <div class="job-post-details">
+                        <div class="job-post-details card p-3" style="border: none;">
                             <div class="post-details1 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">
@@ -106,7 +113,7 @@
                                 <a href="{{ route('applyjob', $job->slug) }}" class="btn">Lamar Sekarang</a>
                             </div>
                         </div>
-                        <div class="post-details4 mb-50">
+                        <div class="post-details4 mb-50 card p-4">
                             <!-- Small Section Tittle -->
                             <div class="small-section-tittle">
                                 <h4>Informasi Perusahaan</h4>

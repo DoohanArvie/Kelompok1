@@ -53,7 +53,8 @@
                     </div>
                 </div>
             @empty
-                <h5>Pekerjaan "<b>{{ $keyword }}</b>" tidak ditemukan.</h5>
+                <h5>Pekerjaan dengan kategori "<b>{{ $category->name }}</b>" <b>{{ $keyword ?? null }}</b> tidak
+                    ditemukan.</h5>
             @endforelse
         </div>
 

@@ -42,6 +42,15 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = Auth::user();
+
+        // Cek apakah user sudah memiliki perusahaan
+        if ($user->tbl_company_id) {
+            return redirect()->route('dashboard.company.index')
+                ->with('error', 'Kamu sudah bikin company, jadi kamu tidak bisa bikin lagi');
+        }
+
         $data = $request->validate([
             'company' => 'required|string',
             'cover' => 'required|mimes:png,jpg,jpeg|max:2048|image',

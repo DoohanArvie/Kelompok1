@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tblCompany;
 use App\Models\tblJob;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -33,7 +34,12 @@ class JobController extends Controller
      */
     public function create()
     {
-        return view('admin.job.create');
+        $companies = tblCompany::whereHas('Admin', function ($query) {
+            $query->where('id', auth()->user()->id);
+        })->get();
+        return view('admin.job.create', [
+            'companies' => $companies,
+        ]);
     }
 
     /**

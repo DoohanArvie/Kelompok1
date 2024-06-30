@@ -28,53 +28,55 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped text-center" id="table1">
-                        <thead class="thead-center">
-                            <tr>
-                                <th>No</th>
-                                <th>Category</th>
-                                <th>slug</th>
-                                <th>Cover</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($categories as $category)
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center" id="table1">
+                            <thead class="thead-center">
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->slug }}</td>
-                                    <td>
-                                        <img width="150px" height="100px" src="{{ Storage::url($category->cover) }}"
-                                            alt="">
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('dashboard.category.edit', $category->id) }}"
-                                            class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-
-                                        <form action="{{ route('dashboard.category.destroy', $category->id) }}"
-                                            class="d-inline" method="POST"
-                                            onsubmit="return confirm('Are you sure you want to delete this category?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </form>
-
-                                    </td>
+                                    <th>No</th>
+                                    <th>Category</th>
+                                    <th>slug</th>
+                                    <th>Cover</th>
+                                    <th>Action</th>
                                 </tr>
-                            @empty
-                                <tr>
-                                    <td>Data Kosong</td>
-                                    <td>Data Kosong</td>
-                                    <td>Data Kosong</td>
-                                    <td>Data Kosong</td>
-                                    <td>Data Kosong</td>
-                                </tr>
-                            @endforelse
+                            </thead>
+                            <tbody>
+                                @forelse ($categories as $category)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
+                                        <td>
+                                            <img width="150px" height="100px" src="{{ Storage::url($category->cover) }}"
+                                                alt="">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('dashboard.category.edit', $category->id) }}"
+                                                class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
 
-                        </tbody>
-                    </table>
+                                            <form action="{{ route('dashboard.category.destroy', $category->id) }}"
+                                                class="d-inline" method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>Data Kosong</td>
+                                        <td>Data Kosong</td>
+                                        <td>Data Kosong</td>
+                                        <td>Data Kosong</td>
+                                        <td>Data Kosong</td>
+                                    </tr>
+                                @endforelse
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

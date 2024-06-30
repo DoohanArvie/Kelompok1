@@ -28,21 +28,22 @@
                     <div class="row mb-5" style="display: flex; justify-content: space-between; ">
                         <div class="col-md-6 text-center" style="padding: 0 15px;">
                             <h5>Nama Company : </h5>
-                            <h3 class="mb-5">{{ $company->company }}</h3>
-                            <div class="mt-3 text-center">
-                                <h5>About Company</h5>
-                                <p>{{ $company->about }}</p>
+                            <h3 class="mb-3">{{ $company->company }}</h3>
+                            <img class="w-25 img-thumbnail" style="border-radius: 50%;"
+                                src="{{ Storage::url($company->cover) }}" alt="">
+                            <div class="mt-5">
+                                <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
+                                <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
                             </div>
+
                         </div>
 
 
                         <div class="col-md-6  text-center">
-                            <h5>Cover Perusahaan</h5>
-                            <img class="w-25" style="border-radius: 50%;" src="{{ Storage::url($company->cover) }}"
-                                alt="">
-                            <div class="mt-5">
-                                <p><i class="fas fa-external-link-alt me-2"></i>{{ $company->website }}</p>
-                                <p><i class="fas fa-envelope me-2"></i>{{ $company->email }}</p>
+
+                            <div class="mt-3 text-center">
+                                <h5>About Company</h5>
+                                <p>{{ $company->about }}</p>
                             </div>
                         </div>
 

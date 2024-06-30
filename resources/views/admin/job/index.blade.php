@@ -25,49 +25,51 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped text-center" id="table1">
-                        <thead class="thead-center">
-                            <tr>
-                                <th>No</th>
-                                <th>Job</th>
-                                <th>Category</th>
-                                <th>Company</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @forelse ($jobs as $job)
-                                <tr class="text-center">
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $job->job }}</td>
-                                    <td>{{ $job->category->name }}</td>
-                                    <td>{{ $job->company->company }}</td>
-                                    <td>
-                                        <a href="{{ route('dashboard.job.edit', $job->id) }}" class="btn btn-warning"><i
-                                                class="fa-solid fa-pen-to-square"></i></a>
-                                        <form action="{{ route('dashboard.job.destroy', $job->id) }}" class="d-inline"
-                                            method="POST"
-                                            onsubmit="return confirm('Are you sure you want to delete this Job?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </form>
-                                        <a href="{{ route('dashboard.job.show', $job->id) }}" class="btn btn-info"><i
-                                                class="fa-solid fa-eye"></i></a>
-                                    </td>
-                                </tr>
-                            @empty
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center" id="table1">
+                            <thead class="thead-center">
                                 <tr>
-                                    <td>No jobs </td>
-                                    <td>No jobs </td>
-                                    <td>No jobs </td>
-                                    <td>No jobs </td>
-                                    <td>No jobs </td>
+                                    <th>No</th>
+                                    <th>Job</th>
+                                    <th>Category</th>
+                                    <th>Company</th>
+                                    <th>Action</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @forelse ($jobs as $job)
+                                    <tr class="text-center">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $job->job }}</td>
+                                        <td>{{ $job->category->name }}</td>
+                                        <td>{{ $job->company->company }}</td>
+                                        <td>
+                                            <a href="{{ route('dashboard.job.edit', $job->id) }}" class="btn btn-warning"><i
+                                                    class="fa-solid fa-pen-to-square"></i></a>
+                                            <form action="{{ route('dashboard.job.destroy', $job->id) }}" class="d-inline"
+                                                method="POST"
+                                                onsubmit="return confirm('Are you sure you want to delete this Job?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+                                            <a href="{{ route('dashboard.job.show', $job->id) }}" class="btn btn-info"><i
+                                                    class="fa-solid fa-eye"></i></a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td>No jobs </td>
+                                        <td>No jobs </td>
+                                        <td>No jobs </td>
+                                        <td>No jobs </td>
+                                        <td>No jobs </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>

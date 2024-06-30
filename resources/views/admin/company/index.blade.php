@@ -26,51 +26,53 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped text-center" id="table1">
-                        <thead class="thead-center">
-                            <tr>
-                                <th>No</th>
-                                <th>Company</th>
-                                <th>Email</th>
-                                <th>Cover</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        @forelse ($companies as $company)
-                            <tbody>
+                    <div class="table-responsive">
+                        <table class="table table-striped text-center" id="table1">
+                            <thead class="thead-center">
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $company->company }}</td>
-                                    <td>{{ $company->email }}</td>
+                                    <th>No</th>
+                                    <th>Company</th>
+                                    <th>Email</th>
+                                    <th>Cover</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            @forelse ($companies as $company)
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $company->company }}</td>
+                                        <td>{{ $company->email }}</td>
 
-                                    <td>
-                                        <img width="150px" height="100px" src="{{ Storage::url($company->cover) }}"
-                                            alt="img {{ $company->company }}">
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('dashboard.company.edit', $company->id) }}"
-                                            class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <form action="{{ route('dashboard.company.destroy', $company->id) }}"
-                                            class="d-inline" method="POST"
-                                            onsubmit="return confirm('Are you sure you want to delete this Company?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="fa-solid fa-trash-can"></i></button>
-                                        </form>
-                                        <a href="{{ route('dashboard.company.show', $company->id) }}"
-                                            class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
-                                    </td>
+                                        <td>
+                                            <img width="150px" height="100px" src="{{ Storage::url($company->cover) }}"
+                                                alt="img {{ $company->company }}">
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('dashboard.company.edit', $company->id) }}"
+                                                class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <form action="{{ route('dashboard.company.destroy', $company->id) }}"
+                                                class="d-inline" method="POST"
+                                                onsubmit="return confirm('Jika kamu menghapus company, akun mu juga akan terhapus. Lebih baik edit saja. Apakah kamu yakin ingin menghapus company ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="fa-solid fa-trash-can"></i></button>
+                                            </form>
+                                            <a href="{{ route('dashboard.company.show', $company->id) }}"
+                                                class="btn btn-success"><i class="fa-solid fa-eye"></i></a>
+                                        </td>
 
-                            </tbody>
-                        @empty
-                            <td>No data</td>
-                            <td>No data</td>
-                            <td>No data</td>
-                            <td>No data</td>
-                            <td>No data</td>
-                        @endforelse
-                    </table>
+                                </tbody>
+                            @empty
+                                <td>No data</td>
+                                <td>No data</td>
+                                <td>No data</td>
+                                <td>No data</td>
+                                <td>No data</td>
+                            @endforelse
+                        </table>
+                    </div>
                 </div>
             </div>
 

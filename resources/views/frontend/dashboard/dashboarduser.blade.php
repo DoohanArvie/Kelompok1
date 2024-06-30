@@ -3,100 +3,108 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-between p-3">
-            <div class="col-lg-7 col-md-12 col-sm-12 mb-3">
+            <div class="col-lg-5 col-md-12 col-sm-12 mb-3">
                 <div class="card-body bg-dark mb-3" style="border-radius: 12px;">
                     <div class="p-0">
-                        <h3 class="fw-bold text-white text-center">User Details</h3>
+                        <h3 class="fw-bold text-white text-center">Profil</h3>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="d-flex justify-content-between">
-                                <div>
+                            <div class="text-center">
+                                <div class="mt-3">
                                     @if (Auth::user()->foto === null)
                                         <img class="border bg-white mb-3" src="{{ asset('assets/no-cover.jpg') }}"
-                                            alt="Avatar" style="border-radius: 10px; height: 50px; width:50px">
+                                            alt="Avatar" style="border-radius: 50%; height: 200px; width:200px">
                                     @else
                                         <img class="border bg-white mb-3" src="{{ asset('storage') . '/' . $user->foto }}"
                                             style="border-radius: 10px; height: 50px; width:50px" alt="Avatar">
                                     @endif
                                 </div>
-                                <div class="py-2">
-                                    <a href="{{ route('dashboarduser.edit', $user->id) }}"><i class="ti-settings"
-                                            style="color:white; font-size: 20px"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                                <span class="fw-bold text-white" style="font-size : 30px">{{ $user->name }}</span>
+                                <div class="my-3">
+                                    <a href="{{ route('dashboarduser.edit', $user->id) }}"
+                                        class="btn-sm bg-danger shadow-xl px-4 py-3"
+                                        style="width: 125px; border-style: none; border-radius: 8px; height: 44px;">Edit
+                                        Profil</a>
 
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Nama</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->name }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Email</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->email }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Gender</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->gender }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Handphone</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->no_hp }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold  text-muted">Birthday</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->tgl_lahir }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="row mb-2">
-                                <label class="col-4 fw-bold text-muted">Role</label>
-                                <div class="col-8">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->role }}</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-8 ml-3">
-                            <div class="row mb-2">
-                                <label class=" fw-bold text-muted">Alamat</label>
-                                <div class="col-10">
-                                    <span class="fw-bold fs-6 text-white-50">: {{ $user->address }}</span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
                 </div>
-
             </div>
             @if ($cv)
-                <div class="col-lg-5">
+                <div class="col-lg-7">
                     <div class="card-body bg-primary" style="border-radius: 12px;">
-                        <h4 class="text-4xl text-center text-white">Lihat CV</h4>
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-4xl text-white mb-3">User Detail</h4>
+
+                            <div class="py-2">
+                                <a href="{{ route('dashboarduser.edit', $user->id) }}"><i class="ti-settings"
+                                        style="color:white; font-size: 20px"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Nama</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Email</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Gender</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->gender }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Handphone</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->no_hp }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold  text-white">Birthday</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->tgl_lahir }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Role</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->role }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 mb-5">
+                            <div class="row mb-2">
+                                <label class="col-4 fs-6 fw-bold text-white">Alamat</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->address }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <h4 class="text-4xl text-white">Lihat CV</h4>
                         <div class="d-flex justify-content-between">
                             <span class="align-items-end py-2 text-white">Lihat CV kamu disini</span>
                             <button class="btn-sm bg-danger shadow-xl"
@@ -107,7 +115,8 @@
                 </div>
 
                 {{-- modal update --}}
-                <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true">
+                <div class="modal fade" id="lihatCv" tabindex="-1" aria-labelledby="lihatCvLabel" aria-hidden="true"
+                    style="z-index: 999999;">
                     <div class="modal-dialog modal-dialog-centered justify-content-center align-items-center"
                         style="max-width: 800px;">
                         <div class="modal-content" style="border-radius: 12px;">
@@ -161,9 +170,79 @@
                     </div>
                 </div>
             @else
-                <div class="col-lg-5">
+                <div class="col-lg-7">
                     <div class="card-body bg-primary" style="border-radius: 12px;">
-                        <h4 class="text-4xl text-center text-white">Upload CV</h4>
+                        <div class="d-flex justify-content-between">
+                            <h4 class="text-4xl text-white mb-3">User Detail</h4>
+
+                            <div class="py-2">
+                                <a href="{{ route('dashboarduser.edit', $user->id) }}"><i class="ti-settings"
+                                        style="color:white; font-size: 20px"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Nama</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->name }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Email</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->email }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Gender</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->gender }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Handphone</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->no_hp }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold  text-white">Birthday</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->tgl_lahir }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8">
+                            <div class="row mb-2">
+                                <label class="col-4 fw-bold text-white">Role</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->role }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 mb-5">
+                            <div class="row mb-2">
+                                <label class="col-4 fs-6 fw-bold text-white">Alamat</label>
+                                <div class="col-8">
+                                    <span class="fw-bold fs-6 text-white">: {{ $user->address }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h4 class="text-4xl text-white">Upload CV</h4>
                         <div class="d-flex justify-content-between">
                             <span class="align-items-end py-2 text-white">Upload CV kamu disini</span>
                             <button class="btn-sm bg-danger shadow-xl"
@@ -178,7 +257,8 @@
 
 
         {{-- Upload Cv Modal --}}
-        <div class="modal fade" id="uploadCv" tabindex="-1" aria-labelledby="uploadCvLabel" aria-hidden="true">
+        <div class="modal fade" id="uploadCv" tabindex="-1" aria-labelledby="uploadCvLabel" aria-hidden="true"
+            style="z-index: 99999;">
             <div class="modal-dialog">
                 <div class="modal-content" style="border-radius: 12px">
                     <form action="{{ route('dashboarduser.uploadcv') }}" method="POST" enctype="multipart/form-data">

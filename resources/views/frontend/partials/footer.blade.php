@@ -26,8 +26,8 @@
                                     <p>Alamat : Jalan Sisingamangaraja No. 73, Kebayoran Baru, Jakarta Selatan Jakarta
                                         12120.</p>
                                 </li>
-                                <li><a href="#">Phone : +62 812 3456 789</a></li>
-                                <li><a href="#">Email : singatidur@gmail.com</a></li>
+                                <li><a href="tel:+628123456789">Phone : +62 812 3456 789</a></li>
+                                <li><a href="mailto:singatidur@gmail.com">Email : singatidur@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>

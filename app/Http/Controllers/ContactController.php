@@ -13,4 +13,13 @@ class ContactController extends Controller
             'contacts' => tblContact::orderBy('created_at', 'DESC')->get(),
         ]);
     }
+
+    public function destroy($id)
+    {
+        $contact = tblContact::find($id);
+        $contact->delete();
+        return back()->with('success', 'Data Berhasil Dihapus');
+    }
+
+
 }

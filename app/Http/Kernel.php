@@ -69,5 +69,4 @@ class Kernel extends HttpKernel
         'UserAccess' => \App\Http\Middleware\UserAccess::class,
     ];
 
-    
 }

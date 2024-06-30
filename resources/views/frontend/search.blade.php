@@ -3,18 +3,18 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/search.css') }}">
     <div class="d-flex justify-content-center flex-column align-items-center  py-5">
-        <h1 class="fw-bolder">Search : <b>"{{ $keyword }}"</b> </h1>
+        <h4 class="fw-bolder">Search : <b>"{{ $keyword }}"</b> </h1>
 
-        <div class="mt-3">
-            <form action="{{ route('search') }}" method="GET">
-                <div class="search_wrap search_wrap_6">
-                    <div class="search_box">
-                        <input type="text" name="keyword" class="input" placeholder="search...">
-                        <button class="btn-search" type="submit">Search</button>
+            <div class="mt-3">
+                <form action="{{ route('search') }}" method="GET">
+                    <div class="search_wrap search_wrap_6">
+                        <div class="search_box">
+                            <input type="text" name="keyword" class="input" placeholder="search...">
+                            <button class="btn-search" type="submit">Search</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </div>
+                </form>
+            </div>
     </div>
 
     <div class="container mt-5">

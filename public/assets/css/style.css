@@ -4696,6 +4696,7 @@ del {
 }
 .header-sticky.sticky-bar {
     background: #fff;
+    position: fixed;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-sticky.sticky-bar.sticky {
@@ -6501,14 +6502,32 @@ form.search-box .search-form a {
     }
 }
 
-
 @media (max-width: 768px) {
+    .title-company {
+        font-size: 16px !important;
+        margin-left: 10px !important;
+        text-wrap: wrap !important;
+    }
+    .category-title {
+        font-size: 15px !important;
+    }
+    .category-title i {
+        font-size: 13px !important;
+    }
+    .pelamar-title {
+        font-size: 11px !important;
+    }
+    .pelamar-title i {
+        font-size: 14px !important;
+    }
     .company-logo {
-        width: 200px; 
-        height: 130px; 
+        width: 100px;
+        height: 100px;
         display: block;
-        margin-top: 50px; 
-        padding-left: 20px;
+        margin-top: 50px;
+        /* padding-left: 0; */
+        margin-left: 20px;
+        border-radius: 50% !important;
     }
     .mobile-column {
         display: flex;
@@ -6516,7 +6535,11 @@ form.search-box .search-form a {
         padding-right: 25px;
     }
     .mobile-column p {
-        margin-top: 10px; 
+        margin-top: 10px;
         padding-right: 25px;
     }
+}
+
+.z-index {
+    z-index: 9000;
 }
