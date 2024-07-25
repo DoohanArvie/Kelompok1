@@ -17,12 +17,28 @@ class JobController extends Controller
     public function index()
     {
 
+        // if (auth()->user()->role === 'superadmin') {
+        //     $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
+
+        // } else {
+        //     $jobs = tblJob::with(['company', 'category'])->where('tbl_company_id', auth()->user()->tbl_company_id)->get();
+
+        // }
+
         if (auth()->user()->role === 'superadmin') {
-            $jobs = tblJob::with(['company', 'category'])->orderBy('created_at', 'desc')->get();
-
+            $jobs = DB::table('tbl_jobs')
+                ->join('tbl_companies', 'tbl_jobs.tbl_company_id', '=', 'tbl_companies.id')
+                ->join('tbl_categories', 'tbl_jobs.tbl_category_id', '=', 'tbl_categories.id')
+                ->select('tbl_jobs.*', 'tbl_companies.company', 'tbl_categories.name as category_name')
+                ->orderBy('tbl_jobs.created_at', 'desc')
+                ->get();
         } else {
-            $jobs = tblJob::with(['company', 'category'])->where('tbl_company_id', auth()->user()->tbl_company_id)->get();
-
+            $jobs = DB::table('tbl_jobs')
+                ->join('tbl_companies', 'tbl_jobs.tbl_company_id', '=', 'tbl_companies.id')
+                ->join('tbl_categories', 'tbl_jobs.tbl_category_id', '=', 'tbl_categories.id')
+                ->select('tbl_jobs.*', 'tbl_companies.company', 'tbl_categories.name as category')
+                ->where('tbl_jobs.tbl_company_id', auth()->user()->tbl_company_id)
+                ->get();
         }
 
         // $jobs = tblJob::with(['category', 'company'])->where('tbl_company_id', 4)->orderBy('created_at', 'DESC')->get();
@@ -34,9 +50,15 @@ class JobController extends Controller
      */
     public function create()
     {
-        $companies = tblCompany::whereHas('Admin', function ($query) {
-            $query->where('id', auth()->user()->id);
-        })->get();
+        // $companies = tblCompany::whereHas('Admin', function ($query) {
+        //     $query->where('id', auth()->user()->id);
+        // })->get();
+
+        $companies = DB::table('tbl_companies')
+            ->leftJoin('tbl_users', 'tbl_companies.id', '=', 'tbl_users.tbl_company_id')
+            ->where('tbl_users.id', auth()->user()->id)
+            ->select('tbl_companies.*')
+            ->get();
         return view('admin.job.create', [
             'companies' => $companies,
         ]);

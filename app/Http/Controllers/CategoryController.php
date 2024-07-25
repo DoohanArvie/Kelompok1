@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tblCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,7 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = tblCategory::all();
+        // $categories = tblCategory::all();
+        $categories = DB::table('tbl_categories')->get();
         return view('admin.category.index', compact('categories'));
     }
 
@@ -34,17 +36,24 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+            'nama' => 'required',
+            'coverr' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
 
-        if ($request->hasFile('cover')) {
-            $coverPath = $request->file('cover')->store('category_covers', 'public');
-            $data['cover'] = $coverPath;
+        if ($request->hasFile('coverr')) {
+            $coverPath = $request->file('coverr')->store('category_covers', 'public');
+            $data['coverr'] = $coverPath;
         }
 
-        $data['slug'] = Str::slug($data['name']);
-        tblCategory::create($data);
+        $dataSlug = Str::slug($data['nama']);
+        DB::table('tbl_categories')->insert([
+            'name' => $data['nama'],
+            'slug' => $dataSlug,
+            'cover' => $data['coverr'],
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        // tblCategory::create($data);
 
         return redirect()->route('dashboard.category.index')->with('success', 'Category created successfully');
     }
@@ -63,7 +72,8 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         return view('admin.category.edit', [
-            'category' => tblCategory::findOrFail($id),
+            // 'category' => tblCategory::findOrFail($id),
+            'category' => DB::table('tbl_categories')->where('id', $id)->first(),
         ]);
 
         //
@@ -77,10 +87,11 @@ class CategoryController extends Controller
 
         $data = $request->validate([
             'name' => 'required',
-            'cover' => 'image|mimes:jpeg,png,jpg,svg,gif|max:2048',
+            'cover' => 'sometimes|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
         ]);
 
-        $category = tblCategory::findOrFail($id);
+        // $category = tblCategory::findOrFail($id);
+        $category = DB::table('tbl_categories')->where('id', $id)->first();
 
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('category_covers', 'public');
@@ -92,7 +103,13 @@ class CategoryController extends Controller
 
         $data['slug'] = Str::slug($data['name']);
 
-        $category->update($data);
+        // $category->update($data);
+        DB::table('tbl_categories')->where('id', $id)->update([
+            'name' => $data['name'],
+            'slug' => $data['slug'],
+            'cover' => $data['cover'],
+            'updated_at' => now(),
+        ]);
 
         return redirect()->route('dashboard.category.index')->with('success', 'Category updated successfully');
         //
@@ -103,11 +120,14 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = tblCategory::findOrFail($id);
+        // $category = tblCategory::findOrFail($id);
+        $category = DB::table('tbl_categories')->where('id', $id)->first();
         if ($category->cover) {
             Storage::disk('public')->delete($category->cover);
         }
-        $category->delete();
+        // $category->delete();
+        DB::table('tbl_categories')->where('id', $id)->delete();
+
 
         // Alert::success('Berhasil', 'Kategori berhasil dihapus');
         return redirect()->route('dashboard.category.index')->with('success', 'Category deleted successfully');

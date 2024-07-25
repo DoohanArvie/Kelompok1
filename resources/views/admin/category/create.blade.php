@@ -38,13 +38,13 @@
                         <div class="form-group">
                             <label for="name" class="mb-2">Category</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                placeholder="Category" name="name" value="{{ old('name') }}">
+                                placeholder="Category" name="nama" value="{{ old('name') }}">
                         </div>
                         <div class="form-group">
                             <label for="name" class="mb-2">Category</label>
                             <input type="file"
                                 class="form-control custom-file-input @error('cover') is-invalid @enderror" id="cover"
-                                placeholder="Cover" name="cover" value="{{ old('cover') }}" onchange="previewImg()">
+                                placeholder="Cover" name="coverr" value="{{ old('cover') }}" onchange="previewImg()">
                             <div class="mt-3">
                                 <img src="" class="img-preview img-thumbnail" alt="" width="250px"
                                     height="150px" hidden>

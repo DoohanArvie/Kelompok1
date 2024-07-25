@@ -59,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/dashboard/send-email/{id}', [PelamarController::class, 'sendEmail'])->name('daftarpelamar.send_email');
 
             Route::get('download_cv/{id}', [PelamarController::class, 'download_cv'])->name('download_cv');
+            Route::get('/pratinjau-cv/{id}', [PelamarController::class, 'pratinjau_cv'])->name('pratinjau_cv');
             Route::get('download_document/{id}', [PelamarController::class, 'download_document'])->name('download_document');
 
             // update status pelamar

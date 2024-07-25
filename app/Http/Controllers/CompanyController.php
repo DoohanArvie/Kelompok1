@@ -19,9 +19,15 @@ class CompanyController extends Controller
         $user = auth()->user();
 
         if ($user->role === 'superadmin') {
-            $companies = tblCompany::orderBy('created_at', 'desc')->get();
+            // $companies = tblCompany::orderBy('created_at', 'desc')->get();
+            $companies = DB::table('tbl_companies')
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else {
-            $companies = tblCompany::where('id', $user->tbl_company_id)->get();
+            // $companies = tblCompany::where('id', $user->tbl_company_id)->get();
+            $companies = DB::table('tbl_companies')
+                ->where('id', $user->tbl_company_id)
+                ->get();
         }
 
         return view('admin.company.index', [
@@ -55,8 +61,8 @@ class CompanyController extends Controller
             'company' => 'required|string',
             'cover' => 'required|mimes:png,jpg,jpeg|max:2048|image',
             'about' => 'required|string',
-            'website' => 'sometimes|string',
-            'email' => 'sometimes|email',
+            'website' => 'required|string',
+            'email' => 'required|email',
         ]);
 
         DB::beginTransaction();
@@ -75,18 +81,31 @@ class CompanyController extends Controller
             }
 
             // Isi data perusahaan
-            $company->company = $data['company'];
-            $company->email = $data['email']; // pastikan email diisi dari form atau kosongkan jika tidak ada
-            $company->about = $data['about'];
-            $company->website = $data['website'];
+            // $company->company = $data['company'];
+            // $company->email = $data['email']; // pastikan email diisi dari form atau kosongkan jika tidak ada
+            // $company->about = $data['about'];
+            // $company->website = $data['website'];
+
+            $companyId = DB::table('tbl_companies')->insertGetId([
+                'company' => $data['company'],
+                'email' => $data['email'],
+                'about' => $data['about'],
+                'website' => $data['website'],
+                'cover' => $company['cover'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
             // Simpan perusahaan
-            $company->save();
+            // $company->save();
 
             // Hubungkan pengguna dengan perusahaan
-            $user = Auth::user();
-            $user->tbl_company_id = $company->id;
-            $user->save();
+            // $user = Auth::user();
+            // $user->tbl_company_id = $company->id;
+            // $user->save();
+            DB::table('tbl_users')
+                ->where('id', $user->id)
+                ->update(['tbl_company_id' => $companyId]);
 
             DB::commit();
 
@@ -107,8 +126,15 @@ class CompanyController extends Controller
     public function show(string $id)
     {
 
-        $company = tblCompany::findOrFail($id);
-        $jobs = $company->Job()->orderBy('id', 'DESC')->get();
+        // $company = tblCompany::findOrFail($id);
+        $company = DB::table('tbl_companies')->where('id', $id)->first();
+        // $jobs = $company->Job()->orderBy('id', 'DESC')->get();
+        $jobs = DB::table('tbl_jobs')
+            ->leftJoin('tbl_categories', 'tbl_jobs.tbl_category_id', '=', 'tbl_categories.id')
+            ->select('tbl_jobs.*', 'tbl_categories.name as category_name')
+            ->orderBy('tbl_jobs.id', 'DESC')
+            ->where('tbl_company_id', $id) // id dari tbl_companies sama halnya many to one
+            ->get();
         return view('admin.company.detail', [
             'company' => $company,
             'jobs' => $jobs,
@@ -121,7 +147,8 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         return view('admin.company.edit', [
-            'company' => tblCompany::findOrFail($id),
+            // 'company' => tblCompany::findOrFail($id),
+            'company' => DB::table('tbl_companies')->where('id', $id)->first(),
         ]);
     }
 
@@ -130,13 +157,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $company = tblCompany::findOrFail($id);
+        // $company = tblCompany::findOrFail($id);
+        $company = DB::table('tbl_companies')->where('id', $id)->first();
         $data = $request->validate([
             'company' => 'required|string',
             'cover' => 'sometimes|mimes:png,jpg,jpeg|max:2048|image',
             'about' => 'required|string',
-            'website' => 'sometimes|nullable|string',
-            'email' => 'sometimes|nullable|email',
+            'website' => 'required|nullable|string',
+            'email' => 'required|nullable|email',
         ]);
 
         try {
@@ -147,11 +175,22 @@ class CompanyController extends Controller
                 }
                 $data['cover'] = $coverPath;
             }
-            $data['about'] = $request->about;
-            $data['website'] = $request->website;
-            $data['email'] = $request->email;
+            // $data['about'] = $request->about;
+            // $data['website'] = $request->website;
+            // $data['email'] = $request->email;
 
-            tblCompany::findOrFail($id)->update($data);
+            // tblCompany::findOrFail($id)->update($data);
+
+            DB::table('tbl_companies')
+                ->where('id', $id)
+                ->update([
+                    'company' => $data['company'],
+                    'about' => $data['about'],
+                    'website' => $data['website'],
+                    'email' => $data['email'],
+                    'cover' => $data['cover'] ?? $company->cover,
+                    'updated_at' => now(),
+                ]);
             DB::commit();
             return redirect()->route('dashboard.company.index')->with('success', 'Company updated successfully');
         } catch (\Exception $e) {
@@ -165,11 +204,13 @@ class CompanyController extends Controller
     public function destroy(string $id)
     {
         try {
-            $company = tblCompany::findOrFail($id);
+            // $company = tblCompany::findOrFail($id);
+            $company = DB::table('tbl_companies')->where('id', $id)->first();
             if ($company->cover) {
                 Storage::disk('public')->delete($company->cover);
             }
-            $company->delete();
+            // $company->delete();
+            DB::table('tbl_companies')->where('id', $id)->delete();
             return redirect()->route('dashboard.company.index')->with('success', 'Company deleted successfully');
         } catch (\Exception $e) {
             DB::rollBack();

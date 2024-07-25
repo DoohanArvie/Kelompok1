@@ -42,16 +42,21 @@
                             <!-- Section Tittle -->
                             <div class="section-tittle section-tittle2">
                                 <div class="d-flex justify-content-between ">
+                                    {{-- <img class="rounded-circle  company-logo" width="200"
+                                        src="{{ Storage::url($job->company->cover) }}" alt="{{ $job->company->company }}"> --}}
                                     <img class="rounded-circle  company-logo" width="200"
-                                        src="{{ Storage::url($job->company->cover) }}" alt="{{ $job->company->company }}">
+                                        src="{{ Storage::url($job->cover) }}" alt="{{ $job->company }}">
                                     <div class="d-flex flex-column mr-5">
                                         <p class="pt-4 fw-bold pl-3 pl-lg-5 " style="font-size: 25px !important">
                                             <strong class="title-company text-nowrap">{{ $job->job }}</strong>
                                         </p>
                                         <div class="pl-4 pt-3 mr-lg-1 d-flex justify-content-between mobile-column">
+                                            {{-- <p class="category-title text-nowrap mx-lg-4"><i
+                                                    class="fa-solid fa-layer-group"></i>
+                                                {{ $job->category->name }}</p> --}}
                                             <p class="category-title text-nowrap mx-lg-4"><i
                                                     class="fa-solid fa-layer-group"></i>
-                                                {{ $job->category->name }}</p>
+                                                {{ $job->category_name }}</p>
                                             <p class="pelamar-title"><i class="fa-solid fa-user-group"></i>
                                                 {{ count($pelamar) }}</p>
                                         </div>

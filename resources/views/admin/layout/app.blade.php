@@ -25,7 +25,7 @@
     }
 
     /* Preloader styling */
-    #preloader {
+    /* #preloader {
         position: fixed;
         top: 0;
         left: 0;
@@ -37,7 +37,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
     #preloader img {
         width: 100px;
@@ -89,30 +89,30 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Event listener untuk menampilkan preloader saat tautan sidebar diklik
-        document.querySelectorAll('.sidebar-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    preloader.style.display = 'flex';
-                }
-            });
-        });
+        // document.querySelectorAll('.sidebar-link').forEach(function(link) {
+        //     link.addEventListener('click', function() {
+        //         const preloader = document.getElementById('preloader');
+        //         if (preloader) {
+        //             preloader.style.display = 'flex';
+        //         }
+        //     });
+        // });
 
         // Event listener untuk menyembunyikan preloader saat halaman selesai dimuat
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-        });
+        // window.addEventListener('load', function() {
+        //     const preloader = document.getElementById('preloader');
+        //     if (preloader) {
+        //         preloader.style.display = 'none';
+        //     }
+        // });
 
         // Event listener untuk menyembunyikan preloader saat halaman dimuat ulang atau navigasi mundur
-        window.addEventListener('pageshow', function(event) {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-        });
+        // window.addEventListener('pageshow', function(event) {
+        //     const preloader = document.getElementById('preloader');
+        //     if (preloader) {
+        //         preloader.style.display = 'none';
+        //     }
+        // });
     </script>
 </body>
 

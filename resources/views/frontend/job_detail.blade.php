@@ -35,8 +35,9 @@
                         <div class="single-job-items mb-50">
                             <div class="job-items">
                                 <div class="company-img company-img-details mb-3">
-                                    <a href="#"><img src="{{ Storage::url($job->Company->cover) }}"
-                                            alt="" /></a>
+                                    {{-- <a href="#"><img src="{{ Storage::url($job->Company->cover) }}"
+                                            alt="" /></a> --}}
+                                    <a href="#"><img src="{{ Storage::url($job->cover) }}" alt="" /></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
@@ -45,7 +46,8 @@
                                     <ul>
                                         <li>
                                             <i class="fas fa-building mr-2"></i>
-                                            {{ $job->company->company }}
+                                            {{-- {{ $job->company->company }} --}}
+                                            {{ $job->company }}
                                         </li>
                                         <li>
                                             <i class="fas fa-map-marker-alt mr-2"></i>{{ $job->lokasi }}
@@ -103,10 +105,13 @@
                                 <h4>Ringkasan Pekerjaan</h4>
                             </div>
                             <ul>
-                                <li>Perusahaan : <span>{{ $job->company->company }}</span></li>
-                                <li>Diposting : <span>{{ $job->created_at->format('d-m-Y') }}</span></li>
+                                {{-- <li>Perusahaan : <span>{{ $job->company->company }}</span></li> --}}
+                                <li>Perusahaan : <span>{{ $job->company }}</span></li>
+                                {{-- <li>Diposting : <span>{{ $job->created_at->format('d-m-Y') }}</span></li> --}}
+                                <li>Diposting : <span>{{ \Carbon\Carbon::parse($job->created_at)->format('d-m-Y') }}</span>
                                 <li>Lokasi : <span>{{ $job->lokasi }}</span></li>
                                 <li>Gaji : <span>Rp. {{ number_format((float) $job->salary, 2, '.', ',') }}</span></li>
+                                </li>
                                 <li>Status Lowongan : <span>{{ $job->is_open == 1 ? 'Tersedia' : 'Ditutup' }}</span></li>
                             </ul>
                             <div class="apply-btn2">
@@ -118,13 +123,17 @@
                             <div class="small-section-tittle">
                                 <h4>Informasi Perusahaan</h4>
                             </div>
-                            <span>{{ $job->company->company }}</span>
+                            {{-- <span>{{ $job->company->company }}</span> --}}
+                            <span>{{ $job->company }}</span>
                             <p>
-                                {{ $job->company->about }}
+                                {{-- {{ $job->company->about }} --}}
+                                {{ $job->about }}
                             </p>
                             <ul>
-                                <li>Web : <span> {{ $job->company->website }}</span></li>
-                                <li>Email: <span>{{ $job->company->email }}</span></li>
+                                {{-- <li>Web : <span> {{ $job->company->website }}</span></li> --}}
+                                <li>Web : <span> {{ $job->website }}</span></li>
+                                {{-- <li>Email: <span>{{ $job->company->email }}</span></li> --}}
+                                <li>Email: <span>{{ $job->email }}</span></li>
                             </ul>
                         </div>
                     </div>

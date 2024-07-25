@@ -41,8 +41,10 @@
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $job->job }}</td>
-                                        <td>{{ $job->category->name }}</td>
-                                        <td>{{ $job->company->company }}</td>
+                                        {{-- <td>{{ $job->category->name }}</td> --}}
+                                        <td>{{ $job->category_name }}</td>
+                                        {{-- <td>{{ $job->company->company }}</td> --}}
+                                        <td>{{ $job->company }}</td>
                                         <td>
                                             <a href="{{ route('dashboard.job.edit', $job->id) }}" class="btn btn-warning"><i
                                                     class="fa-solid fa-pen-to-square"></i></a>

@@ -44,25 +44,64 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $job->name }}</td>
                                         <td>{{ $job->email }}</td>
-                                        <td>{{ $job->pivot->created_at->format('Y-m-d') }}</td>
+                                        {{-- <td>{{ $job->pivot->created_at->format('Y-m-d') }}</td> --}}
+                                        <td>{{ \Carbon\Carbon::parse($job->created_at)->format('Y-m-d') }}</td>
                                         <td>
-                                            @if ($job->pivot->status == 1)
+                                            {{-- @if ($job->pivot->status == 1) --}}
+                                            @if ($job->status == 1)
                                                 <p class="text-success">Sudah di baca</p>
                                             @else
                                                 <p class="text-danger">Belum di baca</p>
                                             @endif
                                         </td>
-                                        <td>
-                                            @if (isset($job->cvs) && isset($job->cvs->id))
-                                                <a href="{{ route('dashboard.download_cv', $job->cvs->id) }}"
+                                        {{-- <td>
+                                            @if (isset($job->cv_id))
+                                                <a href="{{ route('dashboard.download_cv', $job->cv_id) }}"
                                                     class="btn btn-primary">CV</a>
                                             @else
                                                 <span class="text-danger">CV not available</span>
                                             @endif
+                                        </td> --}}
+                                        <td>
+                                            @if (isset($job->cv_id))
+                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#modalCV{{ $job->cv_id }}">
+                                                    Pratinjau CV
+                                                </button>
+
+                                                <!-- Modal Pratinjau CV -->
+                                                <div class="modal fade" id="modalCV{{ $job->cv_id }}" tabindex="-1"
+                                                    aria-labelledby="labelModalCV{{ $job->cv_id }}" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="labelModalCV{{ $job->cv_id }}">Pratinjau CV -
+                                                                    {{ $job->name }}</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <iframe
+                                                                    src="{{ route('dashboard.pratinjau_cv', $job->cv_id) }}"
+                                                                    width="100%" height="600px"></iframe>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Tutup</button>
+                                                                <a href="{{ route('dashboard.download_cv', $job->cv_id) }}"
+                                                                    class="btn btn-primary">Unduh CV</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @else
+                                                <span class="text-danger">CV tidak tersedia</span>
+                                            @endif
                                         </td>
                                         <td>
-                                            @if (isset($job->cvs) && isset($job->cvs->id))
-                                                <a href="{{ route('dashboard.download_document', $job->cvs->id) }}"
+                                            @if (isset($job->cv_id))
+                                                <a href="{{ route('dashboard.download_document', $job->cv_id) }}"
                                                     class="btn btn-primary">Document</a>
                                             @else
                                                 <span class="text-danger">Document not available</span>
@@ -70,7 +109,7 @@
                                         </td>
                                         <td>
                                             <form class="pt-3 pb-0"
-                                                action="{{ route('dashboard.daftarpelamat.update', $job->pivot->id) }}"
+                                                action="{{ route('dashboard.daftarpelamat.update', $job->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('PATCH')
@@ -97,7 +136,7 @@
                                                                 aria-label="Close"></button>
                                                         </div>
                                                         <form
-                                                            action="{{ route('dashboard.daftarpelamar.send_email', $job->pivot->id) }}"
+                                                            action="{{ route('dashboard.daftarpelamar.send_email', $job->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             <div class="modal-body">

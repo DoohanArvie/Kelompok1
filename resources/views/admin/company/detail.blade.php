@@ -67,7 +67,8 @@
                                                     <ul class=" justify-content-between list-unstyled">
 
                                                         <li> <i class="bi bi-bookmark-dash-fill"></i>
-                                                            {{ $job->Category->name }}</li>
+                                                            {{-- {{ $job->Category->name }}</li> --}}
+                                                            {{ $job->category_name }}</li>
                                                         <li>
                                                             <i class="fas fa-map-marker-alt"></i> {{ $job->lokasi }}
                                                         </li>
@@ -77,7 +78,9 @@
                                                 <a href="{{ route('dashboard.daftarpelamar', $job->slug) }}"
                                                     class="btn btn-primary block btn-sm">Daftar
                                                     Pelamar</a>
-                                                <p class="pt-3 mb-0">{{ $job->created_at->diffForHumans() }}</p>
+                                                {{-- <p class="pt-3 mb-0">{{ $job->created_at->diffForHumans() }}</p> --}}
+                                                <p>{{ \Carbon\Carbon::parse($job->created_at)->diffForHumans() }}</p>
+
                                             </div>
                                         </div>
                                     </div>

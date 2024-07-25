@@ -24,8 +24,10 @@
                     <div class="card job-card p-lg-4 p-md-3 p-sm-4 single-job-items mb-20 col-sm-12 mx-auto">
                         <div class="job-items mb-3">
                             <div class="company-img mb-3">
+                                {{-- <a href="{{ route('job-detail', $job->slug) }}"><img class="img-thumbnail"
+                                        src="{{ Storage::url($job->Company->cover) }}" alt="" /></a> --}}
                                 <a href="{{ route('job-detail', $job->slug) }}"><img class="img-thumbnail"
-                                        src="{{ Storage::url($job->Company->cover) }}" alt="" /></a>
+                                        src="{{ Storage::url($job->cover) }}" alt="" /></a>
                             </div>
                             <div class="job-tittle job-tittle2">
                                 <a href="{{ route('job-detail', $job->slug) }}">
@@ -34,7 +36,8 @@
                                 <ul class="text-secondary">
                                     <li class="mb-2">
                                         <i class="fas fa-building mr-2"></i>
-                                        {{ $job->company->company }}
+                                        {{-- {{ $job->company->company }} --}}
+                                        {{ $job->company }}
                                     </li>
                                     <li class="mb-2">
                                         <i class="fas fa-map-marker-alt mr-2"></i>{{ $job->lokasi }}
