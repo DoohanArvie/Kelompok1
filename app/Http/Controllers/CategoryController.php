@@ -13,6 +13,9 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    const MAX_UPLOAD_SIZE = 2048; // dalam kilobytes
+    const ALLOWED_MIME_TYPES = ['jpeg', 'png', 'jpg', 'svg', 'gif'];
     public function index()
     {
         $categories = tblCategory::all();
