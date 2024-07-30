@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\tblCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -34,13 +35,8 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required',
-            'cover' => 'required|image|mimes:jpeg,png,jpg,svg,gif|max:2048',
-        ]);
-
         if ($request->hasFile('cover')) {
             $coverPath = $request->file('cover')->store('category_covers', 'public');
             $data['cover'] = $coverPath;
