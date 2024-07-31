@@ -25,7 +25,7 @@
     }
 
     /* Preloader styling */
-    #preloader {
+    /* #preloader {
         position: fixed;
         top: 0;
         left: 0;
@@ -37,16 +37,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
+    } */
 
-    #preloader img {
+    /* #preloader img {
         width: 100px;
-        /* Adjust size as needed */
         animation: rotate 2s linear infinite;
-        /* Animation added here */
-    }
+    } */
 
-    @keyframes rotate {
+    /* @keyframes rotate {
         0% {
             transform: rotate(0deg);
         }
@@ -54,14 +52,14 @@
         100% {
             transform: rotate(360deg);
         }
-    }
+    } */
 </style>
 
 <body>
     <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
-    <div id="preloader">
+    {{-- <div id="preloader">
         <img src="{{ asset('assets/img/logo/logo.png') }}" alt="Loading...">
-    </div>
+    </div> --}}
     <div id="app">
 
         <div id="main">
@@ -89,30 +87,30 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Event listener untuk menampilkan preloader saat tautan sidebar diklik
-        document.querySelectorAll('.sidebar-link').forEach(function(link) {
-            link.addEventListener('click', function() {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    preloader.style.display = 'flex';
-                }
-            });
-        });
+        // document.querySelectorAll('.sidebar-link').forEach(function(link) {
+        //     link.addEventListener('click', function() {
+        //         const preloader = document.getElementById('preloader');
+        //         if (preloader) {
+        //             preloader.style.display = 'flex';
+        //         }
+        //     });
+        // });
 
         // Event listener untuk menyembunyikan preloader saat halaman selesai dimuat
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-        });
+        // window.addEventListener('load', function() {
+        //     const preloader = d?ocument.getElementById('preloader');
+        //     if (preloader) {
+        //         preloader.style.display = 'none';
+        //     }
+        // });
 
         // Event listener untuk menyembunyikan preloader saat halaman dimuat ulang atau navigasi mundur
-        window.addEventListener('pageshow', function(event) {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                preloader.style.display = 'none';
-            }
-        });
+        // window.addEventListener('pageshow', function(event) {
+        //     const preloader = document.getElementById('preloader');
+        //     if (preloader) {
+        //         preloader.style.display = 'none';
+        //     }
+        // });
     </script>
 </body>
 
