@@ -97,6 +97,8 @@ Route::middleware(['auth'])->group(function () {
 //     return redirect()->route('dashboarduser');
 // })->middleware(['auth', 'signed'])->name('verification.verify');
 
+// add dokumentasi
+
 Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboarduser', [DashboardUserController::class, 'index'])->name('dashboarduser');
